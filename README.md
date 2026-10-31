@@ -8,7 +8,7 @@
 
 先阅读 [0.2.0 实现与走读](implementation-v0.2.md) 和 [Skill 入口](skills/qa-workflow/SKILL.md)。完整路线与下一项见 [推进计划](roadmap.md)。
 
-当前新增的 3.1 设计要求以 [需求理解与澄清](design/stages/requirements-analysis.md) 为准：过程本地记录，最后由用户确认需求短期稳定后再建议正式入库。0.2.0 包中的较早入库时机尚待随本阶段实施修正，不能把设计约定视为包已升级。
+当前新增的 3.1 设计要求以 [需求理解与澄清](design/stages/requirements-analysis.md) 为准：优先把业务理解对齐，追问以支撑本次用例为界；过程本地记录，本期完成并正式上线、用户确认短期稳定后，强烈建议沉淀到 asynctest-kb 并说明收益。0.2.0 包中的较早时机尚待实施修正，不能把设计约定视为包已升级。
 
 | 文档 | 内容 | 状态 |
 | --- | --- | --- |
@@ -22,6 +22,7 @@
 | [继续、切换与找回](design/continuation.md) | 接续任务、切换项目、会话接手和查阅历史资料 | 已写入 0.2.0 并验证相关本地操作 |
 | [缺失、冲突与阻塞](design/blockers.md) | 缺口说明、受影响范围、回查及独立工作 | 2.5 已确认并写入 0.2.0 |
 | [需求理解与澄清](design/stages/requirements-analysis.md) | 历史概念与关系、可控追问、用例反推和最终入库时机 | 3.1 用户要求已记录，具体流程草案待讨论 |
+| [asynctest-kb 接入引导](design/integrations/asynctest-kb-onboarding.md) | 从 Asynctest 获取信息，由当前 Agent 适配客户端 | 通用设计，服务侧截图待补；未配置客户端 |
 | [多项目隔离与任务状态](design/project-scope.md) | 多项目、状态归属和跨项目需求 | 原则已确认；基础归属已实现 |
 | [共享内容与项目差异](design/shared-resources.md) | 复用、适用范围、版本与差异 | 固定引用与配置差异已实现 |
 | [状态与恢复](design/state-contract.md) | 进度、结果、同步及恢复依据 | 本地状态与恢复已验证 |
