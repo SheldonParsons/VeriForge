@@ -16,6 +16,7 @@
 | [首次使用与接入项目](design/onboarding.md) | 首次进入、新旧项目接入、接续任务 | 2.1、2.2 已确认；实际 Skill 更新与体验验证待后续 |
 | [Skill 说明与使用问答](design/help-and-capabilities.md) | 用途、当前能力、测试流程与常见问题 | 2.1 约定已确认，尚未写入发布包 |
 | [工作过程中的自然表达](design/progress-guidance.md) | 用户口语输入与 Agent 回应、推进、记录的关系 | 2.3 约定已确认，尚未写入发布包 |
+| [继续、切换与找回](design/continuation.md) | 接续任务、切换项目、会话接手和查阅历史资料 | 2.4 约定已确认，尚未写入发布包 |
 | [多项目隔离与任务状态](design/project-scope.md) | 多项目、状态归属和跨项目需求 | 原则已确认；基础归属已实现 |
 | [共享内容与项目差异](design/shared-resources.md) | 复用、适用范围、版本与差异 | 固定引用与配置差异已实现 |
 | [状态与恢复](design/state-contract.md) | 进度、结果、同步及恢复依据 | 本地状态与恢复已验证 |
