@@ -8,6 +8,8 @@ python3 <skill>/scripts/qa.py --workspace <workspace> --request /path/to/request
 
 也可从标准输入传入一个 JSON 对象。成功返回 ok:true；校验错误 ok:false、退出码 2；IO 错误退出码 3，先回读确认是否部分保存。请求不含口令、Cookie 或授权头。
 
+只了解本包能力时可运行 `python3 <skill>/scripts/qa.py --capabilities`，或传入 `{"action":"capabilities"}`。该操作无需 `--workspace`，不读取或创建用户工作空间；其他命令仍明确指定目录。
+
 ## 通用字段
 
 - action 为下表名称；项目级请求有 project；需求级请求同时有 project、requirement。
@@ -20,6 +22,7 @@ python3 <skill>/scripts/qa.py --workspace <workspace> --request /path/to/request
 
 | action | 参数（? 表示可选） | 说明 |
 | --- | --- | --- |
+| capabilities | 无 | 只读本包版本与能力说明 |
 | workspace.init | title, actor | 创建空间与维护者，已有空间不覆盖 |
 | project.create | project, title, actor, systems?, coordinator? | systems 如 `{"client":"客户端"}` |
 | requirement.create | project, requirement, title, actor, systems?, coordinator?, next? | 系统引用如 `[{"project":"orders","system":"client"}]` |
@@ -56,7 +59,9 @@ python3 <skill>/scripts/qa.py --workspace <workspace> --request /path/to/request
 | action | 其他参数 | 说明 |
 | --- | --- | --- |
 | task.create | actor, task, owner, scope, run?, cases?, inputs?, context?, session_ref? | inputs 为来源快照标识列表；context 可保存 environment/build/roles/data_refs/systems；不创建真实会话 |
-| task.finish | actor, task, status, note, expected_revision | closed/paused/blocked，不表示全通过 |
+| task.pause | actor, task, note, expected_revision | 保存暂停与在途事项，不证明外部进程停止 |
+| task.resume | actor, task, note, expected_revision | 明确继续；未知操作或场景冲突未解除时拒绝恢复 |
+| task.finish | actor, task, status, note, expected_revision | closed/blocked 须先核实并释放资源；paused 按 task.pause 处理，不表示全通过 |
 | task.transfer | actor, task, new_owner, previous_owner_stopped:true, note, expected_revision, session_ref? | 核实停止后记录交接 |
 | resource.acquire | actor, task, resource | 返回资源修订，相同真实资源一致命名 |
 | resource.release | actor, task, resource, expected_revision | 先处理未知操作 |

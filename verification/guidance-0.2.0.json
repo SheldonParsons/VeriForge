@@ -1,0 +1,80 @@
+{
+  "version": "0.2.0",
+  "date": "2026-10-31",
+  "data_schema": 1,
+  "runtime_tests": {
+    "passed": 24,
+    "failed": 0,
+    "command": "python3 -m unittest discover -s skill-development/tests -v"
+  },
+  "dialogue_walkthrough": {
+    "version": "0.2.0",
+    "method": "author-selected actions plus local fixtures; NOT independent model replay",
+    "scenario_count": 17,
+    "selected_local_actions_checked": 16,
+    "instruction_review_only": 1,
+    "runtime_calls_including_setup": 88,
+    "business_requests": 0,
+    "independent_agent_used": false,
+    "model_replay_executed": false
+  },
+  "foundation_cli": {
+    "synthetic_only": true,
+    "business_requests": 0,
+    "cli_calls": 29,
+    "python": "3.11.9",
+    "os": "Darwin",
+    "architecture": "arm64",
+    "workflow_passed": true,
+    "snapshot_preserved": true,
+    "source_workspace_preserved": true,
+    "scale": {
+      "10": {
+        "requirements": 10,
+        "returned_items": 10,
+        "response_bytes": 1777,
+        "median_local_ms": 0.722,
+        "samples": 5
+      },
+      "200": {
+        "requirements": 200,
+        "returned_items": 10,
+        "response_bytes": 1817,
+        "median_local_ms": 9.515,
+        "samples": 5
+      }
+    },
+    "billing_tokens_measured": false
+  },
+  "previous_data_compatibility": {
+    "source": "v0.1.0 synthetic data schema 1 backup",
+    "target_runtime": "0.2.0",
+    "read_and_restore_passed": true,
+    "original_backup_unchanged": true,
+    "unknown_operation_preserved": true,
+    "resource_preserved": true,
+    "execution_still_requires_review": true,
+    "archive_sha256": "aa283fc29846761ab244b780496737383c1758a4ee672fb7e86d4343c86d0c69"
+  },
+  "package": {
+    "version": "0.2.0",
+    "files": 15,
+    "bytes": 39775,
+    "sha256": "3cc985220a6522b1ab1db101e95c5f489d4790341e60b4ebd2c1f5a9e0788bcf",
+    "relocated_cli_passed": true,
+    "help_without_workspace_passed": true,
+    "links_valid": true
+  },
+  "skill_format_validation": "passed",
+  "independent_agent_validation": false,
+  "business_requests": 0,
+  "not_verified": [
+    "independent agent intent selection",
+    "Codex automatic skill activation",
+    "WorkBuddy",
+    "SkillHub upload or install",
+    "real UI or MCP business actions",
+    "off-device backup",
+    "cross-schema migration"
+  ]
+}

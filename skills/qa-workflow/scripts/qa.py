@@ -16,6 +16,13 @@ from qaw.storage import Error, require
 def execute(workspace, request):
     require(isinstance(request, dict), "INVALID_INPUT", "请求必须是 JSON 对象。")
     action = request.get("action")
+    if action == "capabilities":
+        path = Path(__file__).resolve().parents[1] / "assets/capabilities.json"
+        data = json.loads(path.read_text(encoding="utf-8"))
+        require(data.get("schema") == 1 and data.get("version") == VERSION,
+                "PACKAGE_INCONSISTENT", "能力说明与运行器版本不一致，请核对发布包。")
+        return data
+    require(workspace, "WORKSPACE_REQUIRED", "此操作需要明确的工作目录；只了解能力可使用 --capabilities。")
     if action == "backup.create":
         return backup.create(workspace, request)
     if action == "backup.verify":
@@ -29,14 +36,19 @@ def execute(workspace, request):
 
 def main():
     parser = argparse.ArgumentParser(description="QA 工作台基础管理；不调用浏览器、知识库或缺陷平台。")
-    parser.add_argument("--workspace", required=True, help="明确的用户工作目录，不是 Skill 安装目录")
-    parser.add_argument("--request", help="UTF-8 JSON 请求文件；省略时从标准输入读取")
+    parser.add_argument("--workspace", help="明确的用户工作目录；说明问答不要求初始化工作空间")
+    source = parser.add_mutually_exclusive_group()
+    source.add_argument("--request", help="UTF-8 JSON 请求文件；省略时从标准输入读取")
+    source.add_argument("--capabilities", action="store_true", help="只读当前包能力，不访问或创建工作空间")
     parser.add_argument("--version", action="version", version=VERSION)
     args = parser.parse_args()
     try:
-        raw = Path(args.request).read_text(encoding="utf-8") if args.request else sys.stdin.read(1024 * 1024 + 1)
-        require(len(raw) <= 1024 * 1024, "INVALID_INPUT", "请求超过 1 MiB，请通过产物文件传递较大内容。")
-        request = json.loads(raw)
+        if args.capabilities:
+            request = {"action": "capabilities"}
+        else:
+            raw = Path(args.request).read_text(encoding="utf-8") if args.request else sys.stdin.read(1024 * 1024 + 1)
+            require(len(raw) <= 1024 * 1024, "INVALID_INPUT", "请求超过 1 MiB，请通过产物文件传递较大内容。")
+            request = json.loads(raw)
         result = execute(args.workspace, request)
         print(json.dumps({"ok": True, "action": request.get("action"), "result": result}, ensure_ascii=False))
     except Error as exc:

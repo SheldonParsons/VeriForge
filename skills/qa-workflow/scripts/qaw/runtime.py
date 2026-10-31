@@ -11,7 +11,7 @@ from .storage import Error, Store, atomic_bytes, file_digest, now, require, slug
 
 
 READS = {"list", "record.read", "record.history", "resume", "shared.resolve", "run.summary", "lock.inspect"}
-EXECUTION = {"resource.acquire", "operation.prepare", "operation.dispatch", "case.record"}
+EXECUTION = {"resource.acquire", "operation.prepare", "operation.dispatch", "case.record", "task.resume", "task.transfer"}
 STAGES = {"analysis", "page_evidence", "cases", "review", "execution", "defects", "retest", "knowledge", "closeout"}
 STATES = {"not_started", "in_progress", "ready_for_review", "completed", "blocked", "skipped"}
 
@@ -216,6 +216,24 @@ class Runtime:
             items.append(item)
         return {"project": q["project"], "items": items}
 
+    def no_task_overlap(self, prefix, task_id, run, cases):
+        for other_ref in self.store.refs(prefix + "/tasks/*.json"):
+            other = self.store.read(other_ref)["data"]
+            if other["task"] == task_id or other["run"] != run or not set(cases) & set(other["cases"]):
+                continue
+            pending, leases = self.blockers(self.task_key(other))
+            require(other["status"] != "active" and not pending and not leases,
+                    "TASK_OVERLAP", "同轮场景已有活跃负责人或未解除的操作、资源。", task=other_ref)
+
+    def managed_task(self, q):
+        prefix, _, req = self.req(q)
+        ref = prefix + f"/tasks/{slug(q['task'])}.json"
+        r = self.store.read(ref)
+        require(q.get("actor") in {req["data"]["coordinator"], r["data"]["owner"]},
+                "NOT_OWNER", "任务负责人或协调者才可记录暂停与恢复。")
+        require(not req["data"]["archived"], "ARCHIVED", "先明确重新开启需求。")
+        return prefix, ref, r
+
     def do_task_create(self, q):
         prefix, _, req = self.req(q)
         self.coordinator(q, req)
@@ -237,10 +255,7 @@ class Runtime:
                 "INVALID_INPUT", "context 仅保存环境、构建、角色引用、数据引用和系统；不放凭据。")
         if "systems" in context:
             self.systems(context["systems"])
-        for other_ref in self.store.refs(prefix + "/tasks/*.json"):
-            other = self.store.read(other_ref)["data"]
-            require(not (other["status"] == "active" and other["run"] == run and set(cases) & set(other["cases"])),
-                    "TASK_OVERLAP", "该批次的部分场景已有活跃负责人。", task=other_ref)
+        self.no_task_overlap(prefix, slug(q["task"]), run, cases)
         ref = prefix + f"/tasks/{slug(q['task'])}.json"
         data = {"kind": "task", **self.task_key(q), "owner": text(q.get("owner"), "owner", 120),
                 "scope": text(q.get("scope"), "scope"), "run": run, "cases": cases, "status": "active",
@@ -249,12 +264,34 @@ class Runtime:
         return receipt(ref, self.store.write(ref, data, 0))
 
     def do_task_finish(self, q):
-        _, ref, r = self.task(q)
+        if q.get("status") == "paused":
+            return self.do_task_pause(q)
+        _, ref, r = self.task(q, active=False)
+        require(not self.req(q)[2]["data"]["archived"], "ARCHIVED", "先明确重新开启需求。")
         pending, leases = self.blockers(q)
         require(not pending and not leases, "PENDING_WORK", "先核实未知操作并释放本任务的资源。", operations=pending, resources=leases)
         require(q.get("status") in {"closed", "blocked", "paused"}, "INVALID_STATE", "任务结束状态须为 closed、blocked 或 paused。")
         r["data"].update(status=q["status"], note=text(q.get("note"), "note"))
         return receipt(ref, self.store.write(ref, r["data"], q["expected_revision"]))
+
+    def do_task_pause(self, q):
+        _, ref, r = self.managed_task(q)
+        require(r["data"]["status"] != "closed", "INACTIVE_TASK", "已关闭任务无需暂停。")
+        pending, leases = self.blockers(q)
+        r["data"].update(status="paused", note=text(q.get("note"), "note"), paused_at=now())
+        return receipt(ref, self.store.write(ref, r["data"], q["expected_revision"]),
+                       external_stop_verified=False, unconfirmed_operation_count=len(pending),
+                       held_resource_count=len(leases),
+                       next="后续本地派发已阻止；在途结果和资源仍保留。此记录不证明外部进程已停止。")
+
+    def do_task_resume(self, q):
+        prefix, ref, r = self.managed_task(q)
+        require(r["data"]["status"] in {"paused", "blocked"}, "INACTIVE_TASK", "只有暂停或阻塞任务可明确恢复。")
+        pending, _ = self.blockers(q)
+        require(not pending, "PENDING_WORK", "先回查未知操作，再恢复新动作。", operations=pending)
+        self.no_task_overlap(prefix, q["task"], r["data"]["run"], r["data"]["cases"])
+        r["data"].update(status="active", note=text(q.get("note"), "note"), resumed_at=now())
+        return receipt(ref, self.store.write(ref, r["data"], q["expected_revision"]), external_action_executed=False)
 
     def do_task_transfer(self, q):
         prefix, _, req = self.req(q)
@@ -265,6 +302,8 @@ class Runtime:
         pending, leases = self.blockers(q)
         require(not pending and not leases, "PENDING_WORK", "存在未知操作或资源占用，暂不能转移任务。",
                 operations=pending, resources=leases)
+        require(not req["data"]["archived"], "ARCHIVED", "先明确重新开启需求。")
+        self.no_task_overlap(prefix, q["task"], r["data"]["run"], r["data"]["cases"])
         r["data"].update(owner=text(q.get("new_owner"), "new_owner", 120), status="active",
                          handoff_note=text(q.get("note"), "note"), session_ref=q.get("session_ref"))
         return receipt(ref, self.store.write(ref, r["data"], q["expected_revision"]))
@@ -306,7 +345,7 @@ class Runtime:
     def do_artifact_import(self, q):
         prefix, _, req = self.req(q)
         if q.get("task"):
-            self.task(q)
+            self.task(q, active=False)
         else:
             self.coordinator(q, req)
         ref = prefix + f"/artifacts/{slug(q['artifact'])}.json"
@@ -468,7 +507,7 @@ class Runtime:
                     changes.append({"shared": key, "used": pin["revision"], "latest": latest})
             tasks.append({"task": d["task"], "owner": d["owner"], "status": d["status"], "scope": d["scope"],
                           "revision": t["revision"], "run": d["run"], "shared_changes": changes,
-                          "inputs": d.get("inputs", []), "context": d.get("context", {})})
+                          "inputs": d.get("inputs", []), "context": d.get("context", {}), "note": d.get("note", "")})
         for artifact_ref in self.store.refs(prefix + "/artifacts/*.json"):
             try:
                 self.artifact(prefix, Path(artifact_ref).stem)

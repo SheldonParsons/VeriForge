@@ -1,0 +1,221 @@
+{
+  "version": "0.2.0",
+  "method": "author-selected actions plus local fixtures; NOT independent model replay",
+  "scenario_count": 17,
+  "selected_local_actions_checked": 16,
+  "instruction_review_only": 1,
+  "runtime_calls_including_setup": 88,
+  "business_requests": 0,
+  "independent_agent_used": false,
+  "model_replay_executed": false,
+  "scenarios": [
+    {
+      "id": "help-purpose",
+      "user": "这个 Skill 是什么？",
+      "authored_reply": "它帮你组织测试项目、资料和进度，也方便换会话后接着做。",
+      "evidence": {
+        "version": "0.2.0",
+        "workspace_created": false
+      },
+      "method": "selected_local_actions_checked",
+      "model_replay_executed": false
+    },
+    {
+      "id": "help-capabilities",
+      "user": "能帮我干什么？",
+      "authored_reply": "当前可用的是项目与状态管理、协作记录和本地备份；实际页面和平台操作还要看已有工具与任务范围。",
+      "evidence": {
+        "implemented_groups": 6,
+        "unimplemented_groups": 4
+      },
+      "method": "selected_local_actions_checked",
+      "model_replay_executed": false
+    },
+    {
+      "id": "help-workflow",
+      "user": "流程是什么样的？",
+      "authored_reply": "通常从需求澄清到用例、执行、BUG 与修复验证。你也可以从已有资料接着做。",
+      "evidence": {
+        "workflow": [
+          "需求分析与澄清",
+          "页面取证",
+          "用例编写与评审",
+          "测试执行",
+          "BUG 处理",
+          "修复验证",
+          "收尾交付"
+        ],
+        "development_roadmap_used_as_workflow": false
+      },
+      "method": "selected_local_actions_checked",
+      "model_replay_executed": false
+    },
+    {
+      "id": "new-project-only",
+      "user": "先把采购项目准备好，还没有需求。",
+      "authored_reply": "项目已记下。以后有需求材料时直接接着用，环境和账号到需要时再补。",
+      "evidence": {
+        "project_count": 1,
+        "requirement_count": 0
+      },
+      "method": "selected_local_actions_checked",
+      "model_replay_executed": false
+    },
+    {
+      "id": "legacy-readonly",
+      "user": "这些是老项目的用例，帮我看看。",
+      "authored_reply": "我会沿用现有用例和约定，先检查覆盖和步骤。现有资料没有执行结果，我不会把它当成已测完。",
+      "evidence": {
+        "existing_files_preserved": true,
+        "new_workspace_created": false
+      },
+      "method": "selected_local_actions_checked",
+      "model_replay_executed": false
+    },
+    {
+      "id": "same-id-clarification",
+      "user": "继续 12345。",
+      "authored_reply": "你说的是订单的咨询历史，还是目录平台的菜单管理？",
+      "evidence": {
+        "matching_projects": [
+          "catalog",
+          "orders"
+        ],
+        "state_unchanged": true
+      },
+      "method": "selected_local_actions_checked",
+      "model_replay_executed": false
+    },
+    {
+      "id": "question-while-paused",
+      "user": "先问一下，你还能做哪些事？",
+      "authored_reply": "我可以解释当前能力。之前暂停的任务会保留在原位置，等你明确继续时再接上。",
+      "evidence": {
+        "task_still_paused": true,
+        "state_unchanged": true
+      },
+      "method": "selected_local_actions_checked",
+      "model_replay_executed": false
+    },
+    {
+      "id": "continue-known-task",
+      "user": "昨天那个接着弄吧。",
+      "authored_reply": "我查到了上次的进度，已完成的结果会保留，接着处理剩下的场景。",
+      "evidence": {
+        "task_active": true,
+        "recorded_results_preserved": {
+          "passed": 1,
+          "failed": 0,
+          "blocked": 0,
+          "not_run": 1
+        }
+      },
+      "method": "selected_local_actions_checked",
+      "model_replay_executed": false
+    },
+    {
+      "id": "switch-preserves-pending",
+      "user": "这个先放放，先看另一个项目。",
+      "authored_reply": "这边的进度已保存，还有一笔提交待核实。我会保留这个事项，现在先看另一个项目的资料。",
+      "evidence": {
+        "source_paused": true,
+        "pending_operations": 1,
+        "held_resources": 1,
+        "other_project_unchanged": true
+      },
+      "method": "selected_local_actions_checked",
+      "model_replay_executed": false
+    },
+    {
+      "id": "stuck-chat-handoff",
+      "user": "前面的会话卡了，你接着做。",
+      "authored_reply": "我找到了保存的记录。接手前还需要核对旧任务是否停下，以及那笔待核实提交的结果。",
+      "evidence": {
+        "handoff_rejected": "HANDOFF_REQUIRED",
+        "state_unchanged": true
+      },
+      "method": "selected_local_actions_checked",
+      "model_replay_executed": false
+    },
+    {
+      "id": "find-archived-cases",
+      "user": "上次单点登录的用例在哪？",
+      "authored_reply": "找到了归档的 v1 用例，我会给你来源和留存位置。现在只是查阅，原进度保持不变。",
+      "evidence": {
+        "matched_version": "v1",
+        "archive_preserved": true,
+        "snapshot_exists": true
+      },
+      "method": "selected_local_actions_checked",
+      "model_replay_executed": false
+    },
+    {
+      "id": "incomplete-material",
+      "user": "目前就这段说明，先看看。",
+      "authored_reply": "批量导入是已知要求，部分行失败时怎么处理还没交代。我先把这个问题列出来。",
+      "evidence": {
+        "analysis_not_marked_complete": true,
+        "unknown_rule_not_filled_in": true
+      },
+      "method": "selected_local_actions_checked",
+      "model_replay_executed": false
+    },
+    {
+      "id": "requirement-page-conflict",
+      "user": "需求说 100 字，页面只能填 50 字，按哪个来？",
+      "authored_reply": "我先核对当前确认的要求和变更记录。若要求仍是 100 字，页面限制就是待核实的问题，不能直接把预期改成 50 字。",
+      "evidence": {
+        "fixture_assumption": "仅评审假设差异，未访问真实页面",
+        "business_bug_submitted": false
+      },
+      "method": "author_instruction_walkthrough_only",
+      "model_replay_executed": false
+    },
+    {
+      "id": "unreachable-environment",
+      "user": "QA 打不开了。",
+      "authored_reply": "受影响的场景已记为阻塞。之前保存的结果会保留，环境可用后继续时再核对条件。",
+      "evidence": {
+        "fixture_only": true,
+        "blocked_cases": 1,
+        "live_network_checked": false
+      },
+      "method": "selected_local_actions_checked",
+      "model_replay_executed": false
+    },
+    {
+      "id": "mind-write-unavailable",
+      "user": "为什么导图还没更新？",
+      "authored_reply": "本地结果已保存，导图仍待同步。我会检查实际工具是否可用，写入并回读后才登记完成。",
+      "evidence": {
+        "pending_sync": 2,
+        "mind_calls": 0,
+        "real_connector_status_checked": false
+      },
+      "method": "selected_local_actions_checked",
+      "model_replay_executed": false
+    },
+    {
+      "id": "retry-after-timeout",
+      "user": "刚才超时了，再提一次吧。",
+      "authored_reply": "我先查刚才那次有没有成功，免得重复创建。结果查清后再处理。",
+      "evidence": {
+        "duplicate_dispatch_rejected": true,
+        "unknown_result_preserved": true
+      },
+      "method": "selected_local_actions_checked",
+      "model_replay_executed": false
+    },
+    {
+      "id": "backup-gap",
+      "user": "之前让你备份的资料，都好了吗？",
+      "authored_reply": "登记的快照有缺失，备份还不能算完整。我先把缺口列清楚，再按已约定的范围核对来源。",
+      "evidence": {
+        "fixture_prior_authorization": "备份该虚构工作空间",
+        "complete_backup_not_reported": true
+      },
+      "method": "selected_local_actions_checked",
+      "model_replay_executed": false
+    }
+  ]
+}

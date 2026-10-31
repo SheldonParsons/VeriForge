@@ -312,6 +312,67 @@ class Foundation(unittest.TestCase):
         self.assertNotIn("content", self.call("shared.resolve", project="orders")["items"][0])
         self.err("INVALID_INPUT", self.call, "shared.resolve", project="orders", include_content=True)
 
+    def test_pause_preserves_unknown_operation_and_blocks_new_work(self):
+        held = self.prepare_unknown()
+        paused = self.req("task.finish", task="worker", actor="alice", status="paused", note="用户要求先放一放", expected_revision=1)
+        state = self.req("resume")
+        self.assertEqual(state["tasks"][0]["status"], "paused")
+        self.assertEqual(state["unconfirmed_operation_count"], 1)
+        self.assertEqual(state["held_resource_count"], 1)
+        self.assertFalse(paused["external_stop_verified"])
+        self.err("INACTIVE_TASK", self.req, "resource.acquire", task="worker", actor="alice", resource="new-page")
+        self.err("PENDING_WORK", self.req, "task.resume", task="worker", actor="alice", expected_revision=2, note="继续")
+        self.evidence("readback", task="worker", actor="alice")
+        self.req("operation.resolve", task="worker", actor="alice", operation="submit-1", result="confirmed", evidence=["readback"], note="虚构回查完成", expected_revision=2)
+        self.req("resource.release", task="worker", actor="alice", resource="tracker:demo", expected_revision=held["revision"])
+        self.req("task.resume", task="worker", actor="alice", expected_revision=2, note="用户明确继续")
+        self.assertEqual(self.req("resume")["tasks"][0]["status"], "active")
+
+    def test_capabilities_do_not_need_or_create_workspace(self):
+        empty = self.home / "help-only"
+        empty.mkdir()
+        data = execute(None, {"action": "capabilities"})
+        self.assertEqual(data["version"], "0.2.0")
+        self.assertFalse(data["guidance"]["independent_agent_verified"])
+        p = subprocess.run([sys.executable, str(SCRIPTS / "qa.py"), "--capabilities"], cwd=empty,
+                           text=True, capture_output=True, check=True)
+        self.assertTrue(json.loads(p.stdout)["ok"])
+        self.assertEqual(list(empty.iterdir()), [])
+        missing = self.home / "not-initialized"
+        execute(missing, {"action": "capabilities"})
+        self.assertFalse(missing.exists())
+
+    def test_pause_resume_preserves_results_and_other_project(self):
+        self.task()
+        self.task(task="catalog-work", owner="bob", project="catalog")
+        self.evidence()
+        self.req("case.record", task="worker", actor="alice", case="view", status="passed",
+                 basis="虚构记录", evidence=["screen"], expected_revision=0)
+        other_ref = base("catalog", "12345") + "/tasks/catalog-work.json"
+        other = self.rt.store.read(other_ref)
+        before = self.req("run.summary", run="round-1")
+        self.err("NOT_OWNER", self.req, "task.pause", task="worker", actor="intruder", note="不应生效", expected_revision=1)
+        self.req("task.pause", task="worker", note="用户要求先放下", expected_revision=1)
+        execute(None, {"action": "capabilities"})
+        self.assertEqual(self.req("resume")["tasks"][0]["status"], "paused")
+        self.assertEqual(self.req("run.summary", run="round-1"), before)
+        self.assertEqual(self.rt.store.read(other_ref), other)
+        self.req("task.resume", task="worker", note="用户明确继续", expected_revision=2)
+        self.assertEqual(self.req("run.summary", run="round-1"), before)
+
+    def test_paused_task_does_not_allow_conflicting_replacement_or_resume(self):
+        held = self.prepare_unknown()
+        self.req("task.pause", task="worker", note="先保存断点", expected_revision=1)
+        self.err("TASK_OVERLAP", self.task, task="replacement", owner="bob", cases=["view"])
+        self.evidence("readback", task="worker", actor="alice")
+        self.req("operation.resolve", task="worker", actor="alice", operation="submit-1", result="not_applied",
+                 evidence=["readback"], note="模拟未创建的回查", expected_revision=2)
+        self.req("resource.release", task="worker", actor="alice", resource="tracker:demo", expected_revision=held["revision"])
+        self.task(task="replacement", owner="bob", cases=["view"])
+        self.err("TASK_OVERLAP", self.req, "task.resume", task="worker", note="仍有新负责人", expected_revision=2)
+        self.err("TASK_OVERLAP", self.req, "task.transfer", task="worker", new_owner="charlie", previous_owner_stopped=True,
+                 note="不能形成两个活跃负责人", expected_revision=2)
+
 
 if __name__ == "__main__":
     unittest.main()
