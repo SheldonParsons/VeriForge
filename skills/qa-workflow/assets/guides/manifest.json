@@ -1,0 +1,42 @@
+{
+  "schema": 1,
+  "received_at": "2026-10-31",
+  "kind": "annotated_navigation_illustrations",
+  "method": "image_gen edits of user-provided screenshots; not pixel-preserving original evidence",
+  "source_originals_bundled": false,
+  "source_originals_retained_privately": true,
+  "guides": [
+    {
+      "id": "asynctest-download",
+      "file": "asynctest-download.png",
+      "alt": "AsyncTest 下载入口：悬停顶部菜单、选择渠道、选择系统与芯片",
+      "width": 1850,
+      "height": 850,
+      "sha256": "c89d56c998299060024ca65d272694fcc9178ae90d32f4e351c697404e5e9f06",
+      "source_sha256": "1afcc102e039402c3a7f3dd2bf12edfd2b6d2c6a35bd1de7669a4c36a20df59a",
+      "source_width": 3452,
+      "source_height": 1586,
+      "observed_download_version": "3.4.6",
+      "browser_menu_verified": true
+    },
+    {
+      "id": "asynctest-kb",
+      "file": "asynctest-kb.png",
+      "alt": "AsyncTest 知识库 MCP：入口、服务地址、创建凭证和连接配置",
+      "width": 1741,
+      "height": 903,
+      "sha256": "5faf5be487650dbda7f5664939bd31527c56174d46fe03c7187cfbebe48aeb6e",
+      "source_sha256": "631b338ba3d24f3307c0192d1dc77f79eeb899bdbd5464e605b5d863fbed9f47",
+      "source_width": 3200,
+      "source_height": 1660,
+      "source_app_version": "not shown",
+      "credential_list_covered": true,
+      "credential_creation_tested": false
+    }
+  ],
+  "notes": [
+    "文字步骤可独立使用，图片只作定位辅助。",
+    "真实连接信息从当前页面复制，不从示例图拼接。",
+    "Codex 新会话回复区展示待测试，不能推断其他客户端不支持。"
+  ]
+}

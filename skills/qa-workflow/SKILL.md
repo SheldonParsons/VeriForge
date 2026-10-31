@@ -2,7 +2,7 @@
 name: qa-workflow
 description: 引导 Web 测试人员接入项目、说明本测试 Skill 的用途与能力、继续或切换需求、查找资料并处理阻塞，同时管理多项目、共享规则、进度、协作记录和本地备份。本版提供自然语言引导与基础管理，实际业务测试沿用项目规则和获授权工具。
 metadata:
-  version: "0.2.0"
+  version: "0.2.1"
 ---
 
 # 测试工作台基础管理
@@ -38,6 +38,7 @@ metadata:
 | 当前任务 | 读取 |
 | --- | --- |
 | Skill 是什么、能做什么、流程怎样 | [使用帮助](references/help.md)；按需要核对能力说明 |
+| 下载 AsyncTest、获取知识库 MCP 信息、需要界面指引 | [下载与接入图文指引](references/asynctest-setup.md)；按需展示包内图片 |
 | 自然表达、补问、继续、切换、查阅和阻塞 | [工作中的引导](references/interaction.md) |
 | 接入、项目归属、共享规则 | [项目接入](references/workspaces.md) |
 | 恢复、分工、结果、未知操作、交接 | [状态与协作](references/operations.md) |

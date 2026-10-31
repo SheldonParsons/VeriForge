@@ -1,18 +1,19 @@
 # 测试工作流 Skill 开发入口
 
-更新时间：2026-10-31。引导版 0.2.0 已写入确认方案、打包并完成本地走读与运行器回归；尚未全局安装、上传或接入真实业务执行，独立 Agent 验收未进行。
+更新时间：2026-10-31。当前为图文指引版 0.2.1，已加入 AsyncTest 下载及知识库 MCP 标注示意图；新会话图片展示待真实验收。基础运行器与此前走读保留独立验证记录，尚未全局安装或上传平台。
 
 本目录集中保存设计结论、后续源码和验证材料，供用户在 IDE 中持续查看。用户已同意采用 `skill-development/` 作为开发目录；实际 Skill 的暂定名称为 `qa-workflow`。
 
 ## 从这里开始
 
-先阅读 [0.2.0 实现与走读](implementation-v0.2.md) 和 [Skill 入口](skills/qa-workflow/SKILL.md)。完整路线与下一项见 [推进计划](roadmap.md)。
+先阅读 [0.2.1 图文指引说明](implementation-v0.2.1.md) 和 [Skill 入口](skills/qa-workflow/SKILL.md)。基础能力与走读见 [0.2.0 记录](implementation-v0.2.md)，完整路线见 [推进计划](roadmap.md)。
 
-当前新增的 3.1 设计要求以 [需求理解与澄清](design/stages/requirements-analysis.md) 为准：优先把业务理解对齐，追问以支撑本次用例为界；过程本地记录，本期完成并正式上线、用户确认短期稳定后，强烈建议沉淀到 asynctest-kb 并说明收益。0.2.0 包中的较早时机尚待实施修正，不能把设计约定视为包已升级。
+3.1 设计以 [需求理解与澄清](design/stages/requirements-analysis.md) 为准：业务理解对齐、用例反推和有边界的追问仍待完整实施。正式上线后再沉淀知识的时机说明已在 0.2.1 修正，旧 0.2.0 包保留历史内容。
 
 | 文档 | 内容 | 状态 |
 | --- | --- | --- |
-| [当前实现与走读](implementation-v0.2.md) | 引导写入、暂停修正、验证方法及限制 | 0.2.0 本地交付完成 |
+| [当前图文指引](implementation-v0.2.1.md) | 下载、MCP 信息获取、素材来源及展示测试安排 | 0.2.1 已打包，真实新会话渲染待验证 |
+| [此前引导实现](implementation-v0.2.md) | 引导写入、暂停修正、验证方法及限制 | 保留 0.2.0 验证依据 |
 | [基础版历史记录](implementation-v0.1.md) | 原基础实现及当时验证范围 | 保留 0.1.0 依据 |
 | [推进计划](roadmap.md) | 八步路线、当前进度、产物与完成依据 | 当前执行规划；具体设计仍逐项讨论 |
 | [整体设计](design/overview.md) | 标准格式、包与工作目录、工具依赖、多会话边界 | 已确认方向与具体提议分开记录 |
@@ -22,7 +23,7 @@
 | [继续、切换与找回](design/continuation.md) | 接续任务、切换项目、会话接手和查阅历史资料 | 已写入 0.2.0 并验证相关本地操作 |
 | [缺失、冲突与阻塞](design/blockers.md) | 缺口说明、受影响范围、回查及独立工作 | 2.5 已确认并写入 0.2.0 |
 | [需求理解与澄清](design/stages/requirements-analysis.md) | 历史概念与关系、可控追问、用例反推和最终入库时机 | 3.1 用户要求已记录，具体流程草案待讨论 |
-| [asynctest-kb 接入引导](design/integrations/asynctest-kb-onboarding.md) | 从 Asynctest 获取信息，由当前 Agent 适配客户端 | 通用设计，服务侧截图待补；未配置客户端 |
+| [asynctest-kb 接入引导](design/integrations/asynctest-kb-onboarding.md) | 从 AsyncTest 获取信息，由当前 Agent 适配客户端 | 已有截图与下载菜单依据，完整接入未实测 |
 | [多项目隔离与任务状态](design/project-scope.md) | 多项目、状态归属和跨项目需求 | 原则已确认；基础归属已实现 |
 | [共享内容与项目差异](design/shared-resources.md) | 复用、适用范围、版本与差异 | 固定引用与配置差异已实现 |
 | [状态与恢复](design/state-contract.md) | 进度、结果、同步及恢复依据 | 本地状态与恢复已验证 |

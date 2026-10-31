@@ -1,0 +1,37 @@
+{
+  "version": "0.2.1",
+  "date": "2026-10-31",
+  "scope": "documentation, image assets and version metadata",
+  "targeted_runtime_tests": {
+    "passed": 1,
+    "name": "test_capabilities_do_not_need_or_create_workspace"
+  },
+  "skill_format": "passed",
+  "links": "passed; code examples excluded",
+  "image_assets": {
+    "count": 2,
+    "hashes_and_dimensions_checked": true,
+    "visually_reviewed": true,
+    "method": "image_gen annotated navigation illustrations; originals retained privately"
+  },
+  "package": {
+    "files": 19,
+    "bytes": 2325871,
+    "sha256": "eb1bd585c2c79926923ce1257b3ef9236be364c2c32c54d7aa74fde03abde323",
+    "relocated_assets_present": true,
+    "relocated_capabilities_command": "passed"
+  },
+  "rendering": {
+    "native_tool_previews_emitted": true,
+    "current_final_reply": "preview prepared; user visibility not yet confirmed",
+    "fresh_codex_chat": "planned, not run",
+    "other_clients": "not verified",
+    "exclusive_to_codex": "not established"
+  },
+  "browser_verification": "docs header hover, internal/public selector, platform link presence; no installer download or execution",
+  "new_credentials_created": false,
+  "mcp_configured": false,
+  "business_knowledge_written": false,
+  "independent_agent_used": false,
+  "full_24_test_suite_rerun": false
+}

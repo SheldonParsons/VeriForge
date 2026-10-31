@@ -1,0 +1,80 @@
+{
+  "date": "2026-10-31",
+  "url": "https://nexofolio.net/docs",
+  "web_reader_available": false,
+  "browser_verified": {
+    "header_hover": true,
+    "internal_channel": true,
+    "public_channel": true,
+    "platform_options": [
+      "Windows · x64",
+      "macOS · Apple Silicon",
+      "macOS · Intel"
+    ],
+    "observed_version": "3.4.6",
+    "initial_channel_restored": true,
+    "installer_downloaded": false,
+    "installer_executed": false
+  },
+  "internal_links": [
+    "uid=5_6 link \"Windows · x64 v3.4.6 · 153.3 MB\" url=\"https://asynctest.oss-cn-shenzhen.aliyuncs.com/core/updates/internal/win/x64/AsyncTest_Setup_3.4.6_x64_internal.exe\"",
+    "uid=5_9 link \"macOS · Apple Silicon v3.4.6 · 184.9 MB\" url=\"https://asynctest.oss-cn-shenzhen.aliyuncs.com/core/updates/internal/mac/arm64/AsyncTest-3.4.6-arm64.dmg\"",
+    "uid=5_12 link \"macOS · Intel v3.4.6 · 192.1 MB\" url=\"https://asynctest.oss-cn-shenzhen.aliyuncs.com/core/updates/internal/mac/x64/AsyncTest-3.4.6.dmg\""
+  ],
+  "public_links": [
+    "uid=6_0 link \"Windows · x64 v3.4.6 · 153.3 MB\" url=\"https://asynctest.oss-cn-shenzhen.aliyuncs.com/core/updates/public/win/x64/AsyncTest_Setup_3.4.6_x64_public.exe\"",
+    "uid=6_3 link \"macOS · Apple Silicon v3.4.6 · 184.9 MB\" url=\"https://asynctest.oss-cn-shenzhen.aliyuncs.com/core/updates/public/mac/arm64/AsyncTest-3.4.6-arm64.dmg\"",
+    "uid=6_6 link \"macOS · Intel v3.4.6 · 192.1 MB\" url=\"https://asynctest.oss-cn-shenzhen.aliyuncs.com/core/updates/public/mac/x64/AsyncTest-3.4.6.dmg\""
+  ],
+  "mcp_ui_source": "user-provided screenshot; not live app execution",
+  "mcp_address_in_screenshot": "https://asynctest.com/mcp",
+  "mcp_transport_in_screenshot": "Streamable HTTP",
+  "credential_created": false,
+  "knowledge_written": false,
+  "image_generation_prompts": [
+    {
+      "key": "download",
+      "prompt": "Edit this exact supplied screenshot into a clean Chinese tutorial annotation. The screenshot is the locked background: preserve the original layout, logos, UI controls, words, numbers, and aspect ratio. Do not redesign, redraw, crop, invent or change any application UI. Add only small blue-violet numbered circles, thin elegant leader lines, and short white rounded label cards with subtle shadow. No red boxes, no large rectangular outlines. Place three labels in the unused white margin to the RIGHT of the download popover so they do not obscure any UI text. Label 1 exactly: '① 悬停 AsyncTest' pointing to the AsyncTest control in the top header. Label 2 exactly: '② 选择版本渠道' pointing to the Gree 内部版 / 公网版 selector inside the popover. Label 3 exactly: '③ 选择系统与芯片' pointing to the Windows x64 / macOS Apple Silicon / macOS Intel download rows as a group. Small note in unused bottom-right white space: '版本以实际页面为准'. Palette indigo #6366F1 and soft cyan; crisp professional product documentation, restrained and readable. Output one annotated screenshot only, high resolution. Every original word and UI target must stay readable and correctly positioned. This is navigation guidance, not a new mockup."
+    },
+    {
+      "key": "knowledge",
+      "prompt": "Edit this exact screenshot into a polished Chinese tutorial annotation. Preserve the screenshot's full aspect ratio, layout, service URL https://asynctest.com/mcp, Streamable HTTP label, navigation, buttons and visible configuration section without redesign or invented controls. Use only small indigo-violet numbered badges with short fine leader lines. No red boxes or heavy rectangular outlines. Add badge 1 at the left sidebar selected 知识库 MCP entry. Add badge 2 next to the actual 复制 button of the service-address card. Add badge 3 next to the actual + 创建凭证 button. Add badge 4 beside the 通用配置 tab in 客户端连接配置 at the bottom; do not invent the code or copy button below the crop. In the middle credential-list rows ONLY, cover existing credential names, token prefixes and usage details with an opaque white editorial callout panel; preserve the 当前凭证 heading, 创建凭证 button and original footer saying the full Token is visible only when created. Use that covered area for a clean numbered mini legend: '① 打开知识库 MCP' / '② 复制服务地址' / '③ 创建自己的凭证' / '④ 向下查看连接配置'. Include a small secondary note: '使用自己的完整 Token；由当前 Agent 适配客户端。' and '凭证记录区域已遮盖'. The panel is an annotation overlay, not a fake replacement UI. Keep the surrounding original UI text unchanged and readable. White, indigo #6366F1, soft lavender palette, professional restrained visual design. Output one high-resolution annotated screenshot."
+    }
+  ],
+  "images": [
+    {
+      "id": "asynctest-download",
+      "file": "asynctest-download.png",
+      "alt": "AsyncTest 下载入口：悬停顶部菜单、选择渠道、选择系统与芯片",
+      "width": 1850,
+      "height": 850,
+      "sha256": "c89d56c998299060024ca65d272694fcc9178ae90d32f4e351c697404e5e9f06",
+      "source_sha256": "1afcc102e039402c3a7f3dd2bf12edfd2b6d2c6a35bd1de7669a4c36a20df59a",
+      "source_width": 3452,
+      "source_height": 1586,
+      "observed_download_version": "3.4.6",
+      "browser_menu_verified": true
+    },
+    {
+      "id": "asynctest-kb",
+      "file": "asynctest-kb.png",
+      "alt": "AsyncTest 知识库 MCP：入口、服务地址、创建凭证和连接配置",
+      "width": 1741,
+      "height": 903,
+      "sha256": "5faf5be487650dbda7f5664939bd31527c56174d46fe03c7187cfbebe48aeb6e",
+      "source_sha256": "631b338ba3d24f3307c0192d1dc77f79eeb899bdbd5464e605b5d863fbed9f47",
+      "source_width": 3200,
+      "source_height": 1660,
+      "source_app_version": "not shown",
+      "credential_list_covered": true,
+      "credential_creation_tested": false
+    }
+  ],
+  "current_turn": {
+    "native_generated_previews_emitted": true,
+    "final_reply_inline_preview": "prepared_pending_user_visibility_feedback"
+  },
+  "future_fresh_codex_chat": "planned_not_run",
+  "other_clients": "not_verified",
+  "source_fidelity": "Key controls and labels visually compared; generated annotations are not original screenshots."
+}

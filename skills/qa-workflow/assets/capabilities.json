@@ -1,12 +1,14 @@
 {
   "schema": 1,
   "skill": "qa-workflow",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "purpose": "帮助 Web 测试人员组织多项目资料、工作进度和交接，按用户当前目标逐步开展工作。",
   "guidance": {
-    "included": ["用途与能力说明", "渐进接入与配置", "自然表达", "继续与切换", "历史查阅", "缺失、冲突和阻塞处理"],
+    "included": ["用途与能力说明", "渐进接入与配置", "自然表达", "继续与切换", "历史查阅", "缺失、冲突和阻塞处理", "AsyncTest 下载与知识库 MCP 图文指引"],
     "review_method": "作者按发布指令走读，并在虚构资料上验证相关本地操作",
-    "independent_agent_verified": false
+    "independent_agent_verified": false,
+    "visual_guides": ["assets/guides/asynctest-download.png", "assets/guides/asynctest-kb.png"],
+    "image_display_validation": "附带导航示意素材；Codex 新会话的最终回复区显示尚待真实验收，其他客户端未验证"
   },
   "implemented_local": [
     "多被测项目、系统和需求的归属与引用",
@@ -17,7 +19,7 @@
     "资料快照、历史版本、归档索引与本地备份恢复"
   ],
   "target_test_workflow": ["需求分析与澄清", "页面取证", "用例编写与评审", "测试执行", "BUG 处理", "修复验证", "收尾交付"],
-  "knowledge_timing": "规则确认、评审或测试后按实际需要与授权沉淀知识。",
+  "knowledge_timing": "过程持续本地记录；本期需求完成、正式上线且用户确认短期稳定后，强烈建议整理最终文本并按授权沉淀到 asynctest-kb。",
   "not_implemented_as_builtin": [
     "真实浏览器、Mind、知识库或缺陷平台的直接调用适配",
     "宿主会话自动创建、派发、强制停止或持续监听",

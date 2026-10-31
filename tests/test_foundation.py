@@ -16,6 +16,7 @@ import zipfile
 SCRIPTS = Path(__file__).resolve().parents[1] / "skills/qa-workflow/scripts"
 sys.path.insert(0, str(SCRIPTS))
 from qa import execute
+from qaw import VERSION
 from qaw import backup
 from qaw.runtime import Runtime, base
 from qaw.storage import Error, Store, atomic_bytes, encoded
@@ -332,7 +333,7 @@ class Foundation(unittest.TestCase):
         empty = self.home / "help-only"
         empty.mkdir()
         data = execute(None, {"action": "capabilities"})
-        self.assertEqual(data["version"], "0.2.0")
+        self.assertEqual(data["version"], VERSION)
         self.assertFalse(data["guidance"]["independent_agent_verified"])
         p = subprocess.run([sys.executable, str(SCRIPTS / "qa.py"), "--capabilities"], cwd=empty,
                            text=True, capture_output=True, check=True)
