@@ -1,0 +1,18 @@
+{
+  "version": "0.1.0",
+  "date": "2026-10-31",
+  "scope": "local synthetic foundation validation",
+  "environment": {"python": "3.11.9", "os": "Darwin", "architecture": "arm64"},
+  "unit_behavior_tests": {"passed": 20, "failed": 0, "command": "python3 -m unittest discover -s skill-development/tests -v"},
+  "synthetic_cli": {"calls": 29, "passed": true, "business_requests": 0, "snapshot_preserved": true, "source_workspace_preserved": true},
+  "skill_format_validation": "passed",
+  "relative_links": "passed",
+  "relocated_package_cli": "passed",
+  "package": {"files": 12, "bytes": 31712, "sha256": "045d16f7c8289178bb85e8a4702b5934414dda07f0fa951d10352de1834e2ebf"},
+  "scale": [
+    {"requirements": 10, "returned_items": 10, "response_bytes": 1777, "median_local_ms": 0.693, "samples": 5},
+    {"requirements": 200, "returned_items": 10, "response_bytes": 1817, "median_local_ms": 9.897, "samples": 5}
+  ],
+  "billing_tokens_measured": false,
+  "not_verified": ["automatic skill selection", "independent agent behavior", "WorkBuddy", "SkillHub upload and install", "Windows or network filesystem", "real business execution", "off-device or encrypted backup", "cross-schema migration"]
+}

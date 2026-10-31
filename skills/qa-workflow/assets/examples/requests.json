@@ -1,0 +1,12 @@
+{
+  "note": "仅在新的虚构演示目录顺序执行，每次提交一个 requests 元素。这不是实际业务数据或测试结论。",
+  "requests": [
+    {"action": "workspace.init", "title": "示例测试工作台", "actor": "lead"},
+    {"action": "project.create", "project": "orders", "title": "示例订单平台", "systems": {"client": "客户端", "admin": "管理端"}, "actor": "lead"},
+    {"action": "project.create", "project": "catalog", "title": "示例目录平台", "systems": {"admin": "管理端"}, "actor": "lead"},
+    {"action": "requirement.create", "project": "orders", "requirement": "12345", "title": "示例咨询历史需求", "systems": [{"project": "orders", "system": "client"}, {"project": "orders", "system": "admin"}], "actor": "lead"},
+    {"action": "requirement.create", "project": "catalog", "requirement": "12345", "title": "示例菜单需求", "systems": [{"project": "catalog", "system": "admin"}], "actor": "lead"},
+    {"action": "list", "requirement": "12345"},
+    {"action": "resume", "project": "orders", "requirement": "12345"}
+  ]
+}
