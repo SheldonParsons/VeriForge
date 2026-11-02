@@ -1,0 +1,455 @@
+{
+  "date": "2026-11-02",
+  "kind": "repository_migration_local_validation",
+  "source_repository": "SheldonParsons/GreeSalesCloud",
+  "source_prefix": "skill-development",
+  "source_commit": "d2d56f50032d579916d00caf8de9d684a8791486",
+  "target_repository": "SheldonParsons/VeriForge",
+  "branch": "main",
+  "split_commit": "f8ce9c6965aa7fc996836c31df2c9171cdccb5ba",
+  "preserved_history_commits": 21,
+  "original_tracked_files": 49,
+  "identical_at_import": 49,
+  "identical_after_path_adaptation": 42,
+  "skill_files_unchanged": 19,
+  "files": [
+    {
+      "source_path": "skill-development/.gitignore",
+      "target_path": ".gitignore",
+      "source_sha256": "ed19d3c9c8a5e34d0179e0b1a9c2907d2e657738733e4a432a8cf81c76ce56f1",
+      "target_sha256": "d79abf04cf01bb3aedaf836dac6de49ba4aea2dc767cc4abd0ff82c49ef59e71",
+      "byte_identical": false
+    },
+    {
+      "source_path": "skill-development/README.md",
+      "target_path": "README.md",
+      "source_sha256": "3d7c6f6ef1038e52d54748052a601d9616e4e78514f8cadb0653acffab993aeb",
+      "target_sha256": "c7eaa9efb017fad560700fa88e1f78bcdea363099ac0905b370452243d8f89bf",
+      "byte_identical": false
+    },
+    {
+      "source_path": "skill-development/design/blockers.md",
+      "target_path": "design/blockers.md",
+      "source_sha256": "5dbf51249c12a58c9bc0c27751df23b7945bc0362f5e2fb81cbdd2185152f7a9",
+      "target_sha256": "5dbf51249c12a58c9bc0c27751df23b7945bc0362f5e2fb81cbdd2185152f7a9",
+      "byte_identical": true
+    },
+    {
+      "source_path": "skill-development/design/collaboration.md",
+      "target_path": "design/collaboration.md",
+      "source_sha256": "8e4b1d85f002eb95aac4aecebd9c511f701db7685bf2a1ba22c0c83231d965f4",
+      "target_sha256": "8e4b1d85f002eb95aac4aecebd9c511f701db7685bf2a1ba22c0c83231d965f4",
+      "byte_identical": true
+    },
+    {
+      "source_path": "skill-development/design/continuation.md",
+      "target_path": "design/continuation.md",
+      "source_sha256": "994f415a5f6a4f08dacfab01c9a272de76ca433ae0a578a9c492ad429577861d",
+      "target_sha256": "994f415a5f6a4f08dacfab01c9a272de76ca433ae0a578a9c492ad429577861d",
+      "byte_identical": true
+    },
+    {
+      "source_path": "skill-development/design/data-lifecycle.md",
+      "target_path": "design/data-lifecycle.md",
+      "source_sha256": "a321eca58c0802929af3456de0ea93601581be2e0bb81c5eb47a487048e6434d",
+      "target_sha256": "a321eca58c0802929af3456de0ea93601581be2e0bb81c5eb47a487048e6434d",
+      "byte_identical": true
+    },
+    {
+      "source_path": "skill-development/design/help-and-capabilities.md",
+      "target_path": "design/help-and-capabilities.md",
+      "source_sha256": "9761de390f0f8885e999bc086376dc0a54041ae4454ee51de0f8b110f12fcb73",
+      "target_sha256": "9761de390f0f8885e999bc086376dc0a54041ae4454ee51de0f8b110f12fcb73",
+      "byte_identical": true
+    },
+    {
+      "source_path": "skill-development/design/integrations/asynctest-kb-onboarding.md",
+      "target_path": "design/integrations/asynctest-kb-onboarding.md",
+      "source_sha256": "d83a11d0c0ac76ba9f99725a39d95b27a819bb1bf708d6ad394fccd9413a5844",
+      "target_sha256": "d83a11d0c0ac76ba9f99725a39d95b27a819bb1bf708d6ad394fccd9413a5844",
+      "byte_identical": true
+    },
+    {
+      "source_path": "skill-development/design/onboarding.md",
+      "target_path": "design/onboarding.md",
+      "source_sha256": "3e24a5b92a2d2a0d13b2af11e6d16b405e57acbe47e34883837236476d5fc6f1",
+      "target_sha256": "3e24a5b92a2d2a0d13b2af11e6d16b405e57acbe47e34883837236476d5fc6f1",
+      "byte_identical": true
+    },
+    {
+      "source_path": "skill-development/design/overview.md",
+      "target_path": "design/overview.md",
+      "source_sha256": "ce4385d9d70cc4077cad6a79483cb34ca7dbbf3d72f9379d69279c38ace75272",
+      "target_sha256": "85dd82f704e7128049f062658c3a813d53fad2b61b5be233bff09229a9bddde7",
+      "byte_identical": false
+    },
+    {
+      "source_path": "skill-development/design/progress-guidance.md",
+      "target_path": "design/progress-guidance.md",
+      "source_sha256": "6be6c1900dbb4a2ada4c70ce874d04a53c37cad00e27c8e66277e368ce0300be",
+      "target_sha256": "6be6c1900dbb4a2ada4c70ce874d04a53c37cad00e27c8e66277e368ce0300be",
+      "byte_identical": true
+    },
+    {
+      "source_path": "skill-development/design/project-scope.md",
+      "target_path": "design/project-scope.md",
+      "source_sha256": "7ce335fb4d4b6ea569313b5a26c0f4afe62903097a3f4874cefa2914fbe46d5b",
+      "target_sha256": "7ce335fb4d4b6ea569313b5a26c0f4afe62903097a3f4874cefa2914fbe46d5b",
+      "byte_identical": true
+    },
+    {
+      "source_path": "skill-development/design/shared-resources.md",
+      "target_path": "design/shared-resources.md",
+      "source_sha256": "b46043933474ab647bcd06ac3865a3f1ead27b0ee600f2e0a863bf30ff47a5a5",
+      "target_sha256": "b46043933474ab647bcd06ac3865a3f1ead27b0ee600f2e0a863bf30ff47a5a5",
+      "byte_identical": true
+    },
+    {
+      "source_path": "skill-development/design/stages/page-discovery.md",
+      "target_path": "design/stages/page-discovery.md",
+      "source_sha256": "167ea44bde780ae30bef3f9358f8f8b8f8b864d1d2e12fe1d6d83de1162a44b1",
+      "target_sha256": "28822618c5f4fe8b84fed38bce4ae12f5ae56e6393395e0794ec1fa237cab734",
+      "byte_identical": false
+    },
+    {
+      "source_path": "skill-development/design/stages/requirements-analysis.md",
+      "target_path": "design/stages/requirements-analysis.md",
+      "source_sha256": "98e53d2f65f792500978c22772c106835119be796ea76b76ba5cf32f9d4b0c31",
+      "target_sha256": "98e53d2f65f792500978c22772c106835119be796ea76b76ba5cf32f9d4b0c31",
+      "byte_identical": true
+    },
+    {
+      "source_path": "skill-development/design/state-contract.md",
+      "target_path": "design/state-contract.md",
+      "source_sha256": "c0f8d58fe6985d30e94899a904bff7190462728bd58c1f81c551155921b359d5",
+      "target_sha256": "c0f8d58fe6985d30e94899a904bff7190462728bd58c1f81c551155921b359d5",
+      "byte_identical": true
+    },
+    {
+      "source_path": "skill-development/implementation-v0.1.md",
+      "target_path": "implementation-v0.1.md",
+      "source_sha256": "84179c5d936638aebd4ae80207b97190de2b896fa284928413f727dc041836a5",
+      "target_sha256": "fed9d53fa648cf1f292d72ba965215166e5dd4b54be45c4392d2562f28e14858",
+      "byte_identical": false
+    },
+    {
+      "source_path": "skill-development/implementation-v0.2.1.md",
+      "target_path": "implementation-v0.2.1.md",
+      "source_sha256": "d8e656157598fa5ecdf09fa80972e000530dccde091b76ec668a9c611d282a1e",
+      "target_sha256": "d8e656157598fa5ecdf09fa80972e000530dccde091b76ec668a9c611d282a1e",
+      "byte_identical": true
+    },
+    {
+      "source_path": "skill-development/implementation-v0.2.md",
+      "target_path": "implementation-v0.2.md",
+      "source_sha256": "4423db7df55400d62b5307c319e71c29c33a3edeb905d5e43f6f415daa599cbb",
+      "target_sha256": "4fa5d3c5bbc203de55dc922866c574c2dc58e1af1ca981dcabb09bd8256d69cf",
+      "byte_identical": false
+    },
+    {
+      "source_path": "skill-development/roadmap.md",
+      "target_path": "roadmap.md",
+      "source_sha256": "74a2e8500a7b508c13bb8396ebfc69002b928466b9e258786defac8b0ddc198a",
+      "target_sha256": "54f7c2ee4e944a927db22e406a7817bd9036059b06cb686f16ddf0df584327a6",
+      "byte_identical": false
+    },
+    {
+      "source_path": "skill-development/skills/qa-workflow/SKILL.md",
+      "target_path": "skills/qa-workflow/SKILL.md",
+      "source_sha256": "4416684709afa96b6e90959d499d73353343fb03d9d6af6e2bc223c948095ec7",
+      "target_sha256": "4416684709afa96b6e90959d499d73353343fb03d9d6af6e2bc223c948095ec7",
+      "byte_identical": true
+    },
+    {
+      "source_path": "skill-development/skills/qa-workflow/agents/openai.yaml",
+      "target_path": "skills/qa-workflow/agents/openai.yaml",
+      "source_sha256": "00131e4888f882711335a59a8d9c1cdeb98b48fec8be2df5b0169c95b2c49439",
+      "target_sha256": "00131e4888f882711335a59a8d9c1cdeb98b48fec8be2df5b0169c95b2c49439",
+      "byte_identical": true
+    },
+    {
+      "source_path": "skill-development/skills/qa-workflow/assets/capabilities.json",
+      "target_path": "skills/qa-workflow/assets/capabilities.json",
+      "source_sha256": "74a2691ecfde360d0f47261984215db9cbd40768d3b4a838a60c367f98d0eee1",
+      "target_sha256": "74a2691ecfde360d0f47261984215db9cbd40768d3b4a838a60c367f98d0eee1",
+      "byte_identical": true
+    },
+    {
+      "source_path": "skill-development/skills/qa-workflow/assets/examples/requests.json",
+      "target_path": "skills/qa-workflow/assets/examples/requests.json",
+      "source_sha256": "b0a524bf89f068f0eee623f08d5ee0fda60f3ea54422786d4b4e4ac88cec3cf9",
+      "target_sha256": "b0a524bf89f068f0eee623f08d5ee0fda60f3ea54422786d4b4e4ac88cec3cf9",
+      "byte_identical": true
+    },
+    {
+      "source_path": "skill-development/skills/qa-workflow/assets/guides/asynctest-download.png",
+      "target_path": "skills/qa-workflow/assets/guides/asynctest-download.png",
+      "source_sha256": "c89d56c998299060024ca65d272694fcc9178ae90d32f4e351c697404e5e9f06",
+      "target_sha256": "c89d56c998299060024ca65d272694fcc9178ae90d32f4e351c697404e5e9f06",
+      "byte_identical": true
+    },
+    {
+      "source_path": "skill-development/skills/qa-workflow/assets/guides/asynctest-kb.png",
+      "target_path": "skills/qa-workflow/assets/guides/asynctest-kb.png",
+      "source_sha256": "5faf5be487650dbda7f5664939bd31527c56174d46fe03c7187cfbebe48aeb6e",
+      "target_sha256": "5faf5be487650dbda7f5664939bd31527c56174d46fe03c7187cfbebe48aeb6e",
+      "byte_identical": true
+    },
+    {
+      "source_path": "skill-development/skills/qa-workflow/assets/guides/manifest.json",
+      "target_path": "skills/qa-workflow/assets/guides/manifest.json",
+      "source_sha256": "00351b3a09282bbaa99eff56d42f7f405fd84fcfdbf2e37b129baf8eaa93315d",
+      "target_sha256": "00351b3a09282bbaa99eff56d42f7f405fd84fcfdbf2e37b129baf8eaa93315d",
+      "byte_identical": true
+    },
+    {
+      "source_path": "skill-development/skills/qa-workflow/references/asynctest-setup.md",
+      "target_path": "skills/qa-workflow/references/asynctest-setup.md",
+      "source_sha256": "d3106dc9c22c4e888f76e0b838a7f4d77c5c08bafd1f1009a3055d5235eee8c8",
+      "target_sha256": "d3106dc9c22c4e888f76e0b838a7f4d77c5c08bafd1f1009a3055d5235eee8c8",
+      "byte_identical": true
+    },
+    {
+      "source_path": "skill-development/skills/qa-workflow/references/cli.md",
+      "target_path": "skills/qa-workflow/references/cli.md",
+      "source_sha256": "1fd29e9f47c76f3c03b2ba16b2f007e2a8287434bcfde8f7ce4478078091a713",
+      "target_sha256": "1fd29e9f47c76f3c03b2ba16b2f007e2a8287434bcfde8f7ce4478078091a713",
+      "byte_identical": true
+    },
+    {
+      "source_path": "skill-development/skills/qa-workflow/references/help.md",
+      "target_path": "skills/qa-workflow/references/help.md",
+      "source_sha256": "5f390d5cce1524b0a943172b42b15914cde77c2320b652cfb48f6dbd0dd83908",
+      "target_sha256": "5f390d5cce1524b0a943172b42b15914cde77c2320b652cfb48f6dbd0dd83908",
+      "byte_identical": true
+    },
+    {
+      "source_path": "skill-development/skills/qa-workflow/references/interaction.md",
+      "target_path": "skills/qa-workflow/references/interaction.md",
+      "source_sha256": "f850c09cbadfc50066f519f7b9bf8ce875a1333b57a0b652631509ffc5b6e2cc",
+      "target_sha256": "f850c09cbadfc50066f519f7b9bf8ce875a1333b57a0b652631509ffc5b6e2cc",
+      "byte_identical": true
+    },
+    {
+      "source_path": "skill-development/skills/qa-workflow/references/operations.md",
+      "target_path": "skills/qa-workflow/references/operations.md",
+      "source_sha256": "6088fb8ae8abfb7cf1ac447c192f2a1b0fd11be0ee0bfd14aca473783b4a2739",
+      "target_sha256": "6088fb8ae8abfb7cf1ac447c192f2a1b0fd11be0ee0bfd14aca473783b4a2739",
+      "byte_identical": true
+    },
+    {
+      "source_path": "skill-development/skills/qa-workflow/references/preservation.md",
+      "target_path": "skills/qa-workflow/references/preservation.md",
+      "source_sha256": "9b0140f50697fe5cd6b0292dc2f2d71f8c9903dc6a04d8f28e01ea75ea067b6e",
+      "target_sha256": "9b0140f50697fe5cd6b0292dc2f2d71f8c9903dc6a04d8f28e01ea75ea067b6e",
+      "byte_identical": true
+    },
+    {
+      "source_path": "skill-development/skills/qa-workflow/references/workspaces.md",
+      "target_path": "skills/qa-workflow/references/workspaces.md",
+      "source_sha256": "2540200aab8b17123a71c63a81beade3f5d3a168e5a4d6cbdf417f2075ee03eb",
+      "target_sha256": "2540200aab8b17123a71c63a81beade3f5d3a168e5a4d6cbdf417f2075ee03eb",
+      "byte_identical": true
+    },
+    {
+      "source_path": "skill-development/skills/qa-workflow/scripts/qa.py",
+      "target_path": "skills/qa-workflow/scripts/qa.py",
+      "source_sha256": "32af89ba1a963b235b2349dc028219ca47025576f3897d7b8ecb641df5c9041f",
+      "target_sha256": "32af89ba1a963b235b2349dc028219ca47025576f3897d7b8ecb641df5c9041f",
+      "byte_identical": true
+    },
+    {
+      "source_path": "skill-development/skills/qa-workflow/scripts/qaw/__init__.py",
+      "target_path": "skills/qa-workflow/scripts/qaw/__init__.py",
+      "source_sha256": "ab94c4e2e2bc278460eacfb2cbadc18b4c54f6270ea5174cf06a461daabc7404",
+      "target_sha256": "ab94c4e2e2bc278460eacfb2cbadc18b4c54f6270ea5174cf06a461daabc7404",
+      "byte_identical": true
+    },
+    {
+      "source_path": "skill-development/skills/qa-workflow/scripts/qaw/backup.py",
+      "target_path": "skills/qa-workflow/scripts/qaw/backup.py",
+      "source_sha256": "0ee09e08377fd8a9b51c6b4a13c2bfc9627bb20a85be3dd3ddc8b04dcbe58ebf",
+      "target_sha256": "0ee09e08377fd8a9b51c6b4a13c2bfc9627bb20a85be3dd3ddc8b04dcbe58ebf",
+      "byte_identical": true
+    },
+    {
+      "source_path": "skill-development/skills/qa-workflow/scripts/qaw/runtime.py",
+      "target_path": "skills/qa-workflow/scripts/qaw/runtime.py",
+      "source_sha256": "74f02b2f0685e914dbe838a9adf107df72744345f99681cc8d245adc89378374",
+      "target_sha256": "74f02b2f0685e914dbe838a9adf107df72744345f99681cc8d245adc89378374",
+      "byte_identical": true
+    },
+    {
+      "source_path": "skill-development/skills/qa-workflow/scripts/qaw/storage.py",
+      "target_path": "skills/qa-workflow/scripts/qaw/storage.py",
+      "source_sha256": "e9eb8e53c5f5ce964169988708a1e0c2f5afb8d4f1c032fa49889b92479413b1",
+      "target_sha256": "e9eb8e53c5f5ce964169988708a1e0c2f5afb8d4f1c032fa49889b92479413b1",
+      "byte_identical": true
+    },
+    {
+      "source_path": "skill-development/tests/test_foundation.py",
+      "target_path": "tests/test_foundation.py",
+      "source_sha256": "23400fa46938faeb255560bab608be7e418ad7ed9683fe9e6f46c8137699a9f0",
+      "target_sha256": "23400fa46938faeb255560bab608be7e418ad7ed9683fe9e6f46c8137699a9f0",
+      "byte_identical": true
+    },
+    {
+      "source_path": "skill-development/tools/package_skill.py",
+      "target_path": "tools/package_skill.py",
+      "source_sha256": "1cffc09b544cf7b8b2d2f1783874b2455821f1993ea43b15eed9b7fb194c3799",
+      "target_sha256": "1cffc09b544cf7b8b2d2f1783874b2455821f1993ea43b15eed9b7fb194c3799",
+      "byte_identical": true
+    },
+    {
+      "source_path": "skill-development/tools/verify_foundation.py",
+      "target_path": "tools/verify_foundation.py",
+      "source_sha256": "7309d417786b8b042011a83145fd39a4f8594ae4a3320317a748269f42884e95",
+      "target_sha256": "7309d417786b8b042011a83145fd39a4f8594ae4a3320317a748269f42884e95",
+      "byte_identical": true
+    },
+    {
+      "source_path": "skill-development/tools/walkthrough_guidance.py",
+      "target_path": "tools/walkthrough_guidance.py",
+      "source_sha256": "13bce79a62b7969572b8be89d6e8a9bfff58025710750a762440025dca362db1",
+      "target_sha256": "13bce79a62b7969572b8be89d6e8a9bfff58025710750a762440025dca362db1",
+      "byte_identical": true
+    },
+    {
+      "source_path": "skill-development/verification/asynctest-setup-20261031.json",
+      "target_path": "verification/asynctest-setup-20261031.json",
+      "source_sha256": "74158a0e3dfb779a26c0453732a34f5fa1efec8fa9facb470e76df612cf97355",
+      "target_sha256": "74158a0e3dfb779a26c0453732a34f5fa1efec8fa9facb470e76df612cf97355",
+      "byte_identical": true
+    },
+    {
+      "source_path": "skill-development/verification/foundation-0.1.0.json",
+      "target_path": "verification/foundation-0.1.0.json",
+      "source_sha256": "a55a3980a1c75698efe0ea8ec6f1a003993d4d9c9c13fd919e51802f551f4c89",
+      "target_sha256": "a55a3980a1c75698efe0ea8ec6f1a003993d4d9c9c13fd919e51802f551f4c89",
+      "byte_identical": true
+    },
+    {
+      "source_path": "skill-development/verification/guidance-0.2.0.json",
+      "target_path": "verification/guidance-0.2.0.json",
+      "source_sha256": "616fa50cb8bd3f766d12926eb415f446f2cdc81c53f347817eb3430a55e22f5c",
+      "target_sha256": "616fa50cb8bd3f766d12926eb415f446f2cdc81c53f347817eb3430a55e22f5c",
+      "byte_identical": true
+    },
+    {
+      "source_path": "skill-development/verification/guidance-walkthrough-0.2.0.json",
+      "target_path": "verification/guidance-walkthrough-0.2.0.json",
+      "source_sha256": "f51ffd14f3b0177a938a21a6ce20f0e91ad726f95a23dea06bb0ded1432226cf",
+      "target_sha256": "f51ffd14f3b0177a938a21a6ce20f0e91ad726f95a23dea06bb0ded1432226cf",
+      "byte_identical": true
+    },
+    {
+      "source_path": "skill-development/verification/image-display-plan.md",
+      "target_path": "verification/image-display-plan.md",
+      "source_sha256": "d7f5b2233bbec038b04ad0cf51177fef69e307e9c95c2016345bd59cc12753df",
+      "target_sha256": "d7f5b2233bbec038b04ad0cf51177fef69e307e9c95c2016345bd59cc12753df",
+      "byte_identical": true
+    },
+    {
+      "source_path": "skill-development/verification/visual-guides-0.2.1.json",
+      "target_path": "verification/visual-guides-0.2.1.json",
+      "source_sha256": "0b4ad1f2dc2e8758b6b97a626be2ef37dc2972c2f82215dcaeef5171770c507b",
+      "target_sha256": "0b4ad1f2dc2e8758b6b97a626be2ef37dc2972c2f82215dcaeef5171770c507b",
+      "byte_identical": true
+    }
+  ],
+  "historical_packages": [
+    {
+      "source_path": "skill-development/dist/qa-workflow-0.1.0.zip",
+      "target_path": "releases/archives/qa-workflow-0.1.0.zip",
+      "bytes": 31712,
+      "sha256": "045d16f7c8289178bb85e8a4702b5934414dda07f0fa951d10352de1834e2ebf"
+    },
+    {
+      "source_path": "skill-development/dist/qa-workflow-0.2.0.zip",
+      "target_path": "releases/archives/qa-workflow-0.2.0.zip",
+      "bytes": 39775,
+      "sha256": "3cc985220a6522b1ab1db101e95c5f489d4790341e60b4ebd2c1f5a9e0788bcf"
+    },
+    {
+      "source_path": "skill-development/dist/qa-workflow-0.2.1.zip",
+      "target_path": "releases/archives/qa-workflow-0.2.1.zip",
+      "bytes": 2325871,
+      "sha256": "eb1bd585c2c79926923ce1257b3ef9236be364c2c32c54d7aa74fde03abde323"
+    }
+  ],
+  "checks": {
+    "unit_tests": {
+      "passed": 24,
+      "failed": 0,
+      "command": "python3 -m unittest discover -s tests -v"
+    },
+    "foundation": {
+      "synthetic_only": true,
+      "business_requests": 0,
+      "cli_calls": 29,
+      "python": "3.11.9",
+      "os": "Darwin",
+      "architecture": "arm64",
+      "workflow_passed": true,
+      "snapshot_preserved": true,
+      "source_workspace_preserved": true,
+      "scale": {
+        "10": {
+          "requirements": 10,
+          "returned_items": 10,
+          "response_bytes": 1777,
+          "median_local_ms": 0.714,
+          "samples": 5
+        },
+        "200": {
+          "requirements": 200,
+          "returned_items": 10,
+          "response_bytes": 1817,
+          "median_local_ms": 10.056,
+          "samples": 5
+        }
+      },
+      "billing_tokens_measured": false,
+      "limits": [
+        "只有本机 Python 与文件系统验证",
+        "资源与身份是协作标识，不能强制约束外部工具",
+        "备份为本地副本，未验证异地或加密存储",
+        "未测试 Codex 自动触发、WorkBuddy 或公司 SkillHub"
+      ]
+    },
+    "guidance": {
+      "version": "0.2.1",
+      "method": "author-selected actions plus local fixtures; NOT independent model replay",
+      "scenario_count": 17,
+      "selected_local_actions_checked": 16,
+      "instruction_review_only": 1,
+      "runtime_calls_including_setup": 88,
+      "business_requests": 0,
+      "independent_agent_used": false,
+      "model_replay_executed": false
+    },
+    "relocated": {
+      "capabilities_without_workspace": true,
+      "synthetic_calls": 4,
+      "images_checked": 2,
+      "old_repository_required": false
+    },
+    "skill_format": "passed",
+    "reproducible_package_sha256": "eb1bd585c2c79926923ce1257b3ef9236be364c2c32c54d7aa74fde03abde323",
+    "local_links": {
+      "checked": 144,
+      "missing_or_outside_repository": 0
+    },
+    "history_credential_pattern_scan": {
+      "matches": 0,
+      "limits": "Pattern check only; not a general proof of secret absence."
+    }
+  },
+  "scope_notes": [
+    "No business page, API or knowledge operation was executed.",
+    "No global install or company platform publish was performed.",
+    "Guidance verification uses author-selected local actions, not independent model replay.",
+    "Historical validation JSON and ZIP content are unchanged.",
+    "Remote main is checked after committing and pushing; this file records local migration validation."
+  ]
+}

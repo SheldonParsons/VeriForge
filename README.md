@@ -1,14 +1,32 @@
-# 测试工作流 Skill 开发入口
+# VeriForge
+
+让 AI 理解需求，让测试有据可循。
 
 更新时间：2026-11-02。当前实现版本为图文指引版 0.2.1，已加入 AsyncTest 下载及知识库 MCP 标注示意图；新会话图片展示待真实验收。基础运行器与此前走读保留独立验证记录，尚未全局安装或上传平台。
 
-本目录集中保存设计结论、后续源码和验证材料，供用户在 IDE 中持续查看。用户已同意采用 `skill-development/` 作为开发目录；实际 Skill 的暂定名称为 `qa-workflow`。
+VeriForge 是面向 AI Agent 的测试工作流 Skill 项目。本仓库集中维护设计、源码、测试和验证资料，后续仅维护 `main`。2026-11-02 从 GreeSalesCloud 的 `skill-development/` 独立迁移，并保留该目录的 21 次 Git 提交历史。
+
+品牌和仓库名称为 VeriForge；现有技能标识、源码目录、CLI 及备份格式保留 `qa-workflow`，保持 0.2.1 及历史产物兼容。仓库改名没有新增业务自动化能力。
 
 ## 从这里开始
 
-先阅读 [0.2.1 图文指引说明](implementation-v0.2.1.md) 和 [Skill 入口](skills/qa-workflow/SKILL.md)。基础能力与走读见 [0.2.0 记录](implementation-v0.2.md)，完整路线见 [推进计划](roadmap.md)。
+协作先读 [AGENTS.md](AGENTS.md)、[当前交接](HANDOFF.md) 和 [推进计划](roadmap.md)。使用入口见 [Skill](skills/qa-workflow/SKILL.md) 与 [0.2.1 图文指引说明](implementation-v0.2.1.md)；基础能力与走读见 [0.2.0 记录](implementation-v0.2.md)。迁移范围、来源和历史包见 [迁移记录](docs/migration/2026-11-02.md)。
 
 3.1 [需求理解与澄清](design/stages/requirements-analysis.md) 和调整后的 3.2 [页面取证](design/stages/page-discovery.md) 已于 2026-11-02 获用户确认，完整业务环节仍待实施及验证。取证可在各阶段按需开展，兼顾真实用例步骤与 UI 模块维护；当前继续讨论 UI 模块的最小内容、划分粒度和复用更新规则。正式上线后再沉淀知识的时机说明已在 0.2.1 修正，旧 0.2.0 包保留历史内容。
+
+UI 模块上一轮的具体建议已保存为 [待确认讨论](design/ui-modules-discussion.md)。用户要求先暂停设计、完成本次迁移，不能把这些建议自动升级为确认方案或开始实现。
+
+## 本地验证与打包
+
+在仓库根目录使用 Python 3.11+：
+
+```sh
+python3 -m unittest discover -s tests -v
+python3 skills/qa-workflow/scripts/qa.py --capabilities
+python3 tools/package_skill.py --output dist/qa-workflow-0.2.1.zip
+```
+
+打包目标须不存在；运行器不依赖旧仓库或第三方 Python 包。这里的检查不操作业务系统。历史 0.1.0、0.2.0、0.2.1 ZIP 原样保存在 [历史包目录](releases/archives/)，新构建放入被忽略的 `dist/`。当前未执行全局安装或公司平台发布。
 
 | 文档 | 内容 | 状态 |
 | --- | --- | --- |
@@ -58,6 +76,6 @@
 - 每次集中推进计划中的一个子项；新增想法归入对应阶段，需要影响当前设计时再提前处理。
 - 每次更新说明文件位置和变化；仅提交、推送本次核对过的内容。
 - 不把现有业务材料、测试账号、截图、浏览器会话或平台身份信息复制进通用 Skill 包。
-- 本目录当前位于内部测试仓库；以后单独开源时须明确发布文件范围、依赖和许可证。
+- 当前为独立仓库；许可证和正式发布策略尚未决定，不因迁移自行添加许可证或发布 GitHub Release。
 
-项目现行工作依据为 [需求流程](../context/workflow.md) 和 [治理约定](../governance/README.md)。这些链接是内部设计来源，不应成为发布包必须依赖的外部文件。
+开发约定以 [AGENTS.md](AGENTS.md) 为准。原业务工作台的流程与治理资料保留为 [迁移来源引用](docs/migration/2026-11-02.md)，不是运行本 Skill 的外部依赖。

@@ -2,6 +2,8 @@
 
 日期：2026-10-31。用户确认 2.1—2.5，并要求实施 2.6。本轮将确认内容写入实际包，完成作者走读、相关本地操作校验、运行器回归及打包。没有创建独立 Agent、使用真实业务环境或上传平台。
 
+迁移说明（2026-11-02）：下列命令路径已调整为 VeriForge 仓库根目录；历史验证结果不变。原始 ZIP 已保存在 [历史包目录](releases/archives/)，报告中的 dist 路径表示原构建位置。
+
 ## 当前入口
 
 - [SKILL.md](skills/qa-workflow/SKILL.md)：纯说明、行动、进度与继续等意图的处理方式。
@@ -57,10 +59,10 @@
 ## 重现
 
 ```sh
-python3 -m unittest discover -s skill-development/tests -v
-python3 skill-development/tools/walkthrough_guidance.py --output /path/to/new-guidance-fixtures
-python3 skill-development/tools/verify_foundation.py --output /path/to/new-foundation-fixtures --scale 200
-python3 skill-development/tools/package_skill.py --output skill-development/dist/qa-workflow-0.2.0.zip
+python3 -m unittest discover -s tests -v
+python3 tools/walkthrough_guidance.py --output /path/to/new-guidance-fixtures
+python3 tools/verify_foundation.py --output /path/to/new-foundation-fixtures --scale 200
+python3 tools/package_skill.py --output dist/qa-workflow-0.2.0.zip
 ```
 
 演示目录与 ZIP 目标须不存在。打包命令始终使用当前源码，重建旧版本须使用对应源码版本；不能用当前源码冒充旧包。数据 schema 保持 v1，版本间的本次兼容检查不代表支持任意格式迁移。

@@ -4,13 +4,15 @@
 
 这是 0.1.0 的历史报告；当前源码可能已更新，最新交付见 [0.2.0 说明](implementation-v0.2.md)。重现旧包须使用对应源码版本，不能将当前源码按旧版本文件名重新发布。
 
+迁移说明（2026-11-02）：下列命令路径已调整为 VeriForge 仓库根目录；历史验证结果不变。原始 ZIP 已保存在 [历史包目录](releases/archives/)，报告中的 dist 路径表示原构建位置。
+
 ## 使用入口
 
 - [Skill 入口](skills/qa-workflow/SKILL.md)：按当前任务引导读取与调用。
 - [CLI 参数](skills/qa-workflow/references/cli.md)：统一 JSON 请求及简洁回执。
 - [示例请求](skills/qa-workflow/assets/examples/requests.json)：仅用于新建的虚构演示空间。
 - [验证结果](verification/foundation-0.1.0.json)：本轮实际执行的摘要。
-- ZIP 可由 `python3 skill-development/tools/package_skill.py --output skill-development/dist/qa-workflow-0.1.0.zip` 重建；目标须不存在。
+- ZIP 可由 `python3 tools/package_skill.py --output dist/qa-workflow-0.1.0.zip` 重建；目标须不存在。
 
 源包位于 `skills/qa-workflow/`，没有安装到全局 Skill 目录，也没有上传公司平台。可以让 Agent 显式读取源包中的 SKILL.md 使用基础管理，正式全局安装和宿主触发另行处理。
 
@@ -53,8 +55,8 @@
 ## 重现验证
 
 ```sh
-python3 -m unittest discover -s skill-development/tests -v
-python3 skill-development/tools/verify_foundation.py --output /path/to/new-synthetic-directory --scale 200
+python3 -m unittest discover -s tests -v
+python3 tools/verify_foundation.py --output /path/to/new-synthetic-directory --scale 200
 ```
 
 第二条命令只接受新目录，生成虚构工作空间、快照、备份、恢复副本和回执。它不访问业务环境。临时验证产物不纳入 Git，保留经核对的结果摘要。
