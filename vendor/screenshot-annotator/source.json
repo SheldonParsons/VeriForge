@@ -1,0 +1,125 @@
+{
+  "schema": 1,
+  "intake_date": "2026-11-02",
+  "component": "screenshot-annotator",
+  "source_version": "0.1.0",
+  "source_thread": "codex://threads/01a15dc1-33a7-7b20-afc3-1e5c84525951",
+  "source_turn": "01a19b86-45c2-7b21-af79-9e1e68561ccd",
+  "archive": "screenshot-annotator-0.1.0-zh.zip",
+  "archive_sha256": "9a9583746680d301693d5103aa3a283d230f81804014123613932145dafb92b2",
+  "archive_bytes": 99441,
+  "source_directory": "0.1.0",
+  "file_count": 18,
+  "license": "MIT",
+  "license_file": "0.1.0/LICENSE",
+  "unchanged_upstream_files": true,
+  "runtime_dependencies": [
+    "Python >= 3.10",
+    "Pillow == 12.3.0",
+    "font covering requested characters"
+  ],
+  "optional_browser_adapter": "Not selected for first integration; core renderer accepts screenshots produced by Chrome DevTools MCP.",
+  "current_scope": "Verified source intake only. No dependency installation, renderer execution, tests or package integration performed.",
+  "registry_version_note": "Historical SkillHub label 1.0.0 differs from package/source 0.1.0. Current remote registry version was not queried.",
+  "files": [
+    {
+      "path": ".gitignore",
+      "sha256": "55961029b416fddae8e8b7d51e3ec3bdf12a0f7c4773b6df4fc7c969c6742fcc",
+      "bytes": 45
+    },
+    {
+      "path": "CHANGELOG.md",
+      "sha256": "d27a5907e446c2d1e8131d8ffab78f446d8ce192b0c136e98de932e1e7e119f2",
+      "bytes": 524
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "92e9b24eb48181eb126cc9ea64ee010b4c350d25958d8c6932c052f70ffb5fc7",
+      "bytes": 1090
+    },
+    {
+      "path": "README.md",
+      "sha256": "8cb0f740257776396ca3b5867f64b1bd9553d8f17ff36394ee7323971e8da30b",
+      "bytes": 5576
+    },
+    {
+      "path": "SKILL.md",
+      "sha256": "a6e533391e0990161a8bb843f1b129538e0e790d64cd547ed89033dd103a3208",
+      "bytes": 3587
+    },
+    {
+      "path": "agents/openai.yaml",
+      "sha256": "69fcbab87dfa222b7c014d9f6e80f835c5ae188d28bcdc9e4b5cdac33c9c8c30",
+      "bytes": 198
+    },
+    {
+      "path": "examples/annotated.png",
+      "sha256": "0e558a3ec81bccda0ab8a29684006ce6135e2d5e0ad7104b26f8649b0e200c68",
+      "bytes": 47000
+    },
+    {
+      "path": "examples/annotations.json",
+      "sha256": "2dadc4aecd9daf7655cb30ad7eabb84d13b925a690f454750570ee4fa227c0c7",
+      "bytes": 480
+    },
+    {
+      "path": "examples/make_sample.py",
+      "sha256": "b218c9abc5f27f747450d532573909bacd867056976863c1f88f9b807ea9aef5",
+      "bytes": 2070
+    },
+    {
+      "path": "examples/settings.png",
+      "sha256": "99b07b6e28555476389f30dc16c5bd9ec749d8b65c6e4f535a2a7bea24ea66ef",
+      "bytes": 40495
+    },
+    {
+      "path": "references/annotation-format.md",
+      "sha256": "6ef5cbf872dc6518b907f3d24f95f31bd5eee19e664a11ed28bfd85f69fd5b7a",
+      "bytes": 2435
+    },
+    {
+      "path": "references/browser-capture.md",
+      "sha256": "b201639bd8995129aedd4051b783737382a9f20cf5e474e02f5494e50241fb7c",
+      "bytes": 2392
+    },
+    {
+      "path": "requirements.txt",
+      "sha256": "41b54a6fb2918667ca47a61d73b522629d84490f3d78f0f20b21135faba10d35",
+      "bytes": 15
+    },
+    {
+      "path": "scripts/annotate.py",
+      "sha256": "46651e5fbef78534bfff5cee3298d7145c6528786021ee14d129106dcc38a5d9",
+      "bytes": 15346
+    },
+    {
+      "path": "scripts/annotate.sh",
+      "sha256": "102b323d14628459b8a97cd37f11bac0e5ded058010e869acd1719f5ece85d24",
+      "bytes": 530
+    },
+    {
+      "path": "scripts/capture-target.cjs",
+      "sha256": "3f422da3f52220bddbe94236303163bb5d0d47e8162cf60857aaed30e50b6f14",
+      "bytes": 3347
+    },
+    {
+      "path": "tests/capture-target.test.cjs",
+      "sha256": "9fd583ef2a5358b454380c25578e517d87e8e1496d3d76541f4d0e25ec910c6f",
+      "bytes": 2653
+    },
+    {
+      "path": "tests/test_annotate.py",
+      "sha256": "a37e774ef0158574ef798e2ed78ad79e5df96dcc8b7bf8384ad494ec3bd99f9a",
+      "bytes": 8702
+    }
+  ],
+  "historical_validation": {
+    "date": "2026-10-26",
+    "report_filename": "screenshot-annotator-validation.md",
+    "report_sha256": "f6671fc6ed07d4334f98b3a3fb6314c48fe1f11a3ab49e8ac3eedd1ec8434ca4",
+    "python_tests": 19,
+    "node_adapter_tests_with_mock_page": 6,
+    "native_platform_verified": "macOS",
+    "current_intake_retested": false
+  }
+}
