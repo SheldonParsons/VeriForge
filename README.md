@@ -12,9 +12,9 @@ VeriForge 是面向 AI Agent 的测试工作流 Skill 项目。本仓库集中�
 
 协作先读 [AGENTS.md](AGENTS.md)、[当前交接](HANDOFF.md) 和 [推进计划](roadmap.md)。使用入口见 [Skill](skills/qa-workflow/SKILL.md) 与 [0.2.1 图文指引说明](implementation-v0.2.1.md)；基础能力与走读见 [0.2.0 记录](implementation-v0.2.md)。迁移范围、来源和历史包见 [迁移记录](docs/migration/2026-11-02.md)。
 
-3.1 [需求理解与澄清](design/stages/requirements-analysis.md) 和调整后的 3.2 [页面取证](design/stages/page-discovery.md) 已于 2026-11-02 获用户确认，完整业务环节仍待实施及验证。取证可在各阶段按需开展，兼顾真实用例步骤与 UI 模块维护；当前继续讨论 UI 模块的最小内容、划分粒度和复用更新规则。正式上线后再沉淀知识的时机说明已在 0.2.1 修正，旧 0.2.0 包保留历史内容。
+3.1 [需求理解与澄清](design/stages/requirements-analysis.md) 和调整后的 3.2 [页面取证](design/stages/page-discovery.md) 已于 2026-11-02 获用户确认，完整业务环节仍待实施及验证。取证可在各阶段按需开展，兼顾真实用例步骤与 UI 模块维护；UI 模块六项设计已按用户授权定稿，下一项为 3.3 用例编写的设计。正式上线后再沉淀知识的时机说明已在 0.2.1 修正，旧 0.2.0 包保留历史内容。
 
-UI 模块上一轮的具体建议已保存为 [待确认讨论](design/ui-modules-discussion.md)。迁移完成后用户已恢复设计讨论，下一步继续核对这些建议；不能把“继续”自动升级为方案确认或开始实现。
+UI 模块的当前依据为 [规范 v1](design/ui-modules.md)，覆盖最小内容、划分粒度、存放检索、形成验证、复用及更新。用户明确委托 Agent 决策定稿；[早期讨论](design/ui-modules-discussion.md) 保留为历史。设计定稿不表示已实现适配器或完成真实运行验证。
 
 ## 本地验证与打包
 
@@ -41,7 +41,8 @@ python3 tools/package_skill.py --output dist/qa-workflow-0.2.1.zip
 | [继续、切换与找回](design/continuation.md) | 接续任务、切换项目、会话接手和查阅历史资料 | 已写入 0.2.0 并验证相关本地操作 |
 | [缺失、冲突与阻塞](design/blockers.md) | 缺口说明、受影响范围、回查及独立工作 | 2.5 已确认并写入 0.2.0 |
 | [需求理解与澄清](design/stages/requirements-analysis.md) | 历史概念与关系、可控追问、用例反推和最终入库时机 | 3.1 完整设计已确认，待实施及行为验证 |
-| [页面取证与操作依据](design/stages/page-discovery.md) | 各阶段按需取证、未部署页面、步骤校准与 UI 模块维护 | 3.2 调整方案已确认，模块细节继续讨论 |
+| [页面取证与操作依据](design/stages/page-discovery.md) | 各阶段按需取证、未部署页面、步骤校准与 UI 模块维护 | 3.2 调整方案已确认，待实施 |
+| [UI 模块规范 v1](design/ui-modules.md) | 最小契约、操作边界、存储、验证、复用、回执与更新 | 六项按用户授权决策定稿，待实施及真实验证 |
 | [asynctest-kb 接入引导](design/integrations/asynctest-kb-onboarding.md) | 从 AsyncTest 获取信息，由当前 Agent 适配客户端 | 已有截图与下载菜单依据，完整接入未实测 |
 | [多项目隔离与任务状态](design/project-scope.md) | 多项目、状态归属和跨项目需求 | 原则已确认；基础归属已实现 |
 | [共享内容与项目差异](design/shared-resources.md) | 复用、适用范围、版本与差异 | 固定引用与配置差异已实现 |
