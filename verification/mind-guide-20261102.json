@@ -1,0 +1,68 @@
+{
+  "date": "2026-11-02",
+  "mode": "built-in image_gen edit",
+  "inputs": "three user-provided screenshots",
+  "outputs": [
+    {
+      "id": "01-open-mind",
+      "file": "design/integrations/assets/asynctest-mind/01-open-mind.annotated.png",
+      "sha256": "0356edab561e61d0c7313749983d732b08b944aeefd3321b3e1dda64ae1eed39"
+    },
+    {
+      "id": "02-open-mcp-settings",
+      "file": "design/integrations/assets/asynctest-mind/02-open-mcp-settings.annotated.png",
+      "sha256": "4f0df41641a2064826d485c9218322156f6cfd1e55e3ebc9c4af54fdc8ef6cbf"
+    },
+    {
+      "id": "03-copy-mcp-config",
+      "file": "design/integrations/assets/asynctest-mind/03-copy-mcp-config.annotated.png",
+      "sha256": "1d13e2b6f6119ee2e15b93cd6b042fd8a869f8a5aaa68437630321d067b38149"
+    }
+  ],
+  "prompts": [
+    {
+      "id": "01-open-mind",
+      "prompt": "Use case: precise-object-edit. Edit ONLY the supplied screenshot into a polished Chinese onboarding navigation illustration. Preserve the real UI composition, aspect ratio, app branding, all non-private UI labels and control locations. No interface redesign, no invented controls, no red rectangles. Use restrained blue-violet (#6656C8) numbered badges, thin leader lines, white or pale lavender small rounded callout labels in unused space. Preserve readability. Privacy masks must be flattened strong frosted blur or opaque frosted obscuration: private content must be completely illegible, not merely slightly defocused. Do not replace private details with new names or fake sample documents. Output one edited PNG, no montage. Do not alter configuration text. Keep the same full screenshot framing and as much of the original resolution as possible.\nEdit target: AsyncTest home screen with five product cards. Add ONE badge '1' and the exact callout '进入 AsyncTest Mind', placed in the empty area just below the second card. A short fine leader should point to the second card labelled 'AsyncTest Mind / 思维导图', without covering the text or logo. Strongly blur the personal face/avatar in the top-right header; keep the other general app controls unchanged. Leave the large empty background clean. Do not annotate other product cards."
+    },
+    {
+      "id": "02-open-mcp-settings",
+      "prompt": "Use case: precise-object-edit. Edit ONLY the supplied screenshot into a polished Chinese onboarding navigation illustration. Preserve the real UI composition, aspect ratio, app branding, all non-private UI labels and control locations. No interface redesign, no invented controls, no red rectangles. Use restrained blue-violet (#6656C8) numbered badges, thin leader lines, white or pale lavender small rounded callout labels in unused space. Preserve readability. Privacy masks must be flattened strong frosted blur or opaque frosted obscuration: private content must be completely illegible, not merely slightly defocused. Do not replace private details with new names or fake sample documents. Output one edited PNG, no montage. Do not alter configuration text. Keep the same full screenshot framing and as much of the original resolution as possible.\nEdit target: AsyncTest Mind recent-files screen. Add ONE badge '2' with exact callout '点击 MCP 配置', pointing precisely to the top-right 'MCP 配置' button in the recent-files header panel. Keep the button fully readable. Place the callout just below the right edge of that header on the privacy-blurred background. Strongly blur the personal face/avatar in the top-right app header. Privacy: completely obscure the ENTIRE recent-file cards region below the header (all thumbnails, all document titles, author initials, requirement names, file names, timestamps, and the cut-off bottom row). The entire lower region from below the header onward must be frosted into unreadable soft neutral shapes, so no private text or thumbnail structure is recoverable visually. Keep the top AsyncTest logo, '最近打开', general help text and the three header buttons unchanged. No private file text may remain readable."
+    },
+    {
+      "id": "03-copy-mcp-config",
+      "prompt": "Use case: precise-object-edit. Edit ONLY the supplied screenshot into a polished Chinese onboarding navigation illustration. Preserve the real UI composition, aspect ratio, app branding, all non-private UI labels and control locations. No interface redesign, no invented controls, no red rectangles. Use restrained blue-violet (#6656C8) numbered badges, thin leader lines, white or pale lavender small rounded callout labels in unused space. Preserve readability. Privacy masks must be flattened strong frosted blur or opaque frosted obscuration: private content must be completely illegible, not merely slightly defocused. Do not replace private details with new names or fake sample documents. Output one edited PNG, no montage. Do not alter configuration text. Keep the same full screenshot framing and as much of the original resolution as possible.\nEdit target: centered 'stdio 配置' modal. Keep the entire central modal, field labels and all four values EXACTLY as in the input. In particular: service 'asynctest-mind'; Command '/Applications/AsyncTest.app/Contents/MacOS/AsyncTest'; Args '/Applications/AsyncTest.app/Contents/Resources/app.asar/electron/mcp/asynctest-mind-mcp.mjs'; Env 'ELECTRON_RUN_AS_NODE=1'. Do not edit or truncate these strings. Keep all '复制' buttons readable and the existing version labels intact. Strengthen privacy blur over ALL background outside the modal, including the header/avatar and every recent file card, so no private content remains readable. Add a small badge '3' and exact text '复制这四项，交给 Agent 配置' in the empty right-side background margin. Use one fine vertical guide with four short thin pointers ending just outside the right edge of the four copy buttons, without covering them. Do not point to '复制提示词': that is a separate update helper. Add a small annotation note below the callout: '以自己电脑显示的配置为准'. Use a callout width that fits the existing right margin; do not shrink or reposition the modal."
+    }
+  ],
+  "source_basis": "User-provided screenshots and user-described three-step navigation",
+  "ui_executed": false,
+  "mcp_configured": false,
+  "connection_tested": false,
+  "skill_package_updated": false,
+  "personal_information_visual_review": "Avatar and recent documents not legible in edited outputs",
+  "observed_fields": [
+    "stdio 配置",
+    "服务名",
+    "Command（启动命令）",
+    "Args（启动参数）",
+    "Env（环境变量）"
+  ],
+  "screenshot_version_only": {
+    "app_mcp_version": "0.8.0",
+    "capability_revision": 16,
+    "protocol_revision": 2,
+    "update_date": "2026-10-26"
+  },
+  "limits": [
+    "Generated annotations may redraw pixels; these are navigation illustrations, not original business evidence.",
+    "Copy actual settings from the current user application, not from the illustration.",
+    "New-chat inline rendering and actual client setup remain unverified."
+  ],
+  "checks": {
+    "images_visually_reviewed": 3,
+    "image_hashes_and_dimensions": "passed",
+    "private_original_hashes": "unchanged",
+    "local_links_checked": 85,
+    "skill_source_or_archive_modified": false,
+    "originals_in_git_changes": false
+  }
+}
