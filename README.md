@@ -8,7 +8,7 @@
 
 先阅读 [0.2.1 图文指引说明](implementation-v0.2.1.md) 和 [Skill 入口](skills/qa-workflow/SKILL.md)。基础能力与走读见 [0.2.0 记录](implementation-v0.2.md)，完整路线见 [推进计划](roadmap.md)。
 
-3.1 [需求理解与澄清](design/stages/requirements-analysis.md) 的完整设计已于 2026-11-02 获用户确认，业务理解对齐、用例反推和有边界的追问仍待完整实施。当前进入 3.2 页面取证的方案讨论。正式上线后再沉淀知识的时机说明已在 0.2.1 修正，旧 0.2.0 包保留历史内容。
+3.1 [需求理解与澄清](design/stages/requirements-analysis.md) 和调整后的 3.2 [页面取证](design/stages/page-discovery.md) 已于 2026-11-02 获用户确认，完整业务环节仍待实施及验证。取证可在各阶段按需开展，兼顾真实用例步骤与 UI 模块维护；当前继续讨论 UI 模块的最小内容、划分粒度和复用更新规则。正式上线后再沉淀知识的时机说明已在 0.2.1 修正，旧 0.2.0 包保留历史内容。
 
 | 文档 | 内容 | 状态 |
 | --- | --- | --- |
@@ -18,11 +18,12 @@
 | [推进计划](roadmap.md) | 八步路线、当前进度、产物与完成依据 | 当前执行规划；具体设计仍逐项讨论 |
 | [整体设计](design/overview.md) | 标准格式、包与工作目录、工具依赖、多会话边界 | 已确认方向与具体提议分开记录 |
 | [首次使用与接入项目](design/onboarding.md) | 首次进入、新旧项目接入、接续任务 | 已写入 0.2.0，验证边界见实现说明 |
-| [Skill 说明与使用问答](design/help-and-capabilities.md) | 用途、当前能力、测试流程与常见问题 | 已写入 0.2.0，使用统一能力说明 |
+| [Skill 说明与使用问答](design/help-and-capabilities.md) | 用途、当前能力、测试流程与常见问题 | 基础帮助已实现；新增按需取证说明设计已确认、待写入包 |
 | [工作过程中的自然表达](design/progress-guidance.md) | 用户口语输入与 Agent 回应、推进、记录的关系 | 已写入 0.2.0 并作者走读 |
 | [继续、切换与找回](design/continuation.md) | 接续任务、切换项目、会话接手和查阅历史资料 | 已写入 0.2.0 并验证相关本地操作 |
 | [缺失、冲突与阻塞](design/blockers.md) | 缺口说明、受影响范围、回查及独立工作 | 2.5 已确认并写入 0.2.0 |
 | [需求理解与澄清](design/stages/requirements-analysis.md) | 历史概念与关系、可控追问、用例反推和最终入库时机 | 3.1 完整设计已确认，待实施及行为验证 |
+| [页面取证与操作依据](design/stages/page-discovery.md) | 各阶段按需取证、未部署页面、步骤校准与 UI 模块维护 | 3.2 调整方案已确认，模块细节继续讨论 |
 | [asynctest-kb 接入引导](design/integrations/asynctest-kb-onboarding.md) | 从 AsyncTest 获取信息，由当前 Agent 适配客户端 | 已有截图与下载菜单依据，完整接入未实测 |
 | [多项目隔离与任务状态](design/project-scope.md) | 多项目、状态归属和跨项目需求 | 原则已确认；基础归属已实现 |
 | [共享内容与项目差异](design/shared-resources.md) | 复用、适用范围、版本与差异 | 固定引用与配置差异已实现 |
