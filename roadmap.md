@@ -4,7 +4,7 @@
 
 本文件是 VeriForge 开发进度和下一步工作的统一入口。详细方案留在 design/，避免多份文档各自维护一套推进顺序。
 
-2026-11-02 已按用户要求迁移到独立 VeriForge 仓库，只维护 main。设计暂时暂停，下一项仍为 UI 模块讨论；接续见 [HANDOFF](HANDOFF.md) 与 [未确认建议](design/ui-modules-discussion.md)。迁移不会自动确认或实施该建议。
+2026-11-02 已按用户要求迁移到独立 VeriForge 仓库，只维护 main。迁移完成后用户已明确恢复设计讨论，下一项仍为 UI 模块最小内容、划分粒度和复用更新规则；接续见 [HANDOFF](HANDOFF.md) 与 [未确认建议](design/ui-modules-discussion.md)。恢复讨论不等于确认或实施该建议。
 
 ## 当前所在位置
 
