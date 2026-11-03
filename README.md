@@ -36,9 +36,11 @@ VeriForge 给 Agent 一套从需求到复验的工作方法，并提供本地记
 
 ### 1. 让你的 Agent 安装
 
-将本仓库地址或候选安装包发给支持 Agent Skills 的客户端，然后这样说：
+将下面整段话复制给支持 Agent Skills 的客户端，话术已包含 GitHub 地址、分支和需要安装的目录：
 
-> 请帮我安装 VeriForge。先读仓库 README 和 `skills/qa-workflow/SKILL.md`，确认当前客户端的 Skill 安装位置，把 `qa-workflow` 目录安装进去，并在该目录运行 `npm ci --omit=dev`。验证它能够被发现、本地命令能运行，再告诉我怎么开始。保留我已有的配置，暂时不要接入真实业务账号或执行测试。
+> 请从 https://github.com/SheldonParsons/VeriForge 的 `main` 分支帮我安装 VeriForge。先读取仓库的 `README.md` 和 `skills/qa-workflow/SKILL.md`，确认当前客户端的 Skill 安装位置，并检查 Node.js 20.19+ 和 npm。将仓库中的整个 `skills/qa-workflow/` 目录安装为 `qa-workflow`，保留其中的脚本、参考文档和资源，在安装后的目录运行 `npm ci --omit=dev`。再运行 `node scripts/qa.mjs --version` 和 `node scripts/qa.mjs --capabilities`，检查当前客户端是否能发现这个 Skill，告诉我安装结果和怎么开始。保留我已有的配置，暂时不要接入真实业务账号或执行测试。
+
+安装来源：[GitHub 仓库](https://github.com/SheldonParsons/VeriForge) · [Skill 目录](https://github.com/SheldonParsons/VeriForge/tree/main/skills/qa-workflow)。安装整个目录，不能只复制 `SKILL.md`。
 
 VeriForge 的品牌名称与 Skill 标识不同：**品牌为 VeriForge，调用标识为 `qa-workflow`**。包使用标准的 `SKILL.md`、`scripts/`、`references/`、`assets/` 结构；宿主如何发现 Skill、是否需要重载，由当前 Agent 按客户端实际能力处理。参见 [Agent Skills 格式](https://agentskills.io/specification)。
 
