@@ -1,0 +1,48 @@
+{
+  "version": "0.4.0-rc.1",
+  "validated_at": "2026-11-03T05:25:55.333Z",
+  "runtime": {
+    "node": "v20.19.3",
+    "platform": "darwin",
+    "arch": "arm64"
+  },
+  "automated_tests": {
+    "total": 46,
+    "passed": 46,
+    "failed": 0
+  },
+  "dependency_audit": {
+    "known_vulnerabilities": 0,
+    "command": "npm audit --omit=dev"
+  },
+  "public_source_audit": {
+    "current_source_scanned": true,
+    "organization_pattern_scan_passed": true,
+    "guide_images_visually_reviewed": 12,
+    "old_git_history_removed": false
+  },
+  "scope": {
+    "real_business_execution": false,
+    "global_installation": false,
+    "real_host_acceptance": false,
+    "public_release": false
+  },
+  "notes": [
+    "Synthetic fixtures and local HTTP servers only.",
+    "Historical original records are verified before conversion.",
+    "Release artifacts exclude Git history and local private material.",
+    "Confirm overall project license before public release."
+  ],
+  "independent_bundle": {
+    "archive": "veriforge-0.4.0-rc.1.zip",
+    "cli_calls": 20,
+    "files": 62,
+    "global_installation": false,
+    "host_discovery_verified": false,
+    "independent_npm_ci": true,
+    "installer_preserves_existing_target": true,
+    "real_business_execution": false,
+    "sha256": "b316e548a0871593ba59f1c416766c632ed9efabd4ee36fe27bcbb1a0a39ccdb",
+    "version": "0.4.0-rc.1"
+  }
+}

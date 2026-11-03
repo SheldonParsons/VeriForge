@@ -1,53 +1,15 @@
-# VeriForge 协作规则
+# VeriForge contributor rules
 
-## 项目与工作方式
-
-- 本仓库独立维护 VeriForge 测试工作流 Skill 的设计、源码、验证和交付资料，不是被测产品源码或实际业务测试资料仓库。
-- 使用简体中文，表达自然，区分用户确认、讨论建议、已实现和已验证。不把规划写成现有能力。
-- 开始先读 `README.md`、`HANDOFF.md`、`roadmap.md`，再按当前任务读取相关设计或源码；不要一次加载全部历史。
-- 用户只授权讨论时保持讨论。记录已确认方案不等于授权实现、真实页面操作、创建会话、提单或知识库写入。
-- 用户于 2026-11-02 明确调整推进顺序：先确定所有业务环节的设计，再统一收口工具适配、实现及测试；设计阶段不启动真实业务测试或独立 Agent 全流程试运行。已有基础实现及历史验证保留；以后用户另有明确阶段授权时按新指令处理。
-- 用户于 2026-11-03 明确授权第 5 步第一批实现；0.3.0 已加入阶段指引、模板、图文及本地工作流记录，并做必要合成验证。后续可按已授权批次推进本地实现；真实业务、独立会话、全局安装和平台发布仍按对应授权处理，不把旧设计阶段的停止约定误用于已授权代码工作。
-- 未获用户明确要求，不创建会话、不启动子代理；不声称没有实现的自动监听或后台提醒。
-- 设计与开发仅在 VeriForge 继续。GreeSalesCloud 的业务测试资料和通用件是历史来源，不在两仓库并行维护同一份 Skill。
-
-## 设计与实现
-
-- `design/` 保存已确认原则和明确标注的候选方案；`roadmap.md` 维护推进顺序；`HANDOFF.md` 保留接续入口和最新任务边界。
-- `skills/qa-workflow/` 是可安装 Skill。品牌为 VeriForge；当前技能标识、目录名、CLI 与备份格式保留兼容名称 `qa-workflow`，不因仓库更名擅自重命名已有数据格式。
-- 核心要求：自然引导、多项目隔离、适用范围明确的共享、多会话接续、长期资料保全。业务规则依据与页面观察分开记录。
-- 需求澄清按用例需要追查概念和历史，追问说明测试影响；足够支撑场景即可推进，不无限追问，也不以少问代替理解。
-- 页面取证在各阶段按需开展，支持旧页面加新需求、首版无页面和后续补采；同步维护真实步骤和可复用 UI 资料。业务预期不能随页面异常改写。
-- UI 模块的最小内容、粒度、存储检索、形成验证、复用和更新已按用户授权定稿于 `design/ui-modules.md`。后续实施遵循该设计，业务结果与模块执行状态分开；本地基础运行器尚未实现这些 UI 契约，不能直接套用新枚举或声称已接入。
-- 3.3 已按用户要求与委托决策定稿于 `design/stages/test-case-authoring.md`：强烈推荐但不强制 asynctest-mind，用户格式优先，任何格式补齐操作步骤。场景必须基于业务理解及规则来源，受控覆盖受影响的历史规则；涉及流程的改动保留少量完整主链路，如咨询单从创建到审批结束，并检查本期内容在流转中的表现，不能只生成表面通用用例。新增修订保留版本和历史结果，内容可评审、操作已核对、执行准备就绪分别判断；设计不是实际用例编写或 MCP 操作授权。
-- 用户已确认不设独立“用例评审”必经环节：编写交付应可直接评审，反馈纳入修订，实际评审状态及团队约定如实保留。3.5 已按用户委托定稿于 `design/stages/test-execution.md`：准备与数据、分工并发、结果同步、异常恢复、结束交付各有默认规则；设计定稿不代表已授权或实现真实测试。
-- 用户明确要求强烈推荐 Chrome DevTools MCP；使用该 MCP 时任何时候默认专用 headless Chrome，只有用户明确要求才允许显式执行，排障／登录／下载困难不能自行降级。进入实际接入或执行阶段时，缺失工具由 Agent 帮助安装并配置，保留既有设置、适配当前宿主；设计阶段不实际安装。细则见 `design/integrations/chrome-devtools-onboarding.md`。
-- 3.6 已由用户于 2026-11-03 明确确认，依据为 `design/stages/bug-management.md`：BUG 先按被测项目／需求／本地 BUG 分层保存；差异先分流、每条失败可追溯，同一问题关联多条用例且避免重复提单。UI BUG 至少一张真实标注图，接口 BUG 保留请求响应等证据；严重程度和优先级默认 3／3，字段先读项目约定，未知才问。按已授权单条或批次通过 API 提交，未知结果先回查，提交后核对实际字段、正文、图片及正式关联。支持 URL 发起复验；复验与关闭分别记录，“复验通过后关闭”沿用条件授权，只有复验请求则不自动关闭。定稿不代表适配器已实现或真实操作已授权。
-- 3.7 已由用户于 2026-11-03 明确确认，依据为 `design/stages/bug-retest.md`：只给 BUG 链接也可在复验语境接入，先读工单与已有资料、只问关键缺口；影响版本不代表修复已部署。保留原触发条件，按影响选必要回归，分别记录原问题和回归结果；局部通过、偶现未复现及必要回归阻塞不足以支持关闭。按已有授权及当前工单状态通过 API 关闭并回读；保留历次证据，仅更新完整执行通过的用例，继续维护有效 UI 信息。
-- 3.8 已按用户同意的推进方案记录于 `design/stages/knowledge-consolidation.md`：按业务主题沉淀概念、关系、规则、例外及版本来源；本期完成、正式上线且用户确认短期稳定后，强烈推荐 asynctest-kb，按授权对照现行内容、写入并回读。未接入时交付本地文本及未同步状态。新需求候选与现行规则区分，变更保留历史、适用范围和引用；误写与回滚按事实和授权及时修订，不复制多份权威正文。
-- 3.9 按用户同意的四项方向收口于 `design/stages/closeout-retrospective.md`：交付用例、知识及指定产物；分别说明测试、缺陷、上线、同步和恢复状态；阶段结束保留遗留问题及接续条件，按证据简短复盘，不默认新增成套报告。第 3 步设计基线已齐备，下一步核对工具适配与实现范围；未因此授权真实执行、远端业务写入、归档或清理。
-- 第 4 步来源与实施契约已收口，入口为 `design/tool-adapters.md` 与 `design/contracts/`。KB 确认按实际用户／凭证／工具及预览绑定，未知结果先查提交关联，不能假设重复 apply 总会回成功；禅道 v1 关闭已找到历史 POST multipart（comment + uid）回执，认证和附件模式分别验证。首版采用本地动作计划、宿主原生 MCP、真实回执回填，额外 JavaScript 桥不是前置，不通过新 STDIO 连接绕过宿主限制。来源见 `verification/adapter-contracts-20261103.json`；未做真实写入或宿主验收，第一批实现仍须保留 0.2.1 数据兼容。
-- 用户另行授权补充 NexoFolio 图文，见 `design/integrations/nexofolio-onboarding.md`：提供内外网入口、Fetcher 安装采集和 MCP 专用凭证接入，按当前目标展示必要图片，不要求只读知识用户安装采集扩展。七张公开文档截图为确定性标注，两张用户截图经 imagegen 遮挡个人信息后作为导航示意；原始个人截图仅本地保留。内网协议地址不能从网页前缀猜测，连接和采集验收仍按真实结果记录。
-- 2026-11-03 用户补充：BUG 描述以可理解、可复现为前提尽量简洁，优先短文字配真实截图及简短标注；前后变化用必要对比图，不重复长篇解释画面，不省略关键条件、数据、动作顺序、期望或必填字段。接口 BUG 保留必要请求／响应文字，不强制图片化；不因此自动改写历史 BUG。
-- 用户指定 screenshot-annotator 作为标注集成来源，已固定到 `vendor/screenshot-annotator/` 并保留原许可、源码及摘要；目前仅完成源包准备，未接入发布包或重跑测试，不把源码存在描述为证据流程已交付。
-- 过程知识持续本地记录；最终知识入库按 3.8，阶段收尾与后续待办按 3.9，两者不强制等待彼此才能保存已有成果。
-- 具体项目地址、账号、人员映射、模型偏好和工具限制不可直接推广成所有 Skill 用户的要求。
-- 项目数据、凭据和浏览器会话不写入 Skill 包。合成验证数据放 `.local/`，Git 保留必要的验证摘要与来源。
-- 变化保留版本和依据；未知外部写入结果先回查，不盲目重复操作；资料备份范围与实际恢复验证分别说明。
-- 0.3.0 的新工作空间根记录为格式 2；格式 1 只读不自动升级，新能力前通过 workspace.upgrade 核对旧执行、资源与未知动作。保留旧 review 和结果，格式 2 历史分开留存；旧运行器会拒绝新空间，不能手改标记降级。事实、交付物与遗留事项以 workflow／deliverable／followup 命令维护，CLI 不调用远端。详见 `implementation-v0.3.md`。
-
-## 验证与交付
-
-- 从仓库根目录运行 `python3 -m unittest discover -s tests -v`；运行器使用 Python 3.11+ 标准库。
-- `tools/` 的验证脚本只使用合成数据。业务浏览器、MCP、缺陷平台与宿主行为需另按授权真实验证，不能用本地测试替代。
-- `tools/package_skill.py` 只打包当前源码，目标文件必须不存在。历史包在 `releases/archives/` 原样保留，不覆盖，不用新源码冒充旧版本。
-- 文档更改核对实际差异与链接；实现更改运行适用行为检查。验证通过后不无理由重复测试。
-- 历史报告保留当时环境和结果，迁移后的新验证另记；不把作者走读说成独立模型回放。
-
-## Git
-
-- 用户明确要求后续只维护 `main`。所有设计和开发直接在 `main` 进行，不创建功能分支。
-- 任何时候不得创建 worktree，除非用户以后明确要求。
-- 已授权及时提交和 push；完成有意义工作单元后只提交本次已核对文件，推送 `origin/main` 并核对远端。用户当次另有要求时以当次为准。
-- 保留用户和其他会话修改，提交前重新核对分支、暂存区和文件范围；不强推、不覆盖远端历史。
-- 不把本仓库内容写入全局个人记忆。
+- Build a general-purpose testing Skill. Keep organization names, business tickets, credentials, internal hosts and personal machine paths out of public source, examples, screenshots and release bundles.
+- Use JavaScript (Node.js 20.19+). Preserve supported workspace formats and history; validate migration with synthetic fixtures. Do not require a Python runtime.
+- Work only on main. Do not create branches or worktrees unless explicitly requested. Preserve unrelated changes; commit and push reviewed milestones without force-pushing.
+- The user authorized continuous implementation through a test-ready candidate. Finish local implementation, fixtures, tests, packaging and public documentation. Real business mutations, global installation and public release require their own scope.
+- Do not start sub-agents or new chats without explicit authorization. Do not send messages to others without explicit instructions.
+- Keep user data separate from installed Skill code. Credentials belong in an encrypted private store outside the repository/workspace; ordinary state holds references only. Do not echo secrets or include the vault in normal backups.
+- Query relevant historical business knowledge proactively during project onboarding, analysis, case design and investigation. Use interface knowledge for fields, samples and dependencies. Preserve scope, provenance, version, confidence and unresolved conflicts; never infer that an old sample is a current business result.
+- Clarify until the requirements support meaningful test scenarios, without endless questioning. Group cases by independent business scenarios; number steps within each scenario. Respect user formats and preserve executable steps.
+- Prefer host-native MCP. Browser work defaults to a dedicated headless Chrome; do not switch to visible mode without explicit instruction. Do not bypass the tested UI with business writes.
+- Persist intent before external mutations. Unknown results require reconciliation, not blind retries. Keep execution, business verdict, synchronization and restoration separate.
+- BUGs are concise and reproducible; UI defects include annotated real screenshots. Default severity/priority are 3 unless overridden. Submit/close within scope through the configured API, then read back fields and attachments.
+- Keep stages, artifacts, follow-ups and sources durable. Final business knowledge is normally published after release and confirmed short-term stability. Stage closeout does not erase unfinished work.
+- Run meaningful Node tests and bundle validation. Report simulated checks, real tool observations and actual business acceptance separately. Do not claim untested host compatibility.

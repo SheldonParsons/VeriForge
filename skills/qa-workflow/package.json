@@ -1,0 +1,17 @@
+{
+  "name": "veriforge-skill",
+  "version": "0.4.0-rc.1",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20.19"
+  },
+  "scripts": {
+    "check": "node scripts/qa.mjs --capabilities"
+  },
+  "dependencies": {
+    "fflate": "0.8.3",
+    "lossless-json": "4.3.3",
+    "sharp": "0.35.5"
+  }
+}

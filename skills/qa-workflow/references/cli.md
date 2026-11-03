@@ -1,14 +1,14 @@
 # 调用约定
 
-Python 3.11+ 标准库；`<skill>` 是包目录，`<workspace>` 是用户明确的工作目录。
+Node.js 20.19+；在 Skill 目录执行 `npm ci --omit=dev` 安装锁定依赖；`<skill>` 是包目录，`<workspace>` 是用户明确的工作目录。
 
 ```sh
-python3 <skill>/scripts/qa.py --workspace <workspace> --request /path/to/request.json
+node <skill>/scripts/qa.mjs --workspace <workspace> --request /path/to/request.json
 ```
 
-也可从标准输入传入一个 JSON 对象。成功返回 ok:true；校验错误 ok:false、退出码 2；IO 错误退出码 3，先回读确认是否部分保存。请求不含口令、Cookie 或授权头。
+也可从标准输入传入一个 JSON 对象。成功返回 ok:true；校验错误 ok:false、退出码 2；IO 错误退出码 3，先回读确认是否部分保存。普通请求不含口令、Cookie 或授权头；`secret.put` 的秘密仅通过受控本机标准输入传递。
 
-只了解本包能力时可运行 `python3 <skill>/scripts/qa.py --capabilities`，或传入 `{"action":"capabilities"}`。该操作无需 `--workspace`，不读取或创建用户工作空间；其他命令仍明确指定目录。
+只了解本包能力时可运行 `node <skill>/scripts/qa.mjs --capabilities`，或传入 `{"action":"capabilities"}`。该操作无需 `--workspace`，不读取或创建用户工作空间；`screenshot.annotate` 也无需工作空间；其余命令明确指定目录。
 
 ## 通用字段
 
@@ -24,7 +24,7 @@ python3 <skill>/scripts/qa.py --workspace <workspace> --request /path/to/request
 | --- | --- | --- |
 | capabilities | 无 | 只读本包版本与能力说明 |
 | workspace.init | title, actor | 创建空间与维护者，已有空间不覆盖 |
-| workspace.upgrade | actor, expected_revision, source_execution_stopped:true, note | 旧空间升级格式 2；活跃任务、未知操作或资源占用时拒绝，旧修订保留 |
+| workspace.upgrade | actor, expected_revision, source_execution_stopped:true, note | 旧空间升级格式 3；活跃任务、未知操作或资源占用时拒绝，旧修订保留 |
 | project.create | project, title, actor, systems?, coordinator? | systems 如 `{"client":"客户端"}` |
 | requirement.create | project, requirement, title, actor, systems?, coordinator?, next? | 系统引用如 `[{"project":"orders","system":"client"}]` |
 | list | project?, requirement?, query?, include_archived?, offset?, limit? | 元数据分页 |
@@ -87,7 +87,7 @@ case.record 首次为 sync:pending。实际写回并回读 Mind 后保存回执�
 
 ## 独立事实、交付物和遗留事项
 
-以下写入需格式 2，仅由需求协调者维护，归档后须先明确重开；所有新建／更新使用 expected_revision（首次 0）。完整状态与例子见[记录与升级](workflow-records.md)。
+以下写入需格式 3，仅由需求协调者维护，归档后须先明确重开；所有新建／更新使用 expected_revision（首次 0）。完整状态与例子见[记录与升级](workflow-records.md)。
 
 | action | 主要参数 | 说明 |
 | --- | --- | --- |
@@ -98,10 +98,39 @@ case.record 首次为 sync:pending。实际写回并回读 Mind 后保存回执�
 | followup.record | project, requirement, actor, followup, title, status, basis, expected_revision, next?, evidence?, owner_ref? | open/waiting 要 next；done/cancelled 要证据；不通知责任人 |
 | followup.list | project, requirement, include_completed?, offset?, limit? | 默认未完事项，返回全部状态数量 |
 
-resume 追加 workflow、deliverables、followups；后两者用独立 deliverable_offset／followup_offset 翻页。新记录和历史纳入备份，旧版运行器会拒绝格式 2 空间；不要手改根标记降级。
+resume 追加 workflow、deliverables、followups；后两者用独立 deliverable_offset／followup_offset 翻页。新记录和历史纳入备份，旧版运行器会拒绝格式 3 空间；不要手改根标记降级。
 
 ## 错误和边界
 
 REVISION_CONFLICT 先比较新旧记录；RESOURCE_BUSY 继续独立工作；PENDING_WORK 回查原操作；EVIDENCE_REQUIRED 补实际证据；BACKUP_INCOMPLETE 核对缺口；RECOVERY_REVIEW 先核对恢复。细节见 [信息保全](preservation.md)。
 
-同一空间的写入短时串行，读取可并行。本版没有业务网络调用、加密备份、定时执行、进程停止或跨格式迁移。记录成功与实际业务成功分别判断。
+同一空间的写入短时串行，读取可并行。HTTP 网络执行由独立命令处理；本版没有加密工作空间备份、定时执行或强制停止其他进程的能力。记录成功与实际业务成功分别判断。
+
+## 候选版本新增入口
+
+详见 [动作衔接](actions.md)、[主动补历史](context-bootstrap.md) 与 [凭据](privacy.md)。
+
+| action | 主要参数 | 结果 |
+| --- | --- | --- |
+| project.configure | project, actor, integrations, expected_revision | 合并服务映射，不保存秘密 |
+| context.plan | project, requirement, stage, question, interface_context? | 宿主只读调用建议 |
+| context.record | project, requirement, actor, context, question, entries, expected_revision | 保留来源、范围、结论与快照 |
+| context.read / context.brief | project, requirement, query?, environment?, limit?, offset? | 摘要、冲突或背景文本 |
+| secret.put | actor, ref, scope, value, expected_revision | 加密保存，只回 metadata |
+| secret.status / secret.list | actor, ref? | 不返回秘密原值 |
+| action.prepare | project, requirement, task, actor, operation, provider, effect, resource, payload, authorization_basis | 固定输入与资源 |
+| action.dispatch | 同一任务、operation、expected_revision | 返回待宿主实际执行的 host_call |
+| action.record | 同一任务、operation、expected_revision、status、tool_result、note，写操作另需 effect_result/readback_artifact | 保存真实回执 |
+| action.continue | 同一任务、operation、expected_revision、pending_reference、preview_artifact、user_confirmation、arguments | 原确认交互续接 |
+| action.read | project, requirement, operation | 当前动作记录 |
+| binding.set / binding.list | project, requirement；写入另需 actor,binding,carrier,artifact,locator,basis,expected_revision，case? | 场景与载体映射 |
+| mind.plan | 任务、operation、binding、window_key、document_revision、authorization_basis | 基于通过/失败生成节点标记计划 |
+| knowledge.write.plan | 任务、operation、tool、arguments、authorization_basis，early_write_basis? | 初始知识预览计划 |
+| http.execute | 任务、operation、expected_revision、authorized:true，system?,role? | 实际受限 HTTP 调用与读回 |
+| ui.module.register | 项目、需求、actor、module、definition、evidence、basis、expected_revision | 版本化 UI 契约 |
+| ui.module.read | project,module | 读取单个模块 |
+| ui.plan | 任务、operation、module、parameters、page_verified:true、page_evidence、authorization_basis | 生成宿主页面操作计划 |
+| screenshot.annotate | input, output, annotations, redactions?, synthetic? | PNG、标注清单及摘要 |
+| bug.draft | 任务、bug_id、bug，fixture_only? | 预提交 Markdown 和记录 |
+
+缺少参数按具体错误补齐，不通过试错循环执行写动作。工具计划需要核对当次宿主工具 schema；一个工具的参数变化不授权重新发出未知写请求。

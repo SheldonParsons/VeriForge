@@ -1,5 +1,0 @@
-interface:
-  display_name: "截图标注"
-  short_description: "为问题反馈、测试取证和界面评审截图添加框选、箭头及多语言说明"
-policy:
-  allow_implicit_invocation: true

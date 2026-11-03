@@ -1,46 +1,49 @@
-# NexoFolio、Fetcher 与只读 MCP
+# NexoFolio：接口知识、Fetcher 与 MCP
 
-NexoFolio 网页平台用于阅读接口资料；Fetcher 是采集扩展；MCP 让 Agent 查询已有接口知识。只查资料不要求先安装 Fetcher。它们不能自动替代本轮业务接口测试。
+NexoFolio 为 Agent 提供可追溯的接口目录、请求和响应字段、样本及来源。它补充“系统怎样交互”；asynctest-kb 补充“业务规则为什么这样”。两者不能互相替代，也不等于真实业务执行结果。
 
-## 入口
+- [公网平台](https://nexofolio.net/)
+- [使用文档](https://nexofolio.net/docs)
+- [Fetcher 安装与采集](https://nexofolio.net/docs/fetcher)
+- [MCP 说明](https://nexofolio.net/docs/mcp)
 
-- [外网 NexoFolio](https://nexofolio.net/)／[文档](https://nexofolio.net/docs)
-- [Fetcher 教程](https://nexofolio.net/docs/fetcher)
-- [MCP 教程](https://nexofolio.net/docs/mcp)／[外网凭证页](https://nexofolio.net/settings/mcp)
-- Gree 内部实例参考：[内网入口](http://10.23.224.40/nexofolio/)。仅用户明确使用该组织实例时采用；其他团队使用自己提供的地址。
+私有部署使用用户提供的实际服务地址和文档，不在 Skill 中写死某个组织的地址。以下截图为导航参考，当前版本及按钮以实际页面为准。
 
-网页入口、Fetcher 后端服务和 MCP 协议地址分别核对，不从内网页面前缀拼造 API。外网教程显示 MCP 地址为 `https://nexofolio.net/api/mcp`，其他实例以当前页面为准。
+## 阅读现有接口资料
 
-## 平台和 Fetcher
+登录自己的实例 → 选择项目 → 核对环境 → 进入接口文档。先看相关目录或搜索业务关键词，再展开接口、字段与来源。区分正式内容、候选整理、样本观察和已废弃资料；读到旧响应样本不能推导当前业务已经成功。
 
-登录后选择目标项目与环境，从“接口文档 → 正式文档”阅读目录、接口、字段和来源。整理结果是候选审阅入口，查询不授权应用修改；实际观测、候选说明和已确认语义分别判断。
+## 需要采集时安装 Fetcher
 
-需要采集时，按官方教程：页头 Fetcher 选择内网或公网渠道 → 下载 ZIP 并解压 → Chrome 扩展页开启开发者模式、加载含 manifest.json 的目录 → 配置实际后端服务并登录 → 在授权业务站点绑定项目与环境 → 操作页面并核对上传状态及项目记录。
+只读取已有接口知识无需安装 Fetcher。用户要采集页面请求时：
 
-版本和浏览器要求以当前页面为准。截图中的示例服务地址不能直接使用；关闭侧边栏不等于停止采集，HTTP 200 不证明资料上传完成，部分 Worker／文件／不可读响应可能未完整保留。采集会向所配实例上传，先核对范围。
+1. 在文档顶部 **Fetcher** 下载适用渠道的扩展 ZIP，并解压到固定目录。
+2. 根据当前文档进入浏览器扩展管理页，加载包含 `manifest.json` 的解压目录，打开扩展侧栏。
+3. 配置 NexoFolio **服务地址**并登录；这不是被测业务站点地址。
+4. 切换到被测站点，授权适当的站点范围，绑定正确的项目、环境。
+5. 在授权测试范围内操作页面，核对请求记录的上传状态，再到同一项目、环境确认记录。采集器启用前的旧请求不假定已经被采集。
 
-按当前步骤展示对应图，不一次发送全部：
-
-![下载渠道](../../assets/guides/nexofolio/01-fetcher-download.annotated.png)
-![安装](../../assets/guides/nexofolio/02-fetcher-install.annotated.png)
+![加载 Fetcher](../../assets/guides/nexofolio/02-fetcher-install.annotated.png)
 ![连接服务](../../assets/guides/nexofolio/03-fetcher-connect.annotated.png)
-![绑定站点](../../assets/guides/nexofolio/04-fetcher-binding.annotated.png)
-![核对采集](../../assets/guides/nexofolio/05-fetcher-capture.annotated.png)
+![绑定项目和环境](../../assets/guides/nexofolio/04-fetcher-binding.annotated.png)
+![核对采集记录](../../assets/guides/nexofolio/05-fetcher-capture.annotated.png)
 
-## MCP 信息交给 Agent
+Fetcher 涉及采集并上传请求资料，接入前明确数据范围。不得为了补资料擅自进行业务写操作。默认 headless 测试浏览器与扩展运行方式能否结合，要按实际浏览器和版本验证，不承诺安装后自动覆盖所有测试请求。
 
-用户可从“接口文档 → MCP 凭证”取得当前实例地址并创建自己的专用凭证。完整 Token 仅创建时展示，按账号当前项目权限访问；不能用网页登录 Token 或历史业务 Header 替代。
+## 让 Agent 连接 MCP
 
-![MCP 菜单入口，用户截图制作的隐私遮挡示意](../../assets/guides/nexofolio/08-mcp-menu.guide.png)
-![复制地址与创建凭证，个人记录已遮挡](../../assets/guides/nexofolio/09-mcp-settings.guide.png)
+1. 登录后打开顶部 **接口文档 → MCP 凭证**。
+2. 复制页面展示的服务地址，为当前 Agent 创建专用凭证。
+3. 在接入说明中复制客户端模板。使用自己的完整 Token，通过宿主安全配置机制填写；不把密码或 Token 写进工作空间的 JSON、源码、截图或 Git。
+4. Agent 核对当前可用工具，再读取有权限的项目、环境和一条相关接口详情，确认字段和来源可用。
 
-让当前 Agent 按实际客户端的 Streamable HTTP 和 Authorization Header 支持配置，保留已有其他 MCP；Token 在本地填写，不进入图文或日志。无需猜 npm 包，不默认所有客户端使用同一 JSON。
+![MCP 菜单入口](../../assets/guides/nexofolio/08-mcp-menu.guide.png)
+![MCP 凭证页面](../../assets/guides/nexofolio/09-mcp-settings.guide.png)
+![创建专用凭证](../../assets/guides/nexofolio/06-mcp-credential.annotated.png)
+![连接配置示意](../../assets/guides/nexofolio/07-mcp-config.annotated.png)
 
-![官方凭证说明，只有占位 Token](../../assets/guides/nexofolio/06-mcp-credential.annotated.png)
-![官网配置模板](../../assets/guides/nexofolio/07-mcp-config.annotated.png)
+模板里的 `YOUR_MCP_TOKEN` 是占位符。MCP 凭证、网页登录凭据与被测接口认证是不同用途，不能混用。配置写完不等于当前会话已经加载工具；必要时按宿主要求重连后再检查。
 
-接入后核对 initialize、服务说明和实际工具定义，再用用户选定问题验证一次只读检索。项目环境可按名称发现，歧义才询问。按目录、搜索、字段或引用自主选路，关键资料读完整，保留来源、确认状态和未读范围。
+## 查询时机
 
-例如：“在指定项目的 QA 环境查清审批任务标识来自哪里，准备请求草案，先不要发送请求。”相同观测值不证明必调顺序，说明已生成不等于语义已确认。服务连接、真实读取、业务请求执行分别验收。
-
-图片只作导航。01—07 是公开文档截图的确定性标注，内嵌扩展为官方演示数据；08—09 是用户截图经生成式遮挡制作的示意，不能当像素保真的测试证据。真实登录、安装、采集和新会话展示在本包中仍未验收。
+新成员接入先补项目和环境范围；需求分析和用例编写按相关字段、状态和上下游关系展开；失败调查、复验再查受影响接口。先看 [历史知识与项目补全](../context-bootstrap.md)。不批量读取无关项目，不触发后台整理或业务请求来代替知识检索。

@@ -1,88 +1,51 @@
 {
-  "schema": 1,
+  "schema": 2,
   "skill": "qa-workflow",
-  "version": "0.3.0",
-  "purpose": "引导需求到复验和知识沉淀的测试工作，保存可交接的多项目状态、证据与产物。",
-  "guidance": {
-    "included": [
-      "用途与能力说明",
-      "渐进接入与配置",
-      "自然表达",
-      "继续与切换",
-      "历史查阅",
-      "缺失、冲突和阻塞处理",
-      "AsyncTest 下载与知识库 MCP 图文指引",
-      "需求澄清与历史依赖",
-      "各阶段页面取证",
-      "业务场景及受控回归用例",
-      "执行与缺陷判定",
-      "BUG 复验与关闭边界",
-      "上线后知识与阶段收尾",
-      "Mind 与 NexoFolio 图文接入"
-    ],
-    "review_method": "包内阶段规则与模板人工核对；本地行为测试、旧版兼容及解包验证，真实独立 Agent 验收另记",
-    "independent_agent_verified": false,
-    "visual_guides": [
-      "assets/guides/asynctest-download.png",
-      "assets/guides/asynctest-kb.png",
-      "assets/guides/mind/01-open-mind.annotated.png",
-      "assets/guides/mind/02-open-mcp-settings.annotated.png",
-      "assets/guides/mind/03-copy-mcp-config.annotated.png",
-      "assets/guides/nexofolio/01-fetcher-download.annotated.png",
-      "assets/guides/nexofolio/02-fetcher-install.annotated.png",
-      "assets/guides/nexofolio/03-fetcher-connect.annotated.png",
-      "assets/guides/nexofolio/04-fetcher-binding.annotated.png",
-      "assets/guides/nexofolio/05-fetcher-capture.annotated.png",
-      "assets/guides/nexofolio/06-mcp-credential.annotated.png",
-      "assets/guides/nexofolio/07-mcp-config.annotated.png",
-      "assets/guides/nexofolio/08-mcp-menu.guide.png",
-      "assets/guides/nexofolio/09-mcp-settings.guide.png"
-    ],
-    "image_display_validation": "附带导航示意素材；Codex 新会话的最终回复区显示尚待真实验收，其他客户端未验证"
-  },
+  "version": "0.4.0-rc.1",
+  "release_status": "candidate",
+  "purpose": "自然引导需求到复验，主动补历史，保留多项目状态与证据",
+  "runtime": "Node.js >=20.19",
   "implemented_local": [
-    "多被测项目、系统和需求的归属与引用",
-    "共享内容的固定版本、适用范围和配置差异",
-    "阶段、任务、执行结果与同步状态分别保存",
-    "任务暂停、明确恢复、交接和合作式资源占用记录",
-    "未知写操作登记、回查与重复派发拦截",
-    "资料快照、历史版本、归档索引与本地备份恢复",
-    "独立准备、评审、上线、稳定、知识和恢复事实",
-    "正式交付物与不可变快照映射",
-    "遗留事项、下一步和关闭依据",
-    "格式 1 只读兼容与显式格式 2 根标记升级",
-    "扩展执行状态、分项统计及新增记录备份恢复"
+    "8 个阶段指引与 5 个模板",
+    "多项目系统归属、固定版本共享、任务与资源协调",
+    "修订摘要、不可变快照、旧格式读取、显式升级、备份恢复",
+    "独立事实、正式交付物、遗留事项与恢复摘要",
+    "仓库外 AES-256-GCM 凭据库及范围绑定",
+    "历史知识查询计划、来源记录与冲突提示",
+    "UI 模块登记、限定范围复用、宿主调用计划",
+    "动作意图、派发、回执、未知结果与交互确认续接",
+    "Mind 场景节点映射与保存读回要求",
+    "受限 HTTP 请求、断言、同源回读与脱敏回执",
+    "JavaScript 截图标注、遮盖及证据清单",
+    "有截图证据的本地 BUG 草稿与默认严重度/优先级"
   ],
-  "target_test_workflow": [
-    "需求分析与澄清",
-    "按需页面取证",
-    "用例编写与修订（含评审反馈）",
-    "测试执行",
-    "BUG 记录与提交",
-    "修复验证",
-    "上线后最终知识沉淀",
-    "收尾与复盘"
+  "host_native_execution": [
+    "Chrome DevTools MCP",
+    "asynctest-mind",
+    "asynctest-kb",
+    "nexofolio"
   ],
-  "knowledge_timing": "过程持续本地记录；本期需求完成、正式上线且用户确认短期稳定后，强烈建议整理最终文本并按授权沉淀到 asynctest-kb。",
-  "not_implemented_as_builtin": [
-    "真实浏览器、Mind、知识库或禅道的直接调用适配",
-    "通用动作计划生成器、UI 模块执行器、HTTP 执行器及截图标注调用入口",
-    "宿主会话自动创建、派发、强制停止或持续监听",
-    "完整旧目录自动迁移、异地或加密备份及任意格式转换"
+  "not_builtin": [
+    "宿主会话自动创建、跨客户端全局 MCP 配置器或后台监听",
+    "预制具体业务页面模块及全自动跨版本禅道上传协议适配",
+    "OS Keychain 原生存储、密钥自动轮换、异地或加密工作空间备份"
   ],
   "conditions": [
-    "当前提供的是引导指令和本地管理，实际业务操作须有项目规则、可用工具和任务范围依据。",
-    "记录与文件校验不代替业务结果验证。",
-    "协作标签和占用记录不构成身份认证或外部工具强制互斥。",
-    "备份仅覆盖受管记录及已登记快照，实际覆盖和恢复点以回执为准。"
+    "普通动作派发只记录意图；http.execute 才内置发送请求",
+    "本地模拟不证明真实业务或全部宿主验收通过",
+    "协作标签与资源记录不构成身份认证或外部强制互斥",
+    "知识和接口样本有来源范围，不能覆盖当前用户确认"
   ],
   "data_formats": {
     "read": [
       1,
-      2
+      2,
+      3
     ],
-    "new_workspace": 2,
-    "legacy_upgrade": "explicit workspace.upgrade after old execution and resources reconciled",
+    "new_workspace": 3,
+    "upgrade": "explicit after old tasks and resources reconciled",
     "downgrade_writes_supported": false
-  }
+  },
+  "independent_agent_verified": false,
+  "guide_manifest": "assets/guides/manifest.json"
 }

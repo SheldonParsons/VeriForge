@@ -1,9 +1,0 @@
-{
-  "schema_version": 1,
-  "coordinate_space": {"width": 1200, "height": 800},
-  "font_size": 18,
-  "annotations": [
-    {"box": {"x": 966, "y": 410, "width": 72, "height": 42}, "label": {"x": 780, "y": 330}, "text": "1. Email notification switch", "location_source": "synthetic fixture coordinates"},
-    {"box": {"x": 926, "y": 586, "width": 158, "height": 58}, "label": {"x": 720, "y": 680}, "text": "2. Save changes", "location_source": "synthetic fixture coordinates"}
-  ]
-}

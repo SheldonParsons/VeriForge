@@ -7,3 +7,8 @@ __pycache__/
 .env
 .env.*
 !.env.example
+node_modules/
+**/node_modules/
+*.log
+.veriforge-private/
+coverage/

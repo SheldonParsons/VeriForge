@@ -1,0 +1,19 @@
+{
+  "name": "veriforge",
+  "version": "0.4.0-rc.1",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=20.19"
+  },
+  "scripts": {
+    "test": "node --test tests/*.test.mjs",
+    "validate": "node tools/validate.mjs",
+    "build": "node tools/package.mjs"
+  },
+  "dependencies": {
+    "fflate": "0.8.3",
+    "lossless-json": "4.3.3",
+    "sharp": "0.35.5"
+  }
+}
