@@ -2,7 +2,7 @@
 
 让 AI 理解需求，让测试有据可循。
 
-更新时间：2026-11-02。当前实现版本为图文指引版 0.2.1，已加入 AsyncTest 下载及知识库 MCP 标注示意图；新会话图片展示待真实验收。基础运行器与此前走读保留独立验证记录，尚未全局安装或上传平台。
+更新时间：2026-11-03。当前实现版本为图文指引版 0.2.1，已加入 AsyncTest 下载及知识库 MCP 标注示意图；新会话图片展示待真实验收。基础运行器与此前走读保留独立验证记录，尚未全局安装或上传平台。
 
 VeriForge 是面向 AI Agent 的测试工作流 Skill 项目。本仓库集中维护设计、源码、测试和验证资料，后续仅维护 `main`。2026-11-02 从 GreeSalesCloud 的 `skill-development/` 独立迁移，并保留该目录的 21 次 Git 提交历史。
 
@@ -45,7 +45,7 @@ python3 tools/package_skill.py --output dist/qa-workflow-0.2.1.zip
 | [UI 模块规范 v1](design/ui-modules.md) | 最小契约、操作边界、存储、验证、复用、回执与更新 | 六项按用户授权决策定稿，待实施及真实验证 |
 | [用例编写与修订设计 v1](design/stages/test-case-authoring.md) | 业务场景、受控回归与完整主链路、操作步骤、评审反馈修订及完成依据 | 已定稿；评审不再单列必经环节，待实施及真实验证 |
 | [测试执行设计 v1](design/stages/test-execution.md) | 准备与数据、分工并发、业务判定、证据同步、异常恢复和交付 | 已按用户委托决策定稿，待实现及真实验证 |
-| [BUG 记录与提交](design/stages/bug-management.md) | 本地预提交、字段格式、证据、API 提交／关闭及 URL 复验 | 七项要求已记录，补充流程讨论中 |
+| [BUG 记录与提交](design/stages/bug-management.md) | 本地预提交、简洁图文描述、证据、API 提交／关闭及 URL 复验 | 用户要求及写作风格已记录，补充流程讨论中 |
 | [截图标注集成](design/integrations/screenshot-annotator.md) | 固定上游源包、原图与标注证据、内置方式及边界 | 0.1.0 来源基线已纳入 vendor，尚未接入发布包或重测 |
 | [Chrome DevTools 接入与隐式调用](design/integrations/chrome-devtools-onboarding.md) | 强推荐、默认 headless、仅明确要求才显式、缺失时自动帮助安装 | 用户要求已记录；官方参数已核对，安装与适配待实施 |
 | [Mind MCP 接入指引](design/integrations/asynctest-mind-onboarding.md) | 从 AsyncTest 首页进入 Mind、打开配置、复制连接信息 | 三张标注与模糊处理素材已备齐；未入发布包，连接未实测 |
