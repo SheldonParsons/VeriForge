@@ -12,7 +12,7 @@ VeriForge 是面向 AI Agent 的测试工作流 Skill 项目。本仓库集中�
 
 协作先读 [AGENTS.md](AGENTS.md)、[当前交接](HANDOFF.md) 和 [推进计划](roadmap.md)。使用入口见 [Skill](skills/qa-workflow/SKILL.md) 与 [0.2.1 图文指引说明](implementation-v0.2.1.md)；基础能力与走读见 [0.2.0 记录](implementation-v0.2.md)。迁移范围、来源和历史包见 [迁移记录](docs/migration/2026-11-02.md)。
 
-3.1 [需求理解与澄清](design/stages/requirements-analysis.md)、3.2 [页面取证](design/stages/page-discovery.md)、UI 模块、[3.3 用例编写与修订](design/stages/test-case-authoring.md) 和 [3.5 测试执行](design/stages/test-execution.md) 已定稿；独立评审并入编写与修订，当前讨论 [3.6 BUG 记录与提交](design/stages/bug-management.md)。完整业务环节仍待实施及验证；正式上线后再沉淀知识的时机已在 0.2.1 修正，旧包保留历史内容。
+3.1 [需求理解与澄清](design/stages/requirements-analysis.md)、3.2 [页面取证](design/stages/page-discovery.md)、UI 模块、[3.3 用例编写与修订](design/stages/test-case-authoring.md)、[3.5 测试执行](design/stages/test-execution.md) 和 [3.6 BUG 记录与提交](design/stages/bug-management.md) 已定稿；独立评审并入编写与修订，当前讨论 3.7 BUG 复验。完整业务环节仍待实施及验证；正式上线后再沉淀知识的时机已在 0.2.1 修正，旧包保留历史内容。
 
 UI 模块的当前依据为 [规范 v1](design/ui-modules.md)，覆盖最小内容、划分粒度、存放检索、形成验证、复用及更新。用户明确委托 Agent 决策定稿；[早期讨论](design/ui-modules-discussion.md) 保留为历史。设计定稿不表示已实现适配器或完成真实运行验证。
 
@@ -45,7 +45,7 @@ python3 tools/package_skill.py --output dist/qa-workflow-0.2.1.zip
 | [UI 模块规范 v1](design/ui-modules.md) | 最小契约、操作边界、存储、验证、复用、回执与更新 | 六项按用户授权决策定稿，待实施及真实验证 |
 | [用例编写与修订设计 v1](design/stages/test-case-authoring.md) | 业务场景、受控回归与完整主链路、操作步骤、评审反馈修订及完成依据 | 已定稿；评审不再单列必经环节，待实施及真实验证 |
 | [测试执行设计 v1](design/stages/test-execution.md) | 准备与数据、分工并发、业务判定、证据同步、异常恢复和交付 | 已按用户委托决策定稿，待实现及真实验证 |
-| [BUG 记录与提交](design/stages/bug-management.md) | 本地预提交、简洁图文描述、证据、API 提交／关闭及 URL 复验 | 用户要求及写作风格已记录，补充流程讨论中 |
+| [BUG 记录与提交设计 v1](design/stages/bug-management.md) | 本地预提交、简洁图文描述、差异分流、去重与授权、API 保存核验及 URL 复验衔接 | 用户已确认定稿，待实现与真实验证；详细复验方案在 3.7 讨论 |
 | [截图标注集成](design/integrations/screenshot-annotator.md) | 固定上游源包、原图与标注证据、内置方式及边界 | 0.1.0 来源基线已纳入 vendor，尚未接入发布包或重测 |
 | [Chrome DevTools 接入与隐式调用](design/integrations/chrome-devtools-onboarding.md) | 强推荐、默认 headless、仅明确要求才显式、缺失时自动帮助安装 | 用户要求已记录；官方参数已核对，安装与适配待实施 |
 | [Mind MCP 接入指引](design/integrations/asynctest-mind-onboarding.md) | 从 AsyncTest 首页进入 Mind、打开配置、复制连接信息 | 三张标注与模糊处理素材已备齐；未入发布包，连接未实测 |
