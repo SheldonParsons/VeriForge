@@ -1,57 +1,61 @@
-Create a beautifully typeset Chinese product-documentation infographic image for the GitHub README of VeriForge, an agent-assisted testing workflow Skill. Brand-new clean static IMAGE, not a browser screenshot. Use a large high-resolution landscape 4:3 canvas, approximately 2400 x 1800, opaque very light warm white background. Crisp readable simplified Chinese sans-serif typography. Premium restrained technical editorial design: deep navy text, teal primary accents, light mint panels, fine gray rules, generous spacing, simple monoline icons, no 3D, no neon, no gradients that reduce contrast. Needs to remain readable at 900 px display width, so use LARGE text and avoid long small captions.
+Design a NEW, high-end minimalist editorial workflow illustration for the README of a modern open-source software tool, VeriForge. This is a typography-led product-documentation figure, NOT a colorful infographic or corporate training slide.
 
-CRITICAL MEANING: requirements analysis is the unmistakable starting point and core. Never put page evidence/UI modules first. A single numbered main path reads TOP TO BOTTOM on the left/main 65% of the canvas. Six numbered cards joined only with short downward arrows. The first card is noticeably larger, strong teal emphasis and a small '核心' badge. Put separate unnumbered support panels on the right 30%, not in the main sequence. Supporting page evidence can happen at ANY stage. Avoid loop arrows crossing the graph, avoid one long thin horizontal flowchart.
+Canvas: opaque warm-white/off-white, high-resolution landscape 4:3. The final diagram must be readable at 900px wide. Use crisp elegant simplified Chinese sans serif, medium-weight headings and regular supporting text, meticulous alignment. Almost monochrome: near-black #202127, secondary text #6F717A, hairline gray #E0E1E6. One restrained indigo #635BFF accent ONLY for the first/core step and tiny structural details. Entirely FLAT, no gradients, shadows, textures, 3D or large colored surfaces.
 
-All visible text must be verbatim from this list, use natural line breaks, no added words:
+ABSOLUTE VISUAL RULES:
+- NO rounded cards or panels. NO colored boxes. NO giant numbers. NO pictograms, icons, clipart or illustrations. NO pills or badges. NO oversized branding.
+- Let typography, white space, fine lines and a precise editorial grid create the design.
+- Clean broad margins, sophisticated hierarchy, spacious yet not empty. All text is clear, no cramped captions.
+- Modest "VeriForge" wordmark at upper left. Below it the strong but not massive headline "从需求分析开始".
+- Two-column editorial layout. Main left column ~64%, right support column ~30%, separated by generous whitespace and one VERY subtle vertical hairline.
+- Main flow is six vertically ordered text groups. A fine straight vertical line on the far left connects small unobtrusive anchor dots; tiny downward chevrons on that line are optional. No other arrows. Each stage title has one short supporting line (first stage two lines).
+- The first stage "需求分析与澄清" is unequivocally first and primary, noticeably larger than the other stage titles, indigo text or a fine indigo side rule. Add tiny plain text "核心环节" above it, not a badge. All subsequent stage titles are dark neutral text.
+- The right column is unnumbered supporting information with plain typographic section headings, NOT steps. Page evidence and UI modules support ANY stage, and never appear as the start of the workflow.
+- Use sizes that remain readable at 900px: main stage headings around 40px on a 1440px-wide canvas, body around 26–28px. Text must fit naturally.
+- Do not turn the layout into six detached boxes. It should look like a carefully designed technical editorial page.
+
+Exact visible text, preserve all characters and product spellings, no additional copy:
+
 Header:
 "VeriForge"
-"从需求理解，到有依据的测试"
+"从需求分析开始"
 
-Main vertical sequence:
-01
+Main left column, reading down:
+"核心环节"
 "需求分析与澄清"
-badge "核心"
-"补齐历史背景 · 对齐业务规则"
-"澄清到足够编写可判定的用例"
+"补齐历史背景，对齐业务规则。"
+"澄清到足够编写可判定的用例。"
 
-02
 "场景与用例"
 "独立场景 · 明确步骤 · 可核对预期"
 
-03
 "测试执行"
-"按授权执行 · 核对结果 · 保存证据"
+"按授权执行，核对业务结果并保存证据。"
 
-04
 "BUG 记录与提交"
-small badge "发现问题时"
-"简洁复现 · 标注截图 · 提交后回读"
+"发现问题时：简洁复现、标注截图、提交后回读。"
 
-05
 "修复验证与回归"
-small badge "有修复时"
-"复现原问题 · 回归受影响链路"
+"有修复时：复现原问题，回归受影响链路。"
 
-06
 "最终知识沉淀"
-"正式上线且确认稳定后，再沉淀规则"
+"正式上线且确认稳定后，沉淀最终规则。"
 
-Right supporting column title:
-"贯穿流程的支撑能力"
-
-Right panel 1:
+Right support column, positioned beside the main flow with generous spacing:
+"贯穿流程"
 "历史业务与接口知识"
-"asynctest-kb · NexoFolio"
-"按需召回，保留来源与版本"
+"asynctest-kb / NexoFolio"
+"按需召回"
+"保留来源与版本"
 
-Right panel 2, larger:
 "页面取证与 UI 模块"
 "任何阶段都可补采"
-"以真实页面修订操作步骤"
-"沉淀已验证动作，供后续复用"
+"同步真实页面步骤"
+"复用已验证动作"
 
-Right panel 3 or lower support note:
-"持续积累，支持下一次需求"
+Small quiet note near bottom of support column:
+"持续积累"
 "最终知识回到历史知识库"
+"支持下一次需求分析"
 
-Connector semantics: short downward arrows between main cards establish clear order, right supporting panels are not additional stages and not the starting point. Optional subtle vertical rail alongside support column labeled only by the supplied title. Do not imply users must invent a BUG when none exists. Main card conditional badges provide that distinction. No extra branding, no confidential data, no company names, no watermarks. Ensure all text fits inside cards with safe padding. Beautiful composition with large legible Chinese text and a balanced two-column grid.
+No photographs, no decorative patterns, no watermarks, no company references. Prioritize quiet sophistication, strong readability and factual structure. Requirements analysis is the core starting point; defect stages are conditional, as stated in their subtitles. The style should feel like polished modern developer documentation, with restrained visual design rather than generic flowchart decoration.
