@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "tool": "screenshot-annotator",
+  "tool_version": "0.1.0",
+  "source": "02-fetcher-install.original.png",
+  "source_sha256": "bee7be9028c310fdb76c6c1e0b81272bd92b523c6c293038906d9ab9f0bb763c",
+  "output": "02-fetcher-install.annotated.png",
+  "output_sha256": "463a515fbcb631fae547b54b772489d4c5df4005295caca8ccd4b6fb82d8f2f9",
+  "image_size": {
+    "width": 1440,
+    "height": 900
+  },
+  "coordinate_space": {
+    "width": 1440,
+    "height": 900
+  },
+  "scale": {
+    "x": 1.0,
+    "y": 1.0
+  },
+  "font": "Arial Unicode.ttf",
+  "runtime": {
+    "python": "3.11.9",
+    "pillow": "12.3.0"
+  },
+  "annotations": [
+    {
+      "box_pixels": {
+        "x": 380.0,
+        "y": 584.0,
+        "width": 358.0,
+        "height": 42.0
+      },
+      "label_pixels": {
+        "x": 1120.0,
+        "y": 550.0,
+        "width": 155,
+        "height": 43
+      },
+      "text": "1 打开扩展管理页",
+      "location_source": "visual estimate on inspected full 1440x900 viewport screenshot"
+    },
+    {
+      "box_pixels": {
+        "x": 378.0,
+        "y": 649.0,
+        "width": 362.0,
+        "height": 83.0
+      },
+      "label_pixels": {
+        "x": 1120.0,
+        "y": 675.0,
+        "width": 253,
+        "height": 72
+      },
+      "text": "2 选择含 manifest.json 的文件夹",
+      "location_source": "visual estimate on inspected full 1440x900 viewport screenshot"
+    }
+  ],
+  "note": "Supplied annotations; not a test verdict. No timestamps or absolute paths by default."
+}

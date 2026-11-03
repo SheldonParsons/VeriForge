@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "coordinate_space": {
+    "width": 1440,
+    "height": 900
+  },
+  "font_size": 18,
+  "line_width": 2,
+  "annotations": [
+    {
+      "box": {
+        "x": 353,
+        "y": 384,
+        "width": 708,
+        "height": 40
+      },
+      "label": {
+        "x": 1115,
+        "y": 410
+      },
+      "text": "1 当前实例的 MCP 地址",
+      "max_text_width": 240,
+      "color": "#4263eb",
+      "arrow": true,
+      "location_source": "visual estimate on inspected full 1440x900 viewport screenshot"
+    },
+    {
+      "box": {
+        "x": 977,
+        "y": 478,
+        "width": 69,
+        "height": 24
+      },
+      "label": {
+        "x": 1115,
+        "y": 530
+      },
+      "text": "2 复制后由 Agent 适配客户端",
+      "max_text_width": 240,
+      "color": "#4263eb",
+      "arrow": true,
+      "location_source": "visual estimate on inspected full 1440x900 viewport screenshot"
+    },
+    {
+      "box": {
+        "x": 422,
+        "y": 626,
+        "width": 306,
+        "height": 26
+      },
+      "label": {
+        "x": 1115,
+        "y": 660
+      },
+      "text": "3 在客户端本地填写 Token",
+      "max_text_width": 240,
+      "color": "#7950b3",
+      "arrow": true,
+      "location_source": "visual estimate on inspected full 1440x900 viewport screenshot"
+    }
+  ]
+}

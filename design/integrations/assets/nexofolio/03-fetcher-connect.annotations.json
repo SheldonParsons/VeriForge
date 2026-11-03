@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "coordinate_space": {
+    "width": 1440,
+    "height": 900
+  },
+  "font_size": 18,
+  "line_width": 2,
+  "annotations": [
+    {
+      "box": {
+        "x": 797,
+        "y": 467,
+        "width": 233,
+        "height": 29
+      },
+      "label": {
+        "x": 1120,
+        "y": 440
+      },
+      "text": "1 填后端服务地址\n示例地址需要替换",
+      "max_text_width": 240,
+      "color": "#4263eb",
+      "arrow": true,
+      "location_source": "visual estimate on inspected full 1440x900 viewport screenshot"
+    },
+    {
+      "box": {
+        "x": 797,
+        "y": 509,
+        "width": 233,
+        "height": 32
+      },
+      "label": {
+        "x": 1120,
+        "y": 550
+      },
+      "text": "2 保存服务，再登录",
+      "max_text_width": 240,
+      "color": "#7950b3",
+      "arrow": true,
+      "location_source": "visual estimate on inspected full 1440x900 viewport screenshot"
+    }
+  ]
+}

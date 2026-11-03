@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "coordinate_space": {
+    "width": 1440,
+    "height": 900
+  },
+  "font_size": 18,
+  "line_width": 2,
+  "annotations": [
+    {
+      "box": {
+        "x": 796,
+        "y": 399,
+        "width": 234,
+        "height": 164
+      },
+      "label": {
+        "x": 1120,
+        "y": 420
+      },
+      "text": "1 查看新产生的请求",
+      "max_text_width": 240,
+      "color": "#4263eb",
+      "arrow": true,
+      "location_source": "visual estimate on inspected full 1440x900 viewport screenshot"
+    },
+    {
+      "box": {
+        "x": 378,
+        "y": 589,
+        "width": 361,
+        "height": 72
+      },
+      "label": {
+        "x": 1120,
+        "y": 640
+      },
+      "text": "2 确认上传，再回项目查看",
+      "max_text_width": 240,
+      "color": "#7950b3",
+      "arrow": true,
+      "location_source": "visual estimate on inspected full 1440x900 viewport screenshot"
+    }
+  ]
+}

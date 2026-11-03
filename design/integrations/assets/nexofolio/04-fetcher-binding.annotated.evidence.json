@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "tool": "screenshot-annotator",
+  "tool_version": "0.1.0",
+  "source": "04-fetcher-binding.original.png",
+  "source_sha256": "e30190b8fcbefe354e82684fd6e00f540286fd6626a9d637e83373758924b2cc",
+  "output": "04-fetcher-binding.annotated.png",
+  "output_sha256": "d0f695fa377198aa2c02234d92576f9a25430588317aeb6fb707c0ded4969e8a",
+  "image_size": {
+    "width": 1440,
+    "height": 900
+  },
+  "coordinate_space": {
+    "width": 1440,
+    "height": 900
+  },
+  "scale": {
+    "x": 1.0,
+    "y": 1.0
+  },
+  "font": "Arial Unicode.ttf",
+  "runtime": {
+    "python": "3.11.9",
+    "pillow": "12.3.0"
+  },
+  "annotations": [
+    {
+      "box_pixels": {
+        "x": 796.0,
+        "y": 303.0,
+        "width": 234.0,
+        "height": 59.0
+      },
+      "label_pixels": {
+        "x": 1120.0,
+        "y": 310.0,
+        "width": 155,
+        "height": 43
+      },
+      "text": "1 核对项目与环境",
+      "location_source": "visual estimate on inspected full 1440x900 viewport screenshot"
+    },
+    {
+      "box_pixels": {
+        "x": 378.0,
+        "y": 423.0,
+        "width": 361.0,
+        "height": 139.0
+      },
+      "label_pixels": {
+        "x": 1120.0,
+        "y": 570.0,
+        "width": 173,
+        "height": 72
+      },
+      "text": "2 按站点或路径绑定\n已有绑定先核对",
+      "location_source": "visual estimate on inspected full 1440x900 viewport screenshot"
+    }
+  ],
+  "note": "Supplied annotations; not a test verdict. No timestamps or absolute paths by default."
+}

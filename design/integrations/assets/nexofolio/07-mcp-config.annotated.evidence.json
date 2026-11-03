@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "tool": "screenshot-annotator",
+  "tool_version": "0.1.0",
+  "source": "07-mcp-config.original.png",
+  "source_sha256": "d634e5fac6276f94b420ea84129d958cfe2d0f4eecb0ed36e0a8ef3006af3add",
+  "output": "07-mcp-config.annotated.png",
+  "output_sha256": "36e33cc0e89cf9cd5661d48ac435a8ac0d8d5b667d454d670bebb5be28baef02",
+  "image_size": {
+    "width": 1440,
+    "height": 900
+  },
+  "coordinate_space": {
+    "width": 1440,
+    "height": 900
+  },
+  "scale": {
+    "x": 1.0,
+    "y": 1.0
+  },
+  "font": "Arial Unicode.ttf",
+  "runtime": {
+    "python": "3.11.9",
+    "pillow": "12.3.0"
+  },
+  "annotations": [
+    {
+      "box_pixels": {
+        "x": 353.0,
+        "y": 384.0,
+        "width": 708.0,
+        "height": 40.0
+      },
+      "label_pixels": {
+        "x": 1115.0,
+        "y": 410.0,
+        "width": 205,
+        "height": 43
+      },
+      "text": "1 当前实例的 MCP 地址",
+      "location_source": "visual estimate on inspected full 1440x900 viewport screenshot"
+    },
+    {
+      "box_pixels": {
+        "x": 977.0,
+        "y": 478.0,
+        "width": 69.0,
+        "height": 24.0
+      },
+      "label_pixels": {
+        "x": 1115.0,
+        "y": 530.0,
+        "width": 248,
+        "height": 43
+      },
+      "text": "2 复制后由 Agent 适配客户端",
+      "location_source": "visual estimate on inspected full 1440x900 viewport screenshot"
+    },
+    {
+      "box_pixels": {
+        "x": 422.0,
+        "y": 626.0,
+        "width": 306.0,
+        "height": 26.0
+      },
+      "label_pixels": {
+        "x": 1115.0,
+        "y": 660.0,
+        "width": 228,
+        "height": 43
+      },
+      "text": "3 在客户端本地填写 Token",
+      "location_source": "visual estimate on inspected full 1440x900 viewport screenshot"
+    }
+  ],
+  "note": "Supplied annotations; not a test verdict. No timestamps or absolute paths by default."
+}

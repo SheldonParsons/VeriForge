@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "coordinate_space": {
+    "width": 1440,
+    "height": 900
+  },
+  "font_size": 18,
+  "line_width": 2,
+  "annotations": [
+    {
+      "box": {
+        "x": 380,
+        "y": 584,
+        "width": 358,
+        "height": 42
+      },
+      "label": {
+        "x": 1120,
+        "y": 550
+      },
+      "text": "1 打开扩展管理页",
+      "max_text_width": 240,
+      "color": "#4263eb",
+      "arrow": true,
+      "location_source": "visual estimate on inspected full 1440x900 viewport screenshot"
+    },
+    {
+      "box": {
+        "x": 378,
+        "y": 649,
+        "width": 362,
+        "height": 83
+      },
+      "label": {
+        "x": 1120,
+        "y": 675
+      },
+      "text": "2 选择含 manifest.json 的文件夹",
+      "max_text_width": 240,
+      "color": "#7950b3",
+      "arrow": true,
+      "location_source": "visual estimate on inspected full 1440x900 viewport screenshot"
+    }
+  ]
+}
