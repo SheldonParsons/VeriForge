@@ -12,7 +12,7 @@ VeriForge 是面向 AI Agent 的测试工作流 Skill 项目。本仓库集中�
 
 协作先读 [AGENTS.md](AGENTS.md)、[当前交接](HANDOFF.md) 和 [推进计划](roadmap.md)。使用入口见 [Skill](skills/qa-workflow/SKILL.md) 与 [0.2.1 图文指引说明](implementation-v0.2.1.md)；基础能力与走读见 [0.2.0 记录](implementation-v0.2.md)。迁移范围、来源和历史包见 [迁移记录](docs/migration/2026-11-02.md)。
 
-第 3 步业务环节设计基线已齐备：需求分析、页面取证、UI 模块、用例编写与修订、测试执行、BUG 记录与提交、复验，以及 [3.8 最终知识沉淀](design/stages/knowledge-consolidation.md) 和 [3.9 收尾与复盘](design/stages/closeout-retrospective.md)。独立评审已并入编写与修订；第 4 步已完成 [工具与适配首轮核对](design/tool-adapters.md)，实际契约缺口仍需收口。设计内容仍待实施及完整验证；正式上线后再沉淀知识的时机已在 0.2.1 修正，旧包保留历史内容。
+第 3 步业务环节设计基线已齐备：需求分析、页面取证、UI 模块、用例编写与修订、测试执行、BUG 记录与提交、复验，以及 [3.8 最终知识沉淀](design/stages/knowledge-consolidation.md) 和 [3.9 收尾与复盘](design/stages/closeout-retrospective.md)。独立评审已并入编写与修订；第 4 步 [工具与适配约定](design/tool-adapters.md) 已完成来源及实施契约核对，下一步进入第一批实现。设计内容仍待实施及完整验证；正式上线后再沉淀知识的时机已在 0.2.1 修正，旧包保留历史内容。
 
 UI 模块的当前依据为 [规范 v1](design/ui-modules.md)，覆盖最小内容、划分粒度、存放检索、形成验证、复用及更新。用户明确委托 Agent 决策定稿；[早期讨论](design/ui-modules-discussion.md) 保留为历史。设计定稿不表示已实现适配器或完成真实运行验证。
 
@@ -49,7 +49,8 @@ python3 tools/package_skill.py --output dist/qa-workflow-0.2.1.zip
 | [BUG 复验设计 v1](design/stages/bug-retest.md) | URL 接入、原条件复验、必要回归、条件关闭、证据与用例状态接续 | 用户已确认定稿，待实现与真实验证 |
 | [最终知识沉淀设计 v1](design/stages/knowledge-consolidation.md) | 稳定业务主题、上线后入库、差异核对、版本历史、后续变更和共享 | 已按用户同意方案记录，待实现与真实验证 |
 | [收尾与复盘设计 v1](design/stages/closeout-retrospective.md) | 轻量交付、独立状态、遗留事项、恢复与交接、归档保全和有据改进 | 按用户同意的四项方向收口，待实现与真实验证 |
-| [工具与适配范围](design/tool-adapters.md) | 来源、复用／改造／新建、最小契约、首版边界和实施顺序 | 首轮核对完成，写入与宿主契约缺口待收口；未接入运行器 |
+| [工具与适配范围](design/tool-adapters.md) | 来源、复用／改造／新建、最小契约、首版边界和实施顺序 | 设计约定已收口，待实现及实例／宿主验收 |
+| [知识库确认](design/contracts/knowledge-confirmation.md)／[禅道 API](design/contracts/zentao-api.md)／[宿主派发](design/contracts/host-dispatch.md) | 预览与恢复、实例协议和附件、动作计划与原生 MCP 调用 | 源码／历史回执／官方资料已核对；没有新增真实写入验证 |
 | [本轮工具核对证据](verification/tool-inventory-20261103.json) | 当前工具清单、Mind 版本、平台文档、源码摘要、官方候选与未验证项 | 2026-11-03 只读资料核对，不是完整工具或业务验收 |
 | [截图标注集成](design/integrations/screenshot-annotator.md) | 固定上游源包、原图与标注证据、内置方式及边界 | 0.1.0 来源基线已纳入 vendor，尚未接入发布包或重测 |
 | [Chrome DevTools 接入与隐式调用](design/integrations/chrome-devtools-onboarding.md) | 强推荐、默认 headless、仅明确要求才显式、缺失时自动帮助安装 | 用户要求已记录；官方参数已核对，安装与适配待实施 |
@@ -79,7 +80,7 @@ python3 tools/package_skill.py --output dist/qa-workflow-0.2.1.zip
 
 ## 当前工作与下一步
 
-已交付基础源码、测试、打包工具和本机验证摘要，第 3 步业务设计已齐备。第 4 步首轮已区分可复用、需改造及需新建能力，并取得知识库写入 schema；下一步收口确认恢复、禅道实例协议与认证、宿主 MCP 调用桥契约，再按清单实施和验证。当前可用能力仍以实现说明为准。
+已交付基础源码、测试、打包工具和本机验证摘要，第 3—4 步的业务设计及实施约定已齐备。下一步将阶段指引、模板、接入素材和状态／产物映射加入 Skill，并核对旧资料兼容；再按清单接入外部能力及验证。当前可用能力仍为实现说明中的 0.2.1，不把设计定稿称为适配器已交付。
 
 ## 目录维护约定
 
