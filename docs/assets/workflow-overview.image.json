@@ -1,0 +1,21 @@
+{
+  "kind": "generated_workflow_infographic",
+  "generator": "built-in image_gen",
+  "image": "workflow-overview.png",
+  "prompt": "workflow-overview.prompt.txt",
+  "sha256": "48d002d8e52c719530cfb1b08d70ce5157b0d28a42dd6cfc5d7e1f64112f041e",
+  "width": 1448,
+  "height": 1086,
+  "bytes": 1678713,
+  "reading_order": "Main path top-to-bottom, beginning with requirements analysis. Supporting capabilities are a separate unnumbered column.",
+  "visual_review": "Chinese labels, main-path order, conditional defect stages, and supporting capabilities reviewed from the generated image.",
+  "purpose": "Public README illustration; not business test evidence.",
+  "readme_width_preview": {
+    "method": "Local HTML preview in headless Chrome",
+    "display_width": 900,
+    "display_height": 675,
+    "image_loaded": true,
+    "horizontal_overflow": false,
+    "visually_reviewed": true
+  }
+}

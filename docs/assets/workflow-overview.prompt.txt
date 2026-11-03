@@ -1,0 +1,57 @@
+Create a beautifully typeset Chinese product-documentation infographic image for the GitHub README of VeriForge, an agent-assisted testing workflow Skill. Brand-new clean static IMAGE, not a browser screenshot. Use a large high-resolution landscape 4:3 canvas, approximately 2400 x 1800, opaque very light warm white background. Crisp readable simplified Chinese sans-serif typography. Premium restrained technical editorial design: deep navy text, teal primary accents, light mint panels, fine gray rules, generous spacing, simple monoline icons, no 3D, no neon, no gradients that reduce contrast. Needs to remain readable at 900 px display width, so use LARGE text and avoid long small captions.
+
+CRITICAL MEANING: requirements analysis is the unmistakable starting point and core. Never put page evidence/UI modules first. A single numbered main path reads TOP TO BOTTOM on the left/main 65% of the canvas. Six numbered cards joined only with short downward arrows. The first card is noticeably larger, strong teal emphasis and a small '核心' badge. Put separate unnumbered support panels on the right 30%, not in the main sequence. Supporting page evidence can happen at ANY stage. Avoid loop arrows crossing the graph, avoid one long thin horizontal flowchart.
+
+All visible text must be verbatim from this list, use natural line breaks, no added words:
+Header:
+"VeriForge"
+"从需求理解，到有依据的测试"
+
+Main vertical sequence:
+01
+"需求分析与澄清"
+badge "核心"
+"补齐历史背景 · 对齐业务规则"
+"澄清到足够编写可判定的用例"
+
+02
+"场景与用例"
+"独立场景 · 明确步骤 · 可核对预期"
+
+03
+"测试执行"
+"按授权执行 · 核对结果 · 保存证据"
+
+04
+"BUG 记录与提交"
+small badge "发现问题时"
+"简洁复现 · 标注截图 · 提交后回读"
+
+05
+"修复验证与回归"
+small badge "有修复时"
+"复现原问题 · 回归受影响链路"
+
+06
+"最终知识沉淀"
+"正式上线且确认稳定后，再沉淀规则"
+
+Right supporting column title:
+"贯穿流程的支撑能力"
+
+Right panel 1:
+"历史业务与接口知识"
+"asynctest-kb · NexoFolio"
+"按需召回，保留来源与版本"
+
+Right panel 2, larger:
+"页面取证与 UI 模块"
+"任何阶段都可补采"
+"以真实页面修订操作步骤"
+"沉淀已验证动作，供后续复用"
+
+Right panel 3 or lower support note:
+"持续积累，支持下一次需求"
+"最终知识回到历史知识库"
+
+Connector semantics: short downward arrows between main cards establish clear order, right supporting panels are not additional stages and not the starting point. Optional subtle vertical rail alongside support column labeled only by the supplied title. Do not imply users must invent a BUG when none exists. Main card conditional badges provide that distinction. No extra branding, no confidential data, no company names, no watermarks. Ensure all text fits inside cards with safe padding. Beautiful composition with large legible Chinese text and a balanced two-column grid.
