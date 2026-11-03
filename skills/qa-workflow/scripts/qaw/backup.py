@@ -29,7 +29,7 @@ def create(root, q):
         destination = Path(q["destination"]).expanduser().resolve()
         require(not destination.is_relative_to(store.root), "INVALID_DESTINATION", "备份应放在工作空间之外。")
         require(destination.parent.is_dir() and not destination.exists(), "INVALID_DESTINATION", "目标父目录须存在，且不得覆盖已有备份。")
-        refs = set(store.records()) | set(store.refs(".qa/history/*/*.json"))
+        refs = set(store.records()) | set(store.refs(".qa/history/*/*.json")) | set(store.refs(".qa/history-v2/*/*.json"))
         assets, excluded, expected_assets = set(), [], {}
         for ref in sorted(refs):
             record = store.read(ref)
@@ -109,7 +109,7 @@ def verify(archive_path, max_bytes=2 * 1024 ** 3):
             ref = str(relative(entry["path"]))
             require(ref not in seen, "UNSAFE_ARCHIVE", "清单存在重复路径。")
             seen.add(ref)
-            require(ref == "workspace.json" or ref.startswith(("projects/", "shared/", "artifacts/", ".qa/history/", ".qa/resources/"))
+            require(ref == "workspace.json" or ref.startswith(("projects/", "shared/", "artifacts/", ".qa/history/", ".qa/history-v2/", ".qa/resources/"))
                     or ref == ".qa/recovery.json", "UNSAFE_ARCHIVE", "备份包含非受管路径。", path=ref)
             name = "data/" + ref
             require(name in names, "INTEGRITY", "清单中的文件缺失。", path=ref)

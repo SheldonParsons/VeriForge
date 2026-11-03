@@ -1,11 +1,11 @@
 ---
 name: qa-workflow
-description: 引导 Web 测试人员接入项目、说明本测试 Skill 的用途与能力、继续或切换需求、查找资料并处理阻塞，同时管理多项目、共享规则、进度、协作记录和本地备份。本版提供自然语言引导与基础管理，实际业务测试沿用项目规则和获授权工具。
+description: 引导 Web 测试人员澄清需求、取证页面、编写和修订用例、按授权执行与记录、处理 BUG 和复验、上线后沉淀知识及收尾交接；同时保存多项目状态、产物版本和遗留事项。实际页面及远端操作使用用户已授权的可用工具。
 metadata:
-  version: "0.2.1"
+  version: "0.3.0"
 ---
 
-# 测试工作台基础管理
+# VeriForge 测试工作流
 
 用户自然表达目标即可。由 Agent 识别任务、组织步骤、核对依据并保存记录，通常用一小段日常语言回应；内部字段、目录和正式阶段名称不作为用户必须提供的信息。支持单会话与已授权的多会话分工，优先沿用已有项目规则。
 
@@ -25,13 +25,13 @@ metadata:
 
 ## 本版能力与入口
 
-通过 [命令行入口](scripts/qa.py) 管理本地 JSON 状态、历史修订、共享引用、任务与资源记录、产物快照、归档索引及备份恢复。运行只需 Python 3.11+ 标准库；已验证宿主以实际发布记录为准。
+本版提供全部业务阶段的按需指引、模板、接入图文和本地记录工具。通过 [命令行入口](scripts/qa.py) 管理项目状态、独立准备／上线／同步事实、交付物快照、遗留事项、历史修订、任务与资源及备份恢复。运行只需 Python 3.11+ 标准库；已验证宿主以实际发布记录为准。
 
-当前版本事实以 [能力说明](assets/capabilities.json) 为准，也可执行 `python3 scripts/qa.py --capabilities` 只读查询，不需要工作空间。完整测试流程是目标业务流程，不能把仍在设计的自动化描述为现有能力。
+当前版本事实以 [能力说明](assets/capabilities.json) 为准，也可执行 `python3 scripts/qa.py --capabilities` 只读查询，不需要工作空间。阶段指引已提供，但 CLI 不会自动执行浏览器或远端业务；旧资料兼容与新记录的使用见[记录与升级](references/workflow-records.md)。
 
 工具接收一个 JSON 请求，返回一个简洁 JSON 回执，参数与错误处理见 [调用约定](references/cli.md)。[最小接入示例](assets/examples/requests.json) 仅用于虚构演示。修改已有记录必须使用刚读取的 `expected_revision`，不能猜测或循环重试。
 
-本版不直接调用浏览器、Mind、知识库或缺陷平台，不创建宿主会话、发送消息或定时监控。具体测试规范及远端适配尚待接入；继续使用项目已有的已确认约定和工具，不把本地登记当作业务执行成功。
+已有工具可用且任务获授权时，Agent 按阶段指引通过宿主原生工具推进，保存实际证据。本版 CLI 不代为调用浏览器、Mind、知识库或缺陷平台，也不创建会话、发送消息或定时监控；通用自动执行／提交适配器仍未交付，不把本地登记当作业务执行成功。
 
 ## 按任务加载说明
 
@@ -44,6 +44,16 @@ metadata:
 | 恢复、分工、结果、未知操作、交接 | [状态与协作](references/operations.md) |
 | 留存、归档、历史、备份、锁和版本故障 | [信息保全](references/preservation.md) |
 | 具体参数与错误 | [调用约定](references/cli.md) 的相关部分 |
+| 独立事实、正式产物、遗留问题或旧版升级 | [记录与升级](references/workflow-records.md) |
+| 需求内容、概念、历史规则或验收缺口 | [需求澄清](references/stages/analysis.md) |
+| 页面取证、新功能未部署或步骤变化 | [页面取证](references/stages/page-evidence.md)；需要复用时读 [UI 模块](references/ui-modules.md) |
+| 写用例、增补、评审反馈 | [用例编写](references/stages/test-cases.md) |
+| 执行用例、结果标记、异常恢复 | [测试执行](references/stages/execution.md) |
+| 发现问题、写 BUG 或提交 | [BUG 处理](references/stages/defects.md) |
+| BUG 链接复验或条件关闭 | [复验](references/stages/retest.md) |
+| 上线后整理最终规则、维护历史知识 | [知识沉淀](references/stages/knowledge.md) |
+| 阶段结束、遗留事项、交接与复盘 | [收尾](references/stages/closeout.md) |
+| Mind、浏览器、接口知识或提单工具接入 | 按需读 [Mind](references/integrations/asynctest-mind.md)、[Chrome](references/integrations/chrome-devtools.md)、[NexoFolio](references/integrations/nexofolio.md)、[禅道](references/integrations/zentao.md) |
 
 只读当前阶段需要的共享条目；`shared.resolve` 默认返回摘要，读正文时指定单个条目。不反复读取实现源码或整个历史证据目录。
 
@@ -58,6 +68,9 @@ metadata:
 - 交接前核对旧执行已停止、未知操作及占用资源；不能只因超时抢占或重派发。
 - 重要结论、产物和结果及时保存，摘要保留来源，历史不自动删除。Skill 版本和数据结构版本分别管理。
 - 凭据仅按项目本机方式引用，不写入共享内容或状态正文。保存敏感文件快照须符合用户范围并标注敏感性；备份不上传到任何服务。
+- 用例按独立场景编号步骤；评审直接使用编写产物，反馈归修订，不增设必经评审关卡。页面可随时补采，业务预期不能随页面异常改写。
+- 默认专用 headless Chrome DevTools，显式模式须用户明确要求。BUG 先落本地，UI 问题有真实标注图，严重程度／优先级默认 3／3；提交和关闭按具体授权。
+- 本期完成、正式上线并确认短期稳定后强烈建议正式入库；阶段收尾保留未修 BUG、待上线、待同步与恢复事项，不把它们一起标成完成。
 
 ## 交付说明
 

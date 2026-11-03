@@ -1,13 +1,43 @@
 {
   "schema": 1,
   "skill": "qa-workflow",
-  "version": "0.2.1",
-  "purpose": "帮助 Web 测试人员组织多项目资料、工作进度和交接，按用户当前目标逐步开展工作。",
+  "version": "0.3.0",
+  "purpose": "引导需求到复验和知识沉淀的测试工作，保存可交接的多项目状态、证据与产物。",
   "guidance": {
-    "included": ["用途与能力说明", "渐进接入与配置", "自然表达", "继续与切换", "历史查阅", "缺失、冲突和阻塞处理", "AsyncTest 下载与知识库 MCP 图文指引"],
-    "review_method": "作者按发布指令走读，并在虚构资料上验证相关本地操作",
+    "included": [
+      "用途与能力说明",
+      "渐进接入与配置",
+      "自然表达",
+      "继续与切换",
+      "历史查阅",
+      "缺失、冲突和阻塞处理",
+      "AsyncTest 下载与知识库 MCP 图文指引",
+      "需求澄清与历史依赖",
+      "各阶段页面取证",
+      "业务场景及受控回归用例",
+      "执行与缺陷判定",
+      "BUG 复验与关闭边界",
+      "上线后知识与阶段收尾",
+      "Mind 与 NexoFolio 图文接入"
+    ],
+    "review_method": "包内阶段规则与模板人工核对；本地行为测试、旧版兼容及解包验证，真实独立 Agent 验收另记",
     "independent_agent_verified": false,
-    "visual_guides": ["assets/guides/asynctest-download.png", "assets/guides/asynctest-kb.png"],
+    "visual_guides": [
+      "assets/guides/asynctest-download.png",
+      "assets/guides/asynctest-kb.png",
+      "assets/guides/mind/01-open-mind.annotated.png",
+      "assets/guides/mind/02-open-mcp-settings.annotated.png",
+      "assets/guides/mind/03-copy-mcp-config.annotated.png",
+      "assets/guides/nexofolio/01-fetcher-download.annotated.png",
+      "assets/guides/nexofolio/02-fetcher-install.annotated.png",
+      "assets/guides/nexofolio/03-fetcher-connect.annotated.png",
+      "assets/guides/nexofolio/04-fetcher-binding.annotated.png",
+      "assets/guides/nexofolio/05-fetcher-capture.annotated.png",
+      "assets/guides/nexofolio/06-mcp-credential.annotated.png",
+      "assets/guides/nexofolio/07-mcp-config.annotated.png",
+      "assets/guides/nexofolio/08-mcp-menu.guide.png",
+      "assets/guides/nexofolio/09-mcp-settings.guide.png"
+    ],
     "image_display_validation": "附带导航示意素材；Codex 新会话的最终回复区显示尚待真实验收，其他客户端未验证"
   },
   "implemented_local": [
@@ -16,20 +46,43 @@
     "阶段、任务、执行结果与同步状态分别保存",
     "任务暂停、明确恢复、交接和合作式资源占用记录",
     "未知写操作登记、回查与重复派发拦截",
-    "资料快照、历史版本、归档索引与本地备份恢复"
+    "资料快照、历史版本、归档索引与本地备份恢复",
+    "独立准备、评审、上线、稳定、知识和恢复事实",
+    "正式交付物与不可变快照映射",
+    "遗留事项、下一步和关闭依据",
+    "格式 1 只读兼容与显式格式 2 根标记升级",
+    "扩展执行状态、分项统计及新增记录备份恢复"
   ],
-  "target_test_workflow": ["需求分析与澄清", "页面取证", "用例编写与评审", "测试执行", "BUG 处理", "修复验证", "收尾交付"],
+  "target_test_workflow": [
+    "需求分析与澄清",
+    "按需页面取证",
+    "用例编写与修订（含评审反馈）",
+    "测试执行",
+    "BUG 记录与提交",
+    "修复验证",
+    "上线后最终知识沉淀",
+    "收尾与复盘"
+  ],
   "knowledge_timing": "过程持续本地记录；本期需求完成、正式上线且用户确认短期稳定后，强烈建议整理最终文本并按授权沉淀到 asynctest-kb。",
   "not_implemented_as_builtin": [
-    "真实浏览器、Mind、知识库或缺陷平台的直接调用适配",
+    "真实浏览器、Mind、知识库或禅道的直接调用适配",
+    "通用动作计划生成器、UI 模块执行器、HTTP 执行器及截图标注调用入口",
     "宿主会话自动创建、派发、强制停止或持续监听",
-    "全部测试环节的完整业务规范与自动执行链路",
-    "完整旧目录自动迁移、异地或加密备份、跨格式自动升级"
+    "完整旧目录自动迁移、异地或加密备份及任意格式转换"
   ],
   "conditions": [
     "当前提供的是引导指令和本地管理，实际业务操作须有项目规则、可用工具和任务范围依据。",
     "记录与文件校验不代替业务结果验证。",
     "协作标签和占用记录不构成身份认证或外部工具强制互斥。",
     "备份仅覆盖受管记录及已登记快照，实际覆盖和恢复点以回执为准。"
-  ]
+  ],
+  "data_formats": {
+    "read": [
+      1,
+      2
+    ],
+    "new_workspace": 2,
+    "legacy_upgrade": "explicit workspace.upgrade after old execution and resources reconciled",
+    "downgrade_writes_supported": false
+  }
 }

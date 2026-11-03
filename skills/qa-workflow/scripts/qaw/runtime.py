@@ -7,13 +7,17 @@ from pathlib import Path
 import tempfile
 import uuid
 
-from .storage import Error, Store, atomic_bytes, file_digest, now, require, slug, sync_directory, text
+from .storage import Error, Store, atomic_bytes, file_digest, now, receipt, require, slug, sync_directory, text
+from .workflow import WorkflowRecords
 
 
-READS = {"list", "record.read", "record.history", "resume", "shared.resolve", "run.summary", "lock.inspect"}
+READS = {"list", "record.read", "record.history", "resume", "shared.resolve", "run.summary", "lock.inspect",
+         "workflow.read", "deliverable.list", "followup.list"}
 EXECUTION = {"resource.acquire", "operation.prepare", "operation.dispatch", "case.record", "task.resume", "task.transfer"}
 STAGES = {"analysis", "page_evidence", "cases", "review", "execution", "defects", "retest", "knowledge", "closeout"}
 STATES = {"not_started", "in_progress", "ready_for_review", "completed", "blocked", "skipped"}
+LEGACY_CASE_STATES = ("passed", "failed", "blocked", "not_run")
+EXTRA_CASE_STATES = ("running", "needs_verification", "skipped", "not_applicable")
 
 
 def project_ref(project):
@@ -24,11 +28,7 @@ def base(project, requirement):
     return f"projects/{slug(project)}/requirements/{slug(requirement)}"
 
 
-def receipt(ref, record, **extra):
-    return {"path": ref, "revision": record["revision"], "sha256": record["sha256"], **extra}
-
-
-class Runtime:
+class Runtime(WorkflowRecords):
     def __init__(self, root):
         self.store = Store(root)
 
@@ -105,8 +105,27 @@ class Runtime:
 
     def do_workspace_init(self, q):
         data = {"kind": "workspace", "id": uuid.uuid4().hex, "title": text(q.get("title"), "title"),
-                "maintainer": text(q.get("actor"), "actor", 120), "runtime_schema": 1}
-        return receipt("workspace.json", self.store.write("workspace.json", data, 0))
+                "maintainer": text(q.get("actor"), "actor", 120), "runtime_schema": 2}
+        return receipt("workspace.json", self.store.write("workspace.json", data, 0, schema=2))
+
+    def do_workspace_upgrade(self, q):
+        self.maintainer(q)
+        record = self.store.read("workspace.json")
+        require(q.get("expected_revision") == record["revision"] and type(q.get("expected_revision")) is int,
+                "REVISION_CONFLICT", "工作空间已变化，请重新读取。")
+        if record["schema"] == 2 and record["data"].get("runtime_schema") == 2:
+            return receipt("workspace.json", record, already_current=True, external_action_executed=False)
+        require(q.get("source_execution_stopped") is True, "HANDOFF_REQUIRED", "先核对旧运行器和执行者已停止。")
+        active = [ref for ref in self.store.refs("projects/*/requirements/*/tasks/*.json")
+                  if self.store.read(ref)["data"]["status"] == "active"]
+        pending = [ref for ref in self.store.refs("projects/*/requirements/*/operations/*.json")
+                   if self.store.read(ref)["data"]["status"] == "dispatched"]
+        held = [ref for ref in self.store.refs(".qa/resources/*.json") if self.store.read(ref)["data"].get("holder")]
+        require(not active and not pending and not held, "UPGRADE_BUSY", "升级前先处理旧任务、未知操作和资源。",
+                active_tasks=active, unconfirmed_operations=pending, held_resources=held)
+        record["data"].update(runtime_schema=2, upgrade_basis=text(q.get("note"), "note"), upgraded_at=now())
+        return receipt("workspace.json", self.store.write("workspace.json", record["data"], record["revision"], schema=2),
+                       external_action_executed=False, legacy_runtime_write_supported=False)
 
     def do_project_create(self, q):
         self.maintainer(q)
@@ -435,11 +454,13 @@ class Runtime:
         d = task["data"]
         require(case in d["cases"] and d["run"], "CASE_SCOPE", "场景不属于本任务的执行范围。")
         status = q.get("status")
-        require(status in {"passed", "failed", "blocked", "not_run"}, "INVALID_STATE", "用例结果不支持。")
+        require(status in LEGACY_CASE_STATES + EXTRA_CASE_STATES, "INVALID_STATE", "用例结果不支持。")
+        if status in EXTRA_CASE_STATES:
+            self.store.require_v2()
         evidence = q.get("evidence", [])
         require(isinstance(evidence, list), "INVALID_INPUT", "evidence 须为快照标识列表。")
-        if status in {"passed", "failed"}:
-            require(evidence, "EVIDENCE_REQUIRED", "通过或失败须有已保存的操作结果证据。")
+        if status in {"passed", "failed", "skipped", "not_applicable"}:
+            require(evidence, "EVIDENCE_REQUIRED", "该用例状态须有已保存的执行或范围依据。")
         for item in evidence:
             self.artifact(prefix, item)
         for item in d.get("inputs", []):
@@ -452,7 +473,7 @@ class Runtime:
                 "status": status, "evidence": evidence, "bugs": sorted(set(bugs)), "sync": "pending",
                 "inputs": d.get("inputs", []), "context": d.get("context", {}),
                 "basis": text(q.get("basis"), "basis"), "recorded_at": now()}
-        return receipt(ref, self.store.write(ref, data, q["expected_revision"]))
+        return receipt(ref, self.store.write(ref, data, q["expected_revision"], schema=2 if status in EXTRA_CASE_STATES else None))
 
     def do_case_sync(self, q):
         prefix, _, req = self.req(q)
@@ -475,11 +496,13 @@ class Runtime:
             task = self.store.read(ref)["data"]
             if task["run"] == run:
                 cases.update(task["cases"])
-        counts = dict.fromkeys(["passed", "failed", "blocked", "not_run"], 0)
+        counts = dict.fromkeys(LEGACY_CASE_STATES, 0)
         bugs, unsynced = set(), 0
         for case in sorted(cases):
             r = self.store.read(prefix + f"/runs/{run}/{case}.json", missing=True)
-            counts[r["data"]["status"] if r else "not_run"] += 1
+            status = r["data"]["status"] if r else "not_run"
+            require(status in LEGACY_CASE_STATES + EXTRA_CASE_STATES, "INVALID_STATE", "运行记录含未知结果，请核对格式。")
+            counts[status] = counts.get(status, 0) + 1
             if r:
                 bugs.update(r["data"]["bugs"])
                 unsynced += r["data"]["sync"] != "confirmed"
@@ -526,6 +549,10 @@ class Runtime:
                 "held_resources": leases[:limit], "held_resource_count": len(leases), "warnings": warnings[:limit],
                 "warning_count": len(warnings), "details_truncated": max(len(pending), len(leases), len(warnings)) > limit,
                 "restored_review_required": bool(recovery and not recovery["data"]["reviewed"]),
+                "workspace_runtime_schema": self.store.read("workspace.json")["data"].get("runtime_schema", 1),
+                "workflow": self.do_workflow_read(q),
+                "deliverables": self.do_deliverable_list({**q, "offset": q.get("deliverable_offset", 0)}),
+                "followups": self.do_followup_list({**q, "offset": q.get("followup_offset", 0)}),
                 "note": "仅恢复本地记录。继续业务前核对环境、版本、身份及实际单据；本工具没有执行页面或远端调用。"}
 
     def do_list(self, q):
@@ -564,6 +591,20 @@ class Runtime:
             lines.append(f"- {task['task']}：{task['status']}，负责人 {task['owner']}，批次 {task['run'] or '无'}。")
         for run in data["runs"]:
             lines.append(f"- 批次 {run['run']}：{run['recorded_results']}；独立 BUG {run['distinct_bug_count']}；待同步 {run['pending_sync']}。")
+        lines.extend(["", "## 独立事实与交付", ""])
+        for name, fact in data["workflow"]["facts"].items():
+            suffix = "…（完整依据见 workflow.read include_details）" if fact.get("basis_truncated") else ""
+            lines.append(f"- {name}：{fact['status']}；依据：{fact['basis']}{suffix}")
+        for warning in data["workflow"]["warnings"]:
+            lines.append(f"- 待核对：{warning['note']}")
+        for item in data["deliverables"]["items"]:
+            lines.append(f"- {item['title']}（{item['role']}／{item['status']}）：快照 {item['artifact']['artifact']}，记录 {item['path']}。")
+        lines.append(f"- 本页交付物 {len(data['deliverables']['items'])}/{data['deliverables']['total']}；其余用 deliverable.list 分页读取。")
+        lines.extend(["", "## 遗留事项", ""])
+        for item in data["followups"]["items"]:
+            suffix = f"…（完整内容见 {item['path']}）" if item.get("next_truncated") else ""
+            lines.append(f"- {item['title']}：{item['status']}；下一步：{item['next']}{suffix}")
+        lines.append(f"- 本页未完事项 {len(data['followups']['items'])}/{data['followups']['total']}；全部状态统计：{data['followups']['counts']}。")
         lines.extend(["", "## 待核实与下一步", "", f"- 未知操作：{data['unconfirmed_operation_count']}。",
                       f"- 占用资源：{data['held_resource_count']}。", f"- 产物核对警告：{data['warning_count']}。",
                       f"- 本页列出 {len(data['tasks'])}/{data['task_count']} 项任务；其余通过 resume 分页读取。",

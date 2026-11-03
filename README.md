@@ -2,7 +2,7 @@
 
 让 AI 理解需求，让测试有据可循。
 
-更新时间：2026-11-03。当前实现版本为图文指引版 0.2.1，已加入 AsyncTest 下载及知识库 MCP 标注示意图；新会话图片展示待真实验收。基础运行器与此前走读保留独立验证记录，尚未全局安装或上传平台。
+更新时间：2026-11-03。当前实现版本为 0.3.0，已交付业务阶段指引、模板、十四张接入图，以及独立事实、交付物和遗留事项的本地记录。35 项本地行为测试及独立解包检查通过；真实工具适配、完整流程和宿主验收仍待完成，尚未全局安装或上传平台。
 
 VeriForge 是面向 AI Agent 的测试工作流 Skill 项目。本仓库集中维护设计、源码、测试和验证资料，后续仅维护 `main`。2026-11-02 从 GreeSalesCloud 的 `skill-development/` 独立迁移，并保留该目录的 21 次 Git 提交历史。
 
@@ -10,9 +10,9 @@ VeriForge 是面向 AI Agent 的测试工作流 Skill 项目。本仓库集中�
 
 ## 从这里开始
 
-协作先读 [AGENTS.md](AGENTS.md)、[当前交接](HANDOFF.md) 和 [推进计划](roadmap.md)。使用入口见 [Skill](skills/qa-workflow/SKILL.md) 与 [0.2.1 图文指引说明](implementation-v0.2.1.md)；基础能力与走读见 [0.2.0 记录](implementation-v0.2.md)。迁移范围、来源和历史包见 [迁移记录](docs/migration/2026-11-02.md)。
+协作先读 [AGENTS.md](AGENTS.md)、[当前交接](HANDOFF.md) 和 [推进计划](roadmap.md)。使用入口见 [Skill](skills/qa-workflow/SKILL.md) 与 [0.3.0 实现说明](implementation-v0.3.md)；旧版本保留 [0.2.1](implementation-v0.2.1.md) 和 [0.2.0](implementation-v0.2.md) 的独立记录。迁移范围、来源和历史包见 [迁移记录](docs/migration/2026-11-02.md)。
 
-第 3 步业务环节设计基线已齐备：需求分析、页面取证、UI 模块、用例编写与修订、测试执行、BUG 记录与提交、复验，以及 [3.8 最终知识沉淀](design/stages/knowledge-consolidation.md) 和 [3.9 收尾与复盘](design/stages/closeout-retrospective.md)。独立评审已并入编写与修订；第 4 步 [工具与适配约定](design/tool-adapters.md) 已完成来源及实施契约核对，下一步进入第一批实现。设计内容仍待实施及完整验证；正式上线后再沉淀知识的时机已在 0.2.1 修正，旧包保留历史内容。
+第 3 步业务设计与第 4 步 [工具约定](design/tool-adapters.md) 已齐备，第 5 步第一批实现已完成。业务阶段规则已加入包内，独立评审并入编写与修订；实际外部适配和完整验证按后续批次推进。[知识沉淀](design/stages/knowledge-consolidation.md) 与 [收尾](design/stages/closeout-retrospective.md) 的独立状态已有本地记录支持。
 
 UI 模块的当前依据为 [规范 v1](design/ui-modules.md)，覆盖最小内容、划分粒度、存放检索、形成验证、复用及更新。用户明确委托 Agent 决策定稿；[早期讨论](design/ui-modules-discussion.md) 保留为历史。设计定稿不表示已实现适配器或完成真实运行验证。
 
@@ -23,14 +23,15 @@ UI 模块的当前依据为 [规范 v1](design/ui-modules.md)，覆盖最小内�
 ```sh
 python3 -m unittest discover -s tests -v
 python3 skills/qa-workflow/scripts/qa.py --capabilities
-python3 tools/package_skill.py --output dist/qa-workflow-0.2.1.zip
+python3 tools/package_skill.py --output dist/qa-workflow-0.3.0.zip
 ```
 
-打包目标须不存在；运行器不依赖旧仓库或第三方 Python 包。这里的检查不操作业务系统。历史 0.1.0、0.2.0、0.2.1 ZIP 原样保存在 [历史包目录](releases/archives/)，新构建放入被忽略的 `dist/`。当前未执行全局安装或公司平台发布。
+打包目标须不存在；已有产物时选择新路径。运行器不依赖旧仓库或第三方 Python 包，这里的检查不操作业务系统。历史 ZIP 原样保存在 [历史包目录](releases/archives/)，新构建放入被忽略的 `dist/`。旧格式读取不自动升级，使用新增能力前按 [升级说明](skills/qa-workflow/references/workflow-records.md) 处理；未全局安装或公司平台发布。
 
 | 文档 | 内容 | 状态 |
 | --- | --- | --- |
-| [当前图文指引](implementation-v0.2.1.md) | 下载、MCP 信息获取、素材来源及展示测试安排 | 0.2.1 已打包，真实新会话渲染待验证 |
+| [当前 0.3.0 实现](implementation-v0.3.md) | 阶段指引、模板、图文、独立事实／产物／遗留事项和旧格式兼容 | 本地与独立解包检查通过，远端适配及真实验收待后续批次 |
+| [此前图文指引](implementation-v0.2.1.md) | 下载、MCP 信息获取、素材来源及展示测试安排 | 保留 0.2.1 历史依据 |
 | [此前引导实现](implementation-v0.2.md) | 引导写入、暂停修正、验证方法及限制 | 保留 0.2.0 验证依据 |
 | [基础版历史记录](implementation-v0.1.md) | 原基础实现及当时验证范围 | 保留 0.1.0 依据 |
 | [推进计划](roadmap.md) | 八步路线、当前进度、产物与完成依据 | 当前执行规划；具体设计仍逐项讨论 |
@@ -54,8 +55,8 @@ python3 tools/package_skill.py --output dist/qa-workflow-0.2.1.zip
 | [本轮工具核对证据](verification/tool-inventory-20261103.json) | 当前工具清单、Mind 版本、平台文档、源码摘要、官方候选与未验证项 | 2026-11-03 只读资料核对，不是完整工具或业务验收 |
 | [截图标注集成](design/integrations/screenshot-annotator.md) | 固定上游源包、原图与标注证据、内置方式及边界 | 0.1.0 来源基线已纳入 vendor，尚未接入发布包或重测 |
 | [Chrome DevTools 接入与隐式调用](design/integrations/chrome-devtools-onboarding.md) | 强推荐、默认 headless、仅明确要求才显式、缺失时自动帮助安装 | 用户要求已记录；官方参数已核对，安装与适配待实施 |
-| [Mind MCP 接入指引](design/integrations/asynctest-mind-onboarding.md) | 从 AsyncTest 首页进入 Mind、打开配置、复制连接信息 | 三张标注与模糊处理素材已备齐；未入发布包，连接未实测 |
-| [NexoFolio 使用、Fetcher 与 MCP 指引](design/integrations/nexofolio-onboarding.md) | 内外网入口、平台阅读、扩展安装采集、专用凭证与 Agent 接入 | 九张图已备齐并核对来源；未安装采集或创建凭证，尚未入 0.2.1 包 |
+| [Mind MCP 接入指引](design/integrations/asynctest-mind-onboarding.md) | 从 AsyncTest 首页进入 Mind、打开配置、复制连接信息 | 三张图已随 0.3.0 打包，实际接入验收待后续 |
+| [NexoFolio 使用、Fetcher 与 MCP 指引](design/integrations/nexofolio-onboarding.md) | 内外网入口、平台阅读、扩展安装采集、专用凭证与 Agent 接入 | 九张图已随 0.3.0 打包，安装采集及新会话展示未验收 |
 | [asynctest-kb 接入引导](design/integrations/asynctest-kb-onboarding.md) | 从 AsyncTest 获取信息，由当前 Agent 适配客户端 | 已有截图与下载菜单依据，完整接入未实测 |
 | [多项目隔离与任务状态](design/project-scope.md) | 多项目、状态归属和跨项目需求 | 原则已确认；基础归属已实现 |
 | [共享内容与项目差异](design/shared-resources.md) | 复用、适用范围、版本与差异 | 固定引用与配置差异已实现 |
@@ -80,7 +81,7 @@ python3 tools/package_skill.py --output dist/qa-workflow-0.2.1.zip
 
 ## 当前工作与下一步
 
-已交付基础源码、测试、打包工具和本机验证摘要，第 3—4 步的业务设计及实施约定已齐备。下一步将阶段指引、模板、接入素材和状态／产物映射加入 Skill，并核对旧资料兼容；再按清单接入外部能力及验证。当前可用能力仍为实现说明中的 0.2.1，不把设计定稿称为适配器已交付。
+0.3.0 已完成第一批阶段指引、图文和本地记录实现，旧格式兼容及恢复有合成验证依据。下一批推进 Mind／知识库映射、证据和标注集成，再接 UI、接口及禅道；通用外部执行器仍未交付。源码、包和验证入口见当前实现说明。
 
 ## 目录维护约定
 

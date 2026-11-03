@@ -1,4 +1,4 @@
 interface:
-  display_name: "测试工作台引导与协作"
-  short_description: "用日常语言接入测试项目、继续任务和查找资料，并保存进度、协作记录及备份"
+  display_name: "VeriForge 测试工作流"
+  short_description: "引导需求澄清、用例、执行与复验，保存多项目进度、证据、遗留事项和交接"
   default_prompt: "使用 $qa-workflow 帮我看看当前测试项目，先从已有资料和我现在要做的事开始。"

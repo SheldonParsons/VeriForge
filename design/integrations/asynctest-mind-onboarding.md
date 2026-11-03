@@ -54,3 +54,5 @@
 - 最终回复图片是否可见、新会话是否能独立找到素材以及其他宿主支持情况，仍按 [真实会话图片验收计划](../../verification/image-display-plan.md) 分别验证。
 
 来源摘要与隐私处理范围见 [素材清单](assets/asynctest-mind/manifest.json)，生成提示词和制作记录见 [记录](../../verification/mind-guide-20261102.json)。
+
+2026-11-03 后续打包：三张图已按原输出字节加入 0.3.0，并提供 [包内接入指引](../../skills/qa-workflow/references/integrations/asynctest-mind.md)。解包路径、摘要和尺寸已检查；本篇保留制作阶段来源，实际客户端接入及新会话图片展示仍待验证。

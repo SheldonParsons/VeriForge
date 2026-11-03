@@ -44,6 +44,10 @@ def file_digest(path):
     return sha.hexdigest()
 
 
+def receipt(ref, record, **extra):
+    return {"path": ref, "revision": record["revision"], "sha256": record["sha256"], **extra}
+
+
 def slug(value):
     require(isinstance(value, str) and re.fullmatch(r"[a-z0-9][a-z0-9_-]{0,63}", value),
             "INVALID_ID", "标识须为 1—64 位小写字母、数字、下划线或连字符。")
@@ -132,7 +136,7 @@ class Store:
                 lock.rmdir()
 
     def checked(self, record, ref):
-        require(isinstance(record, dict) and record.get("schema") == 1,
+        require(isinstance(record, dict) and type(record.get("schema")) is int and record["schema"] in {1, 2},
                 "UNSUPPORTED_SCHEMA", "数据格式版本不支持；保留原文件，先核对升级方式。", path=ref)
         body = {k: v for k, v in record.items() if k != "sha256"}
         require(record.get("sha256") == digest(body), "INTEGRITY", "记录摘要不符，可能被手工修改或损坏。", path=ref)
@@ -151,28 +155,35 @@ class Store:
             raise Error("INTEGRITY", "记录无法解析；请保留原文件并核对历史或备份。", path=ref)
         return self.checked(record, ref)
 
-    def history_path(self, ref, revision, sha):
+    def history_path(self, ref, revision, sha, schema=1):
         key = hashlib.sha256(ref.encode()).hexdigest()
-        return f".qa/history/{key}/{revision:08d}-{sha}.json"
+        directory = "history-v2" if schema == 2 else "history"
+        return f".qa/{directory}/{key}/{revision:08d}-{sha}.json"
 
     def version(self, ref, revision):
         current = self.read(ref)
         require(isinstance(revision, int) and 1 <= revision <= current["revision"],
                 "NOT_FOUND", "引用版本不存在。", path=ref, revision=revision)
         while current["revision"] > revision:
-            current = self.read(self.history_path(ref, current["revision"] - 1, current["previous"]))
+            current = self.read(self.history_path(ref, current["revision"] - 1, current["previous"],
+                                                  current.get("previous_schema", 1)))
         return current
 
-    def write(self, ref, data, expected):
+    def write(self, ref, data, expected, schema=None):
         current = self.read(ref, missing=True)
         actual = current["revision"] if current else 0
         require(isinstance(expected, int) and not isinstance(expected, bool) and expected == actual,
                 "REVISION_CONFLICT", "记录已变化，请重新读取再修改。", path=ref, expected=expected, actual=actual)
-        record = {"schema": 1, "revision": actual + 1, "updated_at": now(),
+        schema = schema if schema is not None else (current["schema"] if current else 1)
+        require(type(schema) is int and schema in {1, 2} and (not current or schema >= current["schema"]),
+                "UNSUPPORTED_SCHEMA", "不支持该格式写入或降级。", path=ref)
+        record = {"schema": schema, "revision": actual + 1, "updated_at": now(),
                   "previous": current["sha256"] if current else None, "data": data}
+        if current:
+            record["previous_schema"] = current["schema"]
         record["sha256"] = digest(record)
         raw = encoded(record)
-        atomic_bytes(self.path(self.history_path(ref, record["revision"], record["sha256"])), raw, replace=False)
+        atomic_bytes(self.path(self.history_path(ref, record["revision"], record["sha256"], schema)), raw, replace=False)
         # A crash before this replace leaves the previous valid current record intact.
         atomic_bytes(self.path(ref), raw)
         return record
@@ -185,6 +196,8 @@ class Store:
         patterns = ["workspace.json", "shared/*.json", "projects/*/project.json",
                     "projects/*/requirements/*/state.json", "projects/*/requirements/*/tasks/*.json",
                     "projects/*/requirements/*/operations/*.json", "projects/*/requirements/*/artifacts/*.json",
+                    "projects/*/requirements/*/workflow.json", "projects/*/requirements/*/deliverables/*.json",
+                    "projects/*/requirements/*/followups/*.json",
                     "projects/*/requirements/*/runs/*/*.json", ".qa/resources/*.json", ".qa/recovery.json"]
         return sorted({ref for pattern in patterns for ref in self.refs(pattern)})
 
@@ -214,7 +227,14 @@ class Store:
 
     def ready(self, execution=False):
         require(not self.path(".restore-incomplete").exists(), "RESTORE_INCOMPLETE", "恢复尚未完成，请保留目录检查。")
-        self.read("workspace.json")
+        workspace = self.read("workspace.json")
+        version = workspace["data"].get("runtime_schema", 1)
+        require(type(version) is int and version in {1, 2}, "UNSUPPORTED_SCHEMA", "工作空间格式版本不支持。")
         recovery = self.read(".qa/recovery.json", missing=True)
         require(not execution or not recovery or recovery["data"]["reviewed"], "RECOVERY_REVIEW",
                 "这是恢复副本。先核对旧执行者、未知操作和资源，再明确启用执行记录。")
+
+    def require_v2(self):
+        workspace = self.read("workspace.json")
+        require(workspace["schema"] == 2 and workspace["data"].get("runtime_schema") == 2,
+                "UPGRADE_REQUIRED", "新记录需要格式 2；先核对旧执行已停止，再使用 workspace.upgrade。")

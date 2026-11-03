@@ -24,6 +24,7 @@ python3 <skill>/scripts/qa.py --workspace <workspace> --request /path/to/request
 | --- | --- | --- |
 | capabilities | 无 | 只读本包版本与能力说明 |
 | workspace.init | title, actor | 创建空间与维护者，已有空间不覆盖 |
+| workspace.upgrade | actor, expected_revision, source_execution_stopped:true, note | 旧空间升级格式 2；活跃任务、未知操作或资源占用时拒绝，旧修订保留 |
 | project.create | project, title, actor, systems?, coordinator? | systems 如 `{"client":"客户端"}` |
 | requirement.create | project, requirement, title, actor, systems?, coordinator?, next? | 系统引用如 `[{"project":"orders","system":"client"}]` |
 | list | project?, requirement?, query?, include_archived?, offset?, limit? | 元数据分页 |
@@ -36,7 +37,7 @@ python3 <skill>/scripts/qa.py --workspace <workspace> --request /path/to/request
 | requirement.archive | actor, project, requirement, archived, reason, expected_revision | 标记归档或重新开启 |
 | summary.write | actor, project, requirement | 协调者生成摘要，不覆盖人工 README |
 
-阶段：analysis/page_evidence/cases/review/execution/defects/retest/knowledge/closeout。状态：not_started/in_progress/ready_for_review/completed/blocked/skipped。completed、blocked、skipped 须说明 basis。
+阶段：analysis/page_evidence/cases/review/execution/defects/retest/knowledge/closeout。review 保留旧资料及团队真实评审记录，不是新版必经关卡。状态：not_started/in_progress/ready_for_review/completed/blocked/skipped。completed、blocked、skipped 须说明 basis。
 
 ```json
 {"action":"state.update","project":"orders","requirement":"12345","actor":"lead","expected_revision":1,"stages":{"analysis":{"status":"completed","basis":"已取得用户确认，依据见已保存结论"},"cases":{"status":"in_progress"}},"next":"补齐审批场景"}
@@ -74,7 +75,7 @@ python3 <skill>/scripts/qa.py --workspace <workspace> --request /path/to/request
 | action | 参数 | 说明 |
 | --- | --- | --- |
 | artifact.import | actor, project, requirement, artifact, source_path, purpose, sensitive?, task? | 保存授权文件快照；已有标识不覆盖 |
-| case.record | actor, project, requirement, task, case, status, basis, evidence?, bugs?, expected_revision | passed/failed/blocked/not_run；通过、失败须证据；首次 expected_revision=0 |
+| case.record | actor, project, requirement, task, case, status, basis, evidence?, bugs?, expected_revision | passed/failed/blocked/not_run；格式 2 另支持 running/needs_verification/skipped/not_applicable。通过、失败、跳过、不适用须证据；首次 expected_revision=0 |
 | case.sync | actor, project, requirement, task, case, receipt, expected_revision | 任务负责人或协调者登记实际回执，receipt 是快照标识 |
 | run.summary | project, requirement, run | 用例与去重 BUG 分开统计 |
 | backup.create | actor, destination, include_sensitive?, allow_partial? | 本地 ZIP，目标父目录存在且文件不存在，位于工作空间外 |
@@ -83,6 +84,21 @@ python3 <skill>/scripts/qa.py --workspace <workspace> --request /path/to/request
 | restore.activate | actor, source_execution_stopped:true, note, expected_revision | 在恢复目录调用，修订对应 `.qa/recovery.json` |
 
 case.record 首次为 sync:pending。实际写回并回读 Mind 后保存回执，再 case.sync；不能以本地标记代替远端写入。
+
+## 独立事实、交付物和遗留事项
+
+以下写入需格式 2，仅由需求协调者维护，归档后须先明确重开；所有新建／更新使用 expected_revision（首次 0）。完整状态与例子见[记录与升级](workflow-records.md)。
+
+| action | 主要参数 | 说明 |
+| --- | --- | --- |
+| workflow.record | project, requirement, actor, facts, expected_revision | 每项事实为 status/basis/evidence；只合并传入键，不自动更新阶段或发请求 |
+| workflow.read | project, requirement, include_details? | 默认简洁摘要及证据数量；完整依据可显式展开。无记录返回 revision:0，不写文件 |
+| deliverable.set | project, requirement, actor, deliverable, role, title, artifact, basis, expected_revision, status?, external_ref? | 固定已登记快照，status 为 draft/ready/superseded；外部引用不证明远端验证 |
+| deliverable.list | project, requirement, role?, offset?, limit? | 交付物分页 |
+| followup.record | project, requirement, actor, followup, title, status, basis, expected_revision, next?, evidence?, owner_ref? | open/waiting 要 next；done/cancelled 要证据；不通知责任人 |
+| followup.list | project, requirement, include_completed?, offset?, limit? | 默认未完事项，返回全部状态数量 |
+
+resume 追加 workflow、deliverables、followups；后两者用独立 deliverable_offset／followup_offset 翻页。新记录和历史纳入备份，旧版运行器会拒绝格式 2 空间；不要手改根标记降级。
 
 ## 错误和边界
 

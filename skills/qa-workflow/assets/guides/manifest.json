@@ -1,8 +1,8 @@
 {
   "schema": 1,
   "received_at": "2026-10-31",
-  "kind": "annotated_navigation_illustrations",
-  "method": "image_gen edits of user-provided screenshots; not pixel-preserving original evidence",
+  "kind": "navigation_guides_with_per_image_provenance",
+  "method": "see each guide kind; no original personal screenshots bundled",
   "source_originals_bundled": false,
   "source_originals_retained_privately": true,
   "guides": [
@@ -17,7 +17,8 @@
       "source_width": 3452,
       "source_height": 1586,
       "observed_download_version": "3.4.6",
-      "browser_menu_verified": true
+      "browser_menu_verified": true,
+      "kind": "generated_navigation_illustration; not pixel-preserving original evidence"
     },
     {
       "id": "asynctest-kb",
@@ -31,12 +32,125 @@
       "source_height": 1660,
       "source_app_version": "not shown",
       "credential_list_covered": true,
-      "credential_creation_tested": false
+      "credential_creation_tested": false,
+      "kind": "generated_navigation_illustration; not pixel-preserving original evidence"
+    },
+    {
+      "id": "mind-01-open-mind",
+      "file": "mind/01-open-mind.annotated.png",
+      "width": 1752,
+      "height": 898,
+      "sha256": "0356edab561e61d0c7313749983d732b08b944aeefd3321b3e1dda64ae1eed39",
+      "kind": "generated_privacy_edited_navigation_illustration",
+      "source_sha256": "e0ba4319e33c864abc102621fd68a96e166ba969bef5b748a7a49a15a1c8d13d",
+      "privacy_review": "previously visually checked; unchanged bytes copied"
+    },
+    {
+      "id": "mind-02-open-mcp-settings",
+      "file": "mind/02-open-mcp-settings.annotated.png",
+      "width": 1752,
+      "height": 898,
+      "sha256": "4f0df41641a2064826d485c9218322156f6cfd1e55e3ebc9c4af54fdc8ef6cbf",
+      "kind": "generated_privacy_edited_navigation_illustration",
+      "source_sha256": "3e11043279348ca69271e936ebbd249e528fdd077f1066c97c023ea0d12a8095",
+      "privacy_review": "previously visually checked; unchanged bytes copied"
+    },
+    {
+      "id": "mind-03-copy-mcp-config",
+      "file": "mind/03-copy-mcp-config.annotated.png",
+      "width": 1752,
+      "height": 898,
+      "sha256": "1d13e2b6f6119ee2e15b93cd6b042fd8a869f8a5aaa68437630321d067b38149",
+      "kind": "generated_privacy_edited_navigation_illustration",
+      "source_sha256": "ad385f540ca30a49596b47c7ab0615168423af07d9f580713668aa9339538d59",
+      "privacy_review": "previously visually checked; unchanged bytes copied"
+    },
+    {
+      "id": "nexofolio-01-fetcher-download",
+      "file": "nexofolio/01-fetcher-download.annotated.png",
+      "width": 1440,
+      "height": 900,
+      "sha256": "3e27d5c5c7c287f4dc02faad0526e2631888e9ab0a7ecb56b8fcd0fd26801939",
+      "kind": "deterministic annotation of public docs; embedded app panels are demo data",
+      "source_sha256": "e0ad1ffa30253085149485ac40ad1464307f91ef76f76d2483238065d1ea8036"
+    },
+    {
+      "id": "nexofolio-02-fetcher-install",
+      "file": "nexofolio/02-fetcher-install.annotated.png",
+      "width": 1440,
+      "height": 900,
+      "sha256": "463a515fbcb631fae547b54b772489d4c5df4005295caca8ccd4b6fb82d8f2f9",
+      "kind": "deterministic annotation of public docs; embedded app panels are demo data",
+      "source_sha256": "bee7be9028c310fdb76c6c1e0b81272bd92b523c6c293038906d9ab9f0bb763c"
+    },
+    {
+      "id": "nexofolio-03-fetcher-connect",
+      "file": "nexofolio/03-fetcher-connect.annotated.png",
+      "width": 1440,
+      "height": 900,
+      "sha256": "25a7e3d47285eb54e67fc35086b32b99b522069e42b681a71100abe8016e3157",
+      "kind": "deterministic annotation of public docs; embedded app panels are demo data",
+      "source_sha256": "e675eb3c55c07cb3c3a39126772fcf400068b8574a9d89a448fd7d2b80804834"
+    },
+    {
+      "id": "nexofolio-04-fetcher-binding",
+      "file": "nexofolio/04-fetcher-binding.annotated.png",
+      "width": 1440,
+      "height": 900,
+      "sha256": "d0f695fa377198aa2c02234d92576f9a25430588317aeb6fb707c0ded4969e8a",
+      "kind": "deterministic annotation of public docs; embedded app panels are demo data",
+      "source_sha256": "e30190b8fcbefe354e82684fd6e00f540286fd6626a9d637e83373758924b2cc"
+    },
+    {
+      "id": "nexofolio-05-fetcher-capture",
+      "file": "nexofolio/05-fetcher-capture.annotated.png",
+      "width": 1440,
+      "height": 900,
+      "sha256": "9fb5193efd0b96e37e344b3df956540bd93e8dc5e9d38fc4a1e64e5ddb50c297",
+      "kind": "deterministic annotation of public docs; embedded app panels are demo data",
+      "source_sha256": "d3581c0ef67033c02d421a592471e13ed56f29f040fdd09d0323814348f4ae7b"
+    },
+    {
+      "id": "nexofolio-06-mcp-credential",
+      "file": "nexofolio/06-mcp-credential.annotated.png",
+      "width": 1440,
+      "height": 900,
+      "sha256": "8a1c7d4d0f961773ec59665ec374287b8b3060d7cea3fea18698c62337473f36",
+      "kind": "deterministic annotation of public docs; embedded app panels are demo data",
+      "source_sha256": "9a6c2982928e332967ab55037c7fc920a3cf0476f5ae16e5a02214f735eca13e"
+    },
+    {
+      "id": "nexofolio-07-mcp-config",
+      "file": "nexofolio/07-mcp-config.annotated.png",
+      "width": 1440,
+      "height": 900,
+      "sha256": "36e33cc0e89cf9cd5661d48ac435a8ac0d8d5b667d454d670bebb5be28baef02",
+      "kind": "deterministic annotation of public docs; embedded app panels are demo data",
+      "source_sha256": "d634e5fac6276f94b420ea84129d958cfe2d0f4eecb0ed36e0a8ef3006af3add"
+    },
+    {
+      "id": "nexofolio-08-mcp-menu",
+      "file": "nexofolio/08-mcp-menu.guide.png",
+      "width": 1781,
+      "height": 883,
+      "sha256": "0f33b266b37fbeaf0ae8db36beae5ec2857b17824e86d98dd3155d2f3b158128",
+      "kind": "built-in imagegen privacy masks and navigation annotations",
+      "source_sha256": "d8ac256387cbfa727d33b7b0072f9f8d14fb4f80ada016f132e0b65adf20e313"
+    },
+    {
+      "id": "nexofolio-09-mcp-settings",
+      "file": "nexofolio/09-mcp-settings.guide.png",
+      "width": 1776,
+      "height": 886,
+      "sha256": "1cab0ea8f955dee34d2cd13a8ffdb88766e6084d11837911191be7f3bd46ec1d",
+      "kind": "built-in imagegen privacy masks and navigation annotations",
+      "source_sha256": "6fd4d0a50c1b5794554f585681d974a6244114a983100705c27c4a1c960385e3"
     }
   ],
   "notes": [
     "文字步骤可独立使用，图片只作定位辅助。",
     "真实连接信息从当前页面复制，不从示例图拼接。",
     "Codex 新会话回复区展示待测试，不能推断其他客户端不支持。"
-  ]
+  ],
+  "updated_at": "2026-11-03"
 }

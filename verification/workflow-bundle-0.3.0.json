@@ -1,0 +1,71 @@
+{
+  "schema": 1,
+  "version": "0.3.0",
+  "archive_sha256": "4babb4b9c053d12c456ff0d75161b162ac21522e09fd6137b26d6eafc1e5d220",
+  "archive_bytes": 8250333,
+  "package_files": 52,
+  "local_links_checked": 68,
+  "guide_hashes_and_dimensions_checked": 14,
+  "synthetic_cli_calls": [
+    {
+      "action": "capabilities",
+      "ok": true
+    },
+    {
+      "action": "workspace.init",
+      "ok": true
+    },
+    {
+      "action": "project.create",
+      "ok": true
+    },
+    {
+      "action": "requirement.create",
+      "ok": true
+    },
+    {
+      "action": "artifact.import",
+      "ok": true
+    },
+    {
+      "action": "workflow.record",
+      "ok": true
+    },
+    {
+      "action": "workflow.record",
+      "ok": false
+    },
+    {
+      "action": "deliverable.set",
+      "ok": true
+    },
+    {
+      "action": "followup.record",
+      "ok": true
+    },
+    {
+      "action": "resume",
+      "ok": true
+    },
+    {
+      "action": "summary.write",
+      "ok": true
+    },
+    {
+      "action": "backup.create",
+      "ok": true
+    },
+    {
+      "action": "backup.restore",
+      "ok": true
+    },
+    {
+      "action": "resume",
+      "ok": true
+    }
+  ],
+  "standalone_package_passed": true,
+  "external_business_calls": 0,
+  "independent_agent_verified": false,
+  "native_host_image_display_verified": false
+}
