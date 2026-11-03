@@ -1,0 +1,328 @@
+{
+  "schema": 1,
+  "date": "2026-11-03",
+  "timezone": "Asia/Shanghai",
+  "scope": "Stage 4 source and capability audit only",
+  "based_on_veriforge_commit": "4f3177f192494e80f162d535efaad98ef3fbfee5",
+  "performed": {
+    "local_source_inspection": true,
+    "host_tool_metadata_inspection": true,
+    "mind_capabilities_read": true,
+    "kb_platform_docs_read": true,
+    "official_document_lookup": true,
+    "browser_calls": false,
+    "business_http_requests": false,
+    "business_mind_read_or_write": false,
+    "project_knowledge_read_or_write": false,
+    "installation": false,
+    "configuration_changes": false,
+    "runtime_tests": false,
+    "package_update": false,
+    "configured_mcp_initialize_and_tools_list": true
+  },
+  "local_core": {
+    "version": "0.2.1",
+    "runtime": "Python >=3.11 standard library",
+    "case_results": [
+      "passed",
+      "failed",
+      "blocked",
+      "not_run"
+    ],
+    "external_dispatch": false,
+    "paths": [
+      "skills/qa-workflow/assets/capabilities.json",
+      "skills/qa-workflow/scripts/qaw/runtime.py",
+      "tools/package_skill.py"
+    ]
+  },
+  "mind": {
+    "evidence": "live capability response plus host tool declarations",
+    "server": "asynctest-mind",
+    "version": "0.8.0",
+    "capability_revision": 16,
+    "protocol_revision": 2,
+    "tools": [
+      "mind_apply_node_operations",
+      "mind_convert_amind_to_xmind",
+      "mind_convert_xmind_to_amind",
+      "mind_create_document",
+      "mind_create_nodes",
+      "mind_end_agent_session",
+      "mind_get_control_status",
+      "mind_get_diagnostics",
+      "mind_get_document_outline",
+      "mind_get_mcp_capabilities",
+      "mind_get_operation_status",
+      "mind_get_subtree",
+      "mind_import_file_subtree",
+      "mind_list_windows",
+      "mind_manage_windows",
+      "mind_read_file",
+      "mind_request_control_restore",
+      "mind_save_as_document",
+      "mind_save_document",
+      "mind_search_nodes"
+    ],
+    "includes_disk_conversion": true,
+    "business_validation": false,
+    "session_cleanup": {
+      "status": "idle",
+      "active_session_count": 0,
+      "active_execution_count": 0
+    },
+    "local_source_inspection": {
+      "repo": "AsyncTest-front-dev",
+      "path": "electron/mcp/mindTransactionService.node.js",
+      "server_definition_commit": "caec5c87b57035acb44b7312de06315c9ac5a8a2",
+      "marker_operations": [
+        "set_markers",
+        "add_marker",
+        "remove_marker"
+      ],
+      "installed_source_equality_verified": false
+    }
+  },
+  "kb": {
+    "evidence": "platform documentation and tool declarations; no business project access",
+    "trace": "MCP-A007836F",
+    "status": "completed",
+    "complete": true,
+    "tools": [
+      "add_knowledge",
+      "delete_knowledge",
+      "edit_knowledge",
+      "get_knowledge_overview",
+      "list_knowledge_changes",
+      "read_knowledge",
+      "search_knowledge",
+      "search_vibe_platform_docs"
+    ],
+    "docs": [
+      {
+        "label": "Vibe 知识库常见问题",
+        "source_ref": {
+          "schema": "knowledge_source_ref.v2",
+          "ref": "sr_32bbe261e3a5041712eaf366bc433784"
+        }
+      },
+      {
+        "label": "确认卡、候选选择和取消",
+        "source_ref": {
+          "schema": "knowledge_source_ref.v2",
+          "ref": "sr_58b1912dc267ba0420836b8201bd26d4"
+        }
+      },
+      {
+        "label": "重复、并发、过期与原子写入",
+        "source_ref": {
+          "schema": "knowledge_source_ref.v2",
+          "ref": "sr_588871753b9f7b7388d18a44c2fce9a8"
+        }
+      }
+    ],
+    "preview_confirmation_required": true,
+    "opaque_write_schema_in_host_declaration": true,
+    "full_write_schema_and_confirmation_transport_verified": false,
+    "write_input_schema_verified": true,
+    "write_schema_source": "configured MCP tools/list, protocol 2025-11-25",
+    "input_schema_artifact": "verification/asynctest-kb-input-schemas-20261103.json",
+    "input_schema_artifact_sha256": "f86f8d4aafdc101ebf1dcbdff97341cc1acecc12247a029560a7be9fc1095f02",
+    "confirmation_roundtrip_tested": false
+  },
+  "chrome": {
+    "evidence": "host declarations and sanitized local configuration facts; browser not started",
+    "visible_tools": [
+      "click",
+      "close_page",
+      "drag",
+      "emulate",
+      "evaluate_script",
+      "fill",
+      "fill_form",
+      "get_console_message",
+      "get_css_styles",
+      "get_network_request",
+      "handle_dialog",
+      "hover",
+      "lighthouse_audit",
+      "list_console_messages",
+      "list_network_requests",
+      "list_pages",
+      "navigate_page",
+      "new_page",
+      "performance_analyze_insight",
+      "performance_start_trace",
+      "performance_stop_trace",
+      "press_key",
+      "resize_page",
+      "screencast_start",
+      "screencast_stop",
+      "select_page",
+      "take_heapsnapshot",
+      "take_screenshot",
+      "take_snapshot",
+      "type_text",
+      "upload_file",
+      "wait_for"
+    ],
+    "existing_visible_configuration_preserved": true,
+    "headless_configuration": {
+      "enabled": true,
+      "explicit_headless": true,
+      "explicit_profile_argument": true
+    },
+    "runtime_mode_verified": false,
+    "installed_server_version_verified": false,
+    "official_reference": {
+      "package_version_on_main": "1.12.0",
+      "node_engines_on_main": "^20.19.0 || ^22.12.0 || >=23",
+      "package_url": "https://raw.githubusercontent.com/ChromeDevTools/chrome-devtools-mcp/main/package.json",
+      "configuration_url": "https://github.com/ChromeDevTools/chrome-devtools-mcp/blob/main/docs/configuration.md"
+    },
+    "reference_is_not_a_tested_pin": true
+  },
+  "nexofolio": {
+    "evidence": "host tool declarations only",
+    "tools": [
+      "browse_directory",
+      "inspect_knowledge_coverage",
+      "list_project_environments",
+      "list_projects",
+      "read_field_values",
+      "read_interface",
+      "read_request_material",
+      "read_response_material",
+      "read_source_evidence",
+      "search_interfaces",
+      "trace_dependencies"
+    ],
+    "role": "optional API knowledge; not a business HTTP executor",
+    "business_validation": false
+  },
+  "legacy_ui": {
+    "repo": "GreeSalesCloud",
+    "head_at_inspection": "a43cc2b1f5227acb5c96c15e10a8e02a5aa77198",
+    "execute_source_commit": "57bfc8504b6faf6f7481bdf3683c63413447eeed",
+    "modules": [
+      {
+        "id": "salescloud.admin.consultation.accept-listed-child",
+        "version": "0.1.0",
+        "kind": "flow",
+        "effect": null,
+        "adapter": "chrome-devtools"
+      },
+      {
+        "id": "salescloud.client.consultation.approve-internal",
+        "version": "0.1.0",
+        "kind": "flow",
+        "effect": null,
+        "adapter": "chrome-devtools"
+      },
+      {
+        "id": "salescloud.client.consultation.prepare-nonstandard",
+        "version": "0.1.0",
+        "kind": "flow",
+        "effect": null,
+        "adapter": "chrome-devtools"
+      },
+      {
+        "id": "salescloud.client.consultation.query-and-read-child",
+        "version": "0.1.0",
+        "kind": "flow",
+        "effect": "read",
+        "adapter": "chrome-devtools"
+      },
+      {
+        "id": "salescloud.client.consultation.read-child-detail",
+        "version": "0.1.1",
+        "kind": "flow",
+        "effect": "read",
+        "adapter": "chrome-devtools"
+      }
+    ],
+    "source_hashes": [
+      {
+        "source": "ui-automation/runtime/mcp.mjs",
+        "sha256": "325f08446751017ee810faaa4339871713b4a18b2f8da6260550d32f213005bc"
+      },
+      {
+        "source": "ui-automation/runtime/execute.mjs",
+        "sha256": "fad58c5ac4b8f9a343364b6ec4ba776e111ea7dc6b007a9c2f9ea164a8b967ee"
+      },
+      {
+        "source": "ui-automation/runtime/receipt.mjs",
+        "sha256": "d0ae6c808ae3a7ba034ccad7978e3ce1d7ac8e46484f9884a799846c62e8b62d"
+      },
+      {
+        "source": "ui-automation/tools/run.mjs",
+        "sha256": "fc2e594fba732e297d63b7df0f6b6ac170df1296c4f7f886c8c94189e54142ce"
+      },
+      {
+        "source": "ui-automation/tools/catalog.mjs",
+        "sha256": "18b06a5db6cd986cf4dca2fb1433fa02cc6f251c2707e398c8cc9d2a52d50fde"
+      },
+      {
+        "source": "ui-automation/tools/stage-upload.mjs",
+        "sha256": "7b4bccecbe3abbb1ec54564a3d113630b18a2b4216cf93f795e6fca64bfaa858"
+      },
+      {
+        "source": "ui-automation/platforms/zentao/shared/bugs/submission-handoff.md",
+        "sha256": "1770ce009e50a6be11cb699bb68be22c046093504c8afa0761d53ba8b862415c"
+      }
+    ],
+    "direct_portable": false,
+    "limitations": [
+      "only two read capabilities routed",
+      "Codex-specific STDIO connection configuration",
+      "module success and case verdict need separation",
+      "project paths and business modules must remain external"
+    ],
+    "license_file_found_in_inspected_tree": false
+  },
+  "zentao": {
+    "evidence": "historical handoff and official search excerpts; no current instance request",
+    "handoff_commit": "2cf29d0737a104ecc4224cd21a4529c63b968fb3",
+    "implementation_delivered_in_legacy_path": false,
+    "create_upload_evidence": "same-session REST files upload and matching uid bound to created BUG; historical authorized viewer confirmation",
+    "candidate_close_contracts": [
+      {
+        "api_version": "v1",
+        "method": "POST",
+        "path": "/api.php/v1/bugs/{id}/close",
+        "source": "https://www.zentao.net/book/api/1121.html"
+      },
+      {
+        "api_version": "v2",
+        "method": "PUT",
+        "path": "/api.php/v2/bugs/{id}/close",
+        "source": "https://www.zentao.net/book/api/put-bugs-bugid-close-2199.html"
+      }
+    ],
+    "official_full_page_open": "timed out; candidates supported by official indexed excerpts only",
+    "target_instance_contract_verified": false,
+    "token_transport_image_persistence_verified": false
+  },
+  "annotation": {
+    "version": "0.1.0",
+    "source_manifest": "vendor/screenshot-annotator/source.json",
+    "license": "MIT",
+    "dependency": "Pillow==12.3.0 and suitable local font",
+    "source_only": true,
+    "retested_in_this_audit": false,
+    "package_integration": false
+  },
+  "host_support": {
+    "codex": "current host capabilities inspected; complete VeriForge workflow not verified",
+    "workbuddy": "target host; no live validation in this audit",
+    "windows_linux": "not verified"
+  },
+  "unresolved_before_acceptance": [
+    "knowledge confirmation and cancellation roundtrip and recovery across hosts",
+    "ZenTao instance authentication API version close contract and attachment binding",
+    "host-to-runner MCP bridge availability without bypassing host approvals",
+    "state schema compatibility and additional result semantics",
+    "headless mode profile isolation upload download and business verification",
+    "cross-host and OS acceptance"
+  ]
+}
