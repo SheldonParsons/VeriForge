@@ -5,7 +5,7 @@ import crypto from "node:crypto";
 import { fileURLToPath } from "node:url";
 import { parse as parseLossless, isLosslessNumber } from "lossless-json";
 
-export const VERSION = "0.4.0-rc.1";
+export const VERSION = "0.4.0-rc.2";
 export class Fault extends Error {
   constructor(code, message, details = {}) {
     super(message);

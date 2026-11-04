@@ -49,7 +49,7 @@ VeriForge 的品牌名称与 Skill 标识不同：**品牌为 VeriForge，调用
 <details>
 <summary>手动安装与验证</summary>
 
-从仓库复制 `skills/qa-workflow/`，或解压 `veriforge-0.4.0-rc.1.zip`，将里面的 `qa-workflow/` 放进当前 Agent 的 Skill 目录。在安装后的目录执行：
+从仓库复制 `skills/qa-workflow/`，或解压 `veriforge-0.4.0-rc.2.zip`，将里面的 `qa-workflow/` 放进当前 Agent 的 Skill 目录。在安装后的目录执行：
 
 ```sh
 npm ci --omit=dev
@@ -155,9 +155,9 @@ node scripts/qa.mjs --capabilities
 
 ## 版本与验收
 
-当前版本：**`0.4.0-rc.1`，待实际使用验收的候选版**。
+当前版本：**`0.4.0-rc.2`，已完成首轮部分真实 Agent 验收的候选版**。
 
-本候选已通过 46 项本地自动检查、独立解包安装与 20 次 CLI 走读。具体环境和范围见 [验证记录](docs/validation-0.4.0-rc.1.json)。
+本候选已通过 52 项本地自动检查、独立解包安装与 20 次 CLI 走读。具体环境和范围见 [验证记录](docs/validation-0.4.0-rc.2.json)。4 个独立会话还实际走过安装、需求澄清、历史查询、演示页面执行、导图标记及缺陷复验；发现与修复范围见 [首轮验收报告](docs/acceptance-round-01.md)。
 
 | 范围 | 当前状态 |
 | --- | --- |
@@ -166,7 +166,7 @@ node scripts/qa.mjs --capabilities
 | HTTP 请求、断言、同源回读及未知结果保护 | 已实现，使用隔离本地服务验证 |
 | UI 模块、Mind 节点映射、知识库确认 | 已实现计划与回执管理，实际调用交给宿主 MCP |
 | 特定项目的登录、页面业务模块、禅道上传绑定 | 按项目实际页面和 API 接入；无预置企业配置 |
-| 不同 Agent 的发现、安装、图片展示和真实业务闭环 | 待按 [候选验收清单](docs/testing.md) 验证 |
+| 宿主与真实使用 | 当前 macOS 客户端的独立会话安装和演示闭环已实测；其他宿主、真实远端写入等仍按 [验收清单](docs/testing.md) 验证 |
 
 这是一份可以开始试用和验证的候选版，不是所有网站、所有缺陷平台和所有 Agent 都已经验证通过的承诺。项目整体许可证尚未指定，正式公开发行前需完成授权选择；第三方许可见 [声明](skills/qa-workflow/THIRD_PARTY_NOTICES.md)。
 

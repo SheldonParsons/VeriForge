@@ -3,12 +3,14 @@ name: qa-workflow
 description: 使用 VeriForge 协助 Web 测试：澄清需求、主动查询历史业务和接口知识、取证页面、编写可执行用例、按授权执行、记录和提交 BUG、复验及上线后知识沉淀。适用于测试任务、新项目接入、续接会话、跨项目协作和交接；保存阶段、证据、产物、私密凭据引用与未完成事项。
 compatibility: 本地工具需要 Node.js 20.19+ 与 npm；实际浏览器、Mind 和知识库操作需要宿主可用的 MCP。支持标准 Agent Skills 目录，宿主安装位置由当前 Agent 核对。
 metadata:
-  version: "0.4.0-rc.1"
+  version: "0.4.0-rc.2"
 ---
 
 # VeriForge
 
 让用户用日常语言表达目标。Agent 负责整理范围、寻找依据、提出关键问题、执行获授权的工作并留下可恢复记录。不要让用户先填内部状态字段或背熟流程名称。
+
+**开始执行、续测、暂停或收尾前，必须读取 [执行落盘与交付核对](references/execution-checkpoint.md)。** 正式结果使用本地运行器登记；普通日志和导图标记不能代替。用户不负责填写内部字段。
 
 ## 先判断当前需要什么
 
@@ -31,6 +33,8 @@ metadata:
 node scripts/qa.mjs --capabilities
 node scripts/qa.mjs --workspace <工作空间绝对路径> --request <请求JSON路径>
 ```
+
+本地运行器及 Agent 为本流程新建的协调脚本统一使用 JavaScript/Node.js，不额外假定用户安装了 Python。宿主已有独立工具按其自身依赖使用，但不能让临时脚本改变本 Skill 的运行要求。
 
 也可从标准输入传入一个 JSON 请求。返回结构化简洁回执；修改使用刚读取的 `expected_revision`，不猜版本或循环重试。实际范围见 [能力清单](assets/capabilities.json)、[CLI](references/cli.md)、[动作衔接](references/actions.md)。
 

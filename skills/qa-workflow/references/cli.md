@@ -75,7 +75,7 @@ node <skill>/scripts/qa.mjs --workspace <workspace> --request /path/to/request.j
 | action | 参数 | 说明 |
 | --- | --- | --- |
 | artifact.import | actor, project, requirement, artifact, source_path, purpose, sensitive?, task? | 保存授权文件快照；已有标识不覆盖 |
-| case.record | actor, project, requirement, task, case, status, basis, evidence?, bugs?, expected_revision | passed/failed/blocked/not_run；格式 2 另支持 running/needs_verification/skipped/not_applicable。通过、失败、跳过、不适用须证据；首次 expected_revision=0 |
+| case.record | actor, project, requirement, task, case, status, basis, evidence?, bugs?, expected_revision, case_title? | passed/failed/blocked/not_run；格式 2 另支持 running/needs_verification/skipped/not_applicable。通过、失败、跳过、不适用须证据；首次 expected_revision=0 |
 | case.sync | actor, project, requirement, task, case, receipt, expected_revision | 任务负责人或协调者登记实际回执，receipt 是快照标识 |
 | run.summary | project, requirement, run | 用例与去重 BUG 分开统计 |
 | backup.create | actor, destination, include_sensitive?, allow_partial? | 本地 ZIP，目标父目录存在且文件不存在，位于工作空间外 |
@@ -99,6 +99,8 @@ case.record 首次为 sync:pending。实际写回并回读 Mind 后保存回执�
 | followup.list | project, requirement, include_completed?, offset?, limit? | 默认未完事项，返回全部状态数量 |
 
 resume 追加 workflow、deliverables、followups；后两者用独立 deliverable_offset／followup_offset 翻页。新记录和历史纳入备份，旧版运行器会拒绝格式 3 空间；不要手改根标记降级。
+
+`case_title` 在执行交付时必须与已固定的身份清单一致，旧记录缺少时交付核对会明确提示。
 
 ## 错误和边界
 
@@ -134,3 +136,5 @@ REVISION_CONFLICT 先比较新旧记录；RESOURCE_BUSY 继续独立工作；PEN
 | bug.draft | 任务、bug_id、bug，fixture_only? | 预提交 Markdown 和记录 |
 
 缺少参数按具体错误补齐，不通过试错循环执行写动作。工具计划需要核对当次宿主工具 schema；一个工具的参数变化不授权重新发出未知写请求。
+
+`delivery.audit`：project、requirement、case_map_artifact、runs；可选 case_ids、require_sync、bugs、custom_bug_format_basis。只读核对交付，不执行页面或写入状态。输入格式与边界见 [执行落盘与交付核对](execution-checkpoint.md)。

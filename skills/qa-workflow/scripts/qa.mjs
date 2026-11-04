@@ -10,6 +10,7 @@ import { httpExecute } from "./lib/http.mjs";
 
 import { annotate } from "./lib/annotate.mjs";
 import { MODULE_ACTIONS, moduleAction } from "./lib/modules.mjs";
+import { auditDelivery } from "./lib/audit.mjs";
 import { bugDraft } from "./lib/bugs.mjs";
 
 export async function execute(workspace, q) {
@@ -66,6 +67,7 @@ export async function execute(workspace, q) {
   const publicRequest = { ...q };
   if (q.action === "action.record") delete publicRequest.tool_result;
   rejectPlainSecrets(publicRequest);
+  if (q.action === "delivery.audit") return auditDelivery(rt, q);
   if (q.action === "bug.draft") {
     rt.store.ready(true);
     return bugDraft(rt, q);

@@ -987,6 +987,10 @@ export class Runtime {
     const ref = `${prefix}/runs/${d.run}/${slug(q.case)}.json`,
       data = {
         kind: "case_result",
+        case_title:
+          q.case_title === undefined
+            ? null
+            : text(q.case_title, "case_title", 500),
         ...this.key(q),
         run: d.run,
         case: q.case,

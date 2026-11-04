@@ -1,7 +1,7 @@
 {
   "schema": 2,
   "skill": "qa-workflow",
-  "version": "0.4.0-rc.1",
+  "version": "0.4.0-rc.2",
   "release_status": "candidate",
   "purpose": "自然引导需求到复验，主动补历史，保留多项目状态与证据",
   "runtime": "Node.js >=20.19",
@@ -17,7 +17,8 @@
     "Mind 场景节点映射与保存读回要求",
     "受限 HTTP 请求、断言、同源回读与脱敏回执",
     "JavaScript 截图标注、遮盖及证据清单",
-    "有截图证据的本地 BUG 草稿与默认严重度/优先级"
+    "有截图证据的本地 BUG 草稿与默认严重度/优先级",
+    "交付前核对原始场景身份、正式结果、证据登记、载体同步及 BUG 图片位置"
   ],
   "host_native_execution": [
     "Chrome DevTools MCP",

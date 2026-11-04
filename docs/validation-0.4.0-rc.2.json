@@ -1,0 +1,65 @@
+{
+  "version": "0.4.0-rc.2",
+  "status": "targeted_real_agent_recheck_passed_with_coverage_limits",
+  "baseline": "0.4.0-rc.1",
+  "changes": [
+    "delivery.audit validates original identities, registered results and evidence, carrier receipts, and BUG result images",
+    "Execution checkpoint instructions require canonical bookkeeping and readable current summaries",
+    "Case results retain scenario titles for identity checks"
+  ],
+  "real_agent_scope": {
+    "installation": "observed in an independent chat",
+    "historical_retrieval": "actual read-only KB and API-knowledge calls",
+    "browser": "headless interaction with a synthetic local application",
+    "mind": "actual document creation, marker writes and saved readback",
+    "external_bug_submission": "not performed",
+    "knowledge_publication": "not performed",
+    "cross_client": "not verified"
+  },
+  "patched_agent_recheck": {
+    "status": "passed_targeted",
+    "tested_bundle_sha256": "d7e24a10d43f9aebdfc9c4dd3c9291cbc11af7d7e74b815a847b7fe18f12def9",
+    "formal_case_records": 7,
+    "counts": {
+      "passed": 1,
+      "failed": 4,
+      "blocked": 2
+    },
+    "carrier_sync": "confirmed",
+    "local_bug_drafts": 2,
+    "parent_delivery_audit": "ready, no issues",
+    "source": "docs/acceptance-round-01.md",
+    "guidance_changes_after_tested_copy": [
+      "SKILL.md"
+    ]
+  },
+  "automated_tests": {
+    "total": 52,
+    "passed": 52,
+    "failed": 0
+  },
+  "validated_at": "2026-11-03T09:04:28.138Z",
+  "report_date": "2026-11-04",
+  "backup_verification": {
+    "registered_files": 451,
+    "verified": true,
+    "registered_snapshots_complete": true,
+    "off_device_copy_verified": false
+  },
+  "corrective_feedback": {
+    "page_steps": "First three corrected using prior evidence; unresolved steps remain explicit",
+    "generated_helper": "Changed to JavaScript, syntax and dry-plan checks passed; no fresh-host validation of the new guidance"
+  },
+  "independent_bundle": {
+    "archive": "veriforge-0.4.0-rc.2.zip",
+    "cli_calls": 20,
+    "files": 64,
+    "global_installation": false,
+    "host_discovery_verified": false,
+    "independent_npm_ci": true,
+    "installer_preserves_existing_target": true,
+    "real_business_execution": false,
+    "sha256": "a0042a0675609ba2ac02fbfd569af3bfd4a2799618772aa7af6bddf33baf59d7",
+    "version": "0.4.0-rc.2"
+  }
+}
